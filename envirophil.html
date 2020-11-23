@@ -415,6 +415,8 @@ Error message and password prompt
 
 <li>Day 1 ideas, links</li>
 
+<li>Day/night palette button</li>
+
 <li>definitions</li>
 
 <li>deontology</li>
@@ -10532,7 +10534,7 @@ exports.droppable = DroppableWidget;
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Areas of philosophy]]</pre>
+# [[Day/night palette button]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -12213,7 +12215,7 @@ a.tc-tiddlylink-external {
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20201123012554117" list="[[final wrap-up]] DarkModeFlip [[Pellow's Four Pillars]]" modified="20201123012554117" title="$:/StoryList">
+<div created="20201123012554117" list="$:/Import [[final wrap-up]] DarkModeFlip [[Pellow's Four Pillars]]" modified="20201123012554117" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200827221418214" modified="20200907223549069" title="$:/temp/advancedsearch">
@@ -13096,6 +13098,26 @@ And…
 * [[RJ Julia bookstore|https://www.wesleyanrjjulia.com/]]
 * [[voice amps|http://teachingdemo.tiddlyspot.com/]]
 * [[Ira Glass on summer 2020 as all-nighter|https://media.stubhubstatic.com/stubhub-catalog/d_defaultLogo.jpg/t_f-fs-0fv,q_auto:low,f_auto,c_fill,dpr_2.0,$w_750,$h_416/performer/272489/zi8sr8u8sxrkr1uwocvd]]</pre>
+</div>
+<div caption="{{$:/core/images/tip}} day/night palette" created="20200723143208165" creator="jd" description="Day/night palette" modified="20200726153447631" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
+<pre>&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=&quot;
+day palette tiddler: $:/config/daypalette
+night palette tiddler: $:/config/nightpalette
+&quot;&gt;
+&lt;$set name=&quot;dayPal&quot; filter=&quot;[[$:/config/daypalette]get[text]]&quot; emptyValue=&quot;$:/palettes/Vanilla&quot;&gt;
+&lt;$set name=&quot;nightPal&quot; filter=&quot;[[$:/config/nightpalette]get[text]]&quot; emptyValue=&quot;$:/palettes/Nord&quot;&gt;
+&lt;$list filter=&quot;[[$:/palette]!text&lt;dayPal&gt;]&quot; emptyMessage=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;$:/palette&quot; text=&lt;&lt;nightPal&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/palette&quot; text=&lt;&lt;dayPal&gt;&gt;/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
+{{$:/core/images/tip}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
+&lt;span class=&quot;tc-btn-text&quot;&gt;day/night palette&lt;/span&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$button&gt;</pre>
 </div>
 <div class="multicol" created="20200827230157651" modified="20200827230625425" title="definitions">
 <pre>''//Brief definitions of key terms appear below. Hover on links, or click to open, for more detailed discussion.//''
