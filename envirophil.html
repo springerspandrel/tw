@@ -10567,8 +10567,8 @@ exports.droppable = DroppableWidget;
 
 //Note that it is a known limitation that copy the bullet or transcluding it does not apply to the children of the bullet. This is on the [[list of things to implement|Roadmap]].//</pre>
 </div>
-<div created="20200612233456699" modified="20200612233519324" title="$:/palette">
-<pre>$:/palettes/SolarizedLight</pre>
+<div created="20200612233456699" modified="20201123030943155" title="$:/palette">
+<pre>$:/palettes/Nord</pre>
 </div>
 <div created="20200827220634644" description="Precision colors for machines and people" license="MIT, Ethan Schoonover, https://github.com/altercation/solarized/blob/master/LICENSE" modified="20200827221759514" name="SolarizedLight" tags="$:/tags/Palette" title="$:/palettes/SolarizedLight" type="application/x-tiddler-dictionary">
 <pre>alert-background: #eee8d5
@@ -12215,7 +12215,7 @@ a.tc-tiddlylink-external {
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20201123012554117" list="$:/Import [[final wrap-up]] DarkModeFlip [[Pellow's Four Pillars]]" modified="20201123012554117" title="$:/StoryList">
+<div created="20201123012554117" list="$:/Import [[Day/night palette button]] [[final wrap-up]]" modified="20201123030911383" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200827221418214" modified="20200907223549069" title="$:/temp/advancedsearch">
@@ -13099,12 +13099,12 @@ And…
 * [[voice amps|http://teachingdemo.tiddlyspot.com/]]
 * [[Ira Glass on summer 2020 as all-nighter|https://media.stubhubstatic.com/stubhub-catalog/d_defaultLogo.jpg/t_f-fs-0fv,q_auto:low,f_auto,c_fill,dpr_2.0,$w_750,$h_416/performer/272489/zi8sr8u8sxrkr1uwocvd]]</pre>
 </div>
-<div caption="{{$:/core/images/tip}} day/night palette" created="20200723143208165" creator="jd" description="Day/night palette" modified="20200726153447631" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
+<div caption="{{$:/core/images/tip}} day/night palette" created="20200723143208165" creator="jd" description="Day/night palette" modified="20201123030933605" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
 <pre>&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=&quot;
 day palette tiddler: $:/config/daypalette
 night palette tiddler: $:/config/nightpalette
 &quot;&gt;
-&lt;$set name=&quot;dayPal&quot; filter=&quot;[[$:/config/daypalette]get[text]]&quot; emptyValue=&quot;$:/palettes/Vanilla&quot;&gt;
+&lt;$set name=&quot;dayPal&quot; filter=&quot;[[$:/config/daypalette]get[text]]&quot; emptyValue=&quot;$:/palettes/SolarizedLight&quot;&gt;
 &lt;$set name=&quot;nightPal&quot; filter=&quot;[[$:/config/nightpalette]get[text]]&quot; emptyValue=&quot;$:/palettes/Nord&quot;&gt;
 &lt;$list filter=&quot;[[$:/palette]!text&lt;dayPal&gt;]&quot; emptyMessage=&quot;&quot;&quot;&lt;$action-setfield $tiddler=&quot;$:/palette&quot; text=&lt;&lt;nightPal&gt;&gt;/&gt;&quot;&quot;&quot;&gt;
 &lt;$action-setfield $tiddler=&quot;$:/palette&quot; text=&lt;&lt;dayPal&gt;&gt;/&gt;
