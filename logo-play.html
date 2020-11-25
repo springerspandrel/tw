@@ -165,6 +165,8 @@ Error message and password prompt
 
 <li>$:/palette</li>
 
+<li>$:/plugins/kookma/utility/viewtemplate/view-fields</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -190,6 +192,8 @@ Error message and password prompt
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
+
+<li>$:/state/tabs/controlpanel/toolbars-1345989671</li>
 
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
@@ -246,6 +250,8 @@ Error message and password prompt
 <li>Untitled 1</li>
 
 <li>Untitled 2</li>
+
+<li>Untitled 3</li>
 
 </ul>
 </p>
@@ -9675,21 +9681,112 @@ Error message and password prompt
 <div created="20201124232400352" modified="20201124232400352" title="$:/GitHub/Username">
 <pre>springerspandrel</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled 3&quot;: {
-            &quot;title&quot;: &quot;Untitled 3&quot;,
-            &quot;text&quot;: &quot;https://www.dropbox.com/s/evkvlk4g97tue5a/TiddlyWiki%205.1.23%20in%20box.jpg?raw=1&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[Untitled 3]]
+# [[$:/plugins/kookma/utility/viewtemplate/view-fields]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20201124225059684" modified="20201125165913975" title="$:/palette">
+<div created="20201124225059684" modified="20201125170028753" title="$:/palette">
 <pre>$:/palettes/Vanilla</pre>
+</div>
+<div created="20181010162537613" creator="ES" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201019050820637" modifier="ES" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
+<pre>\define lingo-base() $:/language/EditTemplate/
+\define config-title()
+$:/config/EditTemplateFields/Visibility/$(currentField)$
+\end
+
+\define config-filter()
+[[hide]] -[title{$(config-title)$}]
+\end
+
+\define new-field()
+&lt;$vars name={{$:/temp/newfieldname}}&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; default=&lt;&lt;name&gt;&gt;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-add-field&quot;
+$name=&lt;&lt;name&gt;&gt;
+$value={{$:/temp/newfieldvalue}}/&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/newfieldname&quot;/&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/newfieldvalue&quot;/&gt;
+&lt;&lt;lingo Fields/Add/Button&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;&quot; default=&lt;&lt;name&gt;&gt;&gt;
+&lt;$button&gt;
+&lt;&lt;lingo Fields/Add/Button&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/$vars&gt;
+\end
+
+&lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;table class=&quot;tc-edit-fields&quot;&gt;
+&lt;tbody&gt;
+&lt;$list filter=&quot;[all[current]fields[]] +[sort[title]]&quot; variable=&quot;currentField&quot;&gt;
+&lt;$list filter=&lt;&lt;config-filter&gt;&gt; variable=&quot;temp&quot;&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;
+&lt;$text text=&lt;&lt;currentField&gt;&gt;/&gt;:&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;$edit-text tiddler=&lt;&lt;currentTiddler&gt;&gt; field=&lt;&lt;currentField&gt;&gt; placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}}/&gt;
+&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-remove&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip={{$:/language/EditTemplate/Field/Remove/Hint}} aria-label={{$:/language/EditTemplate/Field/Remove/Caption}}&gt;
+&lt;$action-deletefield $field=&lt;&lt;currentField&gt;&gt;/&gt;
+{{$:/core/images/delete-button}}
+&lt;/$button&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;$fieldmangler&gt;
+&lt;div class=&quot;tc-edit-field-add&quot;&gt;
+&lt;em class=&quot;tc-edit&quot;&gt;
+&lt;&lt;lingo Fields/Add/Prompt&gt;&gt;
+&lt;/em&gt;
+&lt;span class=&quot;tc-edit-field-add-name&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/newfieldname&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/EditTemplate/Fields/Add/Name/Placeholder}} focusPopup=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; class=&quot;tc-edit-texteditor tc-popup-handle&quot;/&gt;
+&lt;/span&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; class=&quot;tc-btn-invisible tc-btn-dropdown&quot; tooltip={{$:/language/EditTemplate/Field/Dropdown/Hint}} aria-label={{$:/language/EditTemplate/Field/Dropdown/Caption}}&gt;{{$:/core/images/down-arrow}}&lt;/$button&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot;&gt;
+&lt;div class=&quot;tc-block-dropdown tc-edit-type-dropdown&quot;&gt;
+&lt;$linkcatcher to=&quot;$:/temp/newfieldname&quot;&gt;
+&lt;div class=&quot;tc-dropdown-item&quot;&gt;
+&lt;&lt;lingo Fields/Add/Dropdown/User&gt;&gt;
+&lt;/div&gt;
+&lt;$list filter=&quot;[!is[shadow]!is[system]fields[]search:title{$:/temp/newfieldname}sort[]] -created -creator -draft.of -draft.title -modified -modifier -tags -text -title -type&quot;  variable=&quot;currentField&quot;&gt;
+&lt;$link to=&lt;&lt;currentField&gt;&gt;&gt;
+&lt;&lt;currentField&gt;&gt;
+&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;div class=&quot;tc-dropdown-item&quot;&gt;
+&lt;&lt;lingo Fields/Add/Dropdown/System&gt;&gt;
+&lt;/div&gt;
+&lt;$list filter=&quot;[fields[]search:title{$:/temp/newfieldname}sort[]] -[!is[shadow]!is[system]fields[]]&quot; variable=&quot;currentField&quot;&gt;
+&lt;$link to=&lt;&lt;currentField&gt;&gt;&gt;
+&lt;&lt;currentField&gt;&gt;
+&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;/$linkcatcher&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;span class=&quot;tc-edit-field-add-value&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/newfieldvalue&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}} class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tc-edit-field-add-button&quot;&gt;
+&lt;$macrocall $name=&quot;new-field&quot;/&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;/$fieldmangler&gt;
+</pre>
 </div>
 <div created="20201124224117484" modified="20201125155249251" title="$:/SiteSubtitle">
 <pre>''logos for ...'' &lt;br /&gt;[img width=&quot;15%&quot;[|https://www.dropbox.com/s/5nnzcnxwe84aq3y/TiWi%20logo.jpg?raw=1]]&lt;br /&gt;^^(actually working in v 5.1.22 here)^^ &lt;br /&gt;Toggle palette ⟱</pre>
@@ -9709,8 +9806,8 @@ Error message and password prompt
 <div created="20201125001928315" modified="20201125002210124" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
-<div created="20201124225210301" modified="20201125001709770" title="$:/state/tab--1963855381">
-<pre>$:/core/ui/ControlPanel/Palette</pre>
+<div created="20201124225210301" modified="20201125170241438" title="$:/state/tab--1963855381">
+<pre>$:/core/ui/ControlPanel/Toolbars</pre>
 </div>
 <div created="20201124224754486" modified="20201124235740994" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
@@ -9718,8 +9815,8 @@ Error message and password prompt
 <div created="20201124224801607" modified="20201124235739925" title="$:/state/tab--959111941">
 <pre>$:/core/ui/ControlPanel/EditorTypes</pre>
 </div>
-<div created="20201124225205564" modified="20201125132217435" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20201124225205564" modified="20201125170238705" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
 <div created="20201124232322910" modified="20201124232758380" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
@@ -9727,13 +9824,16 @@ Error message and password prompt
 <div created="20201124232555798" modified="20201124232601358" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Explorer</pre>
 </div>
-<div created="20201124225355859" modified="20201125165741024" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/ControlPanel/Palette</pre>
+<div created="20201124225355859" modified="20201125170219905" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
+</div>
+<div created="20201125170248020" modified="20201125170252171" title="$:/state/tabs/controlpanel/toolbars-1345989671">
+<pre>$:/core/ui/ControlPanel/Toolbars/PageControls</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201125132212294" list="[[blue morph with alpha]] [[Atronoush modular]] [[keycaps grey shadow]] [[keycaps dark blue]] [[keycaps morph white]]" modified="20201125165514153" title="$:/StoryList">
+<div created="20201125132212294" list="$:/Import $:/ControlPanel [[blue morph with alpha]] [[Atronoush modular]] [[keycaps grey shadow]] [[keycaps dark blue]] [[keycaps morph white]]" modified="20201125170236906" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201124224821588" modified="20201125002206850" title="$:/temp/advancedsearch">
@@ -10015,6 +10115,9 @@ night palette tiddler: $:/config/nightpalette
 </div>
 <div title="Untitled 2" type="text/plain">
 <pre>$:/favicon.ico</pre>
+</div>
+<div title="Untitled 3">
+<pre>https://www.dropbox.com/s/evkvlk4g97tue5a/TiddlyWiki%205.1.23%20in%20box.jpg?raw=1</pre>
 </div>
 
 
