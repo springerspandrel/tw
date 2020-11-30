@@ -209,8 +209,6 @@ Error message and password prompt
 
 <li>$:/temp/NewTagName</li>
 
-<li>$:/temp/NewTagName--1593157566</li>
-
 <li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
@@ -225,9 +223,13 @@ Error message and password prompt
 
 <li>Draft of 'Aristotle, Nicomachean Ethics'</li>
 
+<li>Draft of 'tutorial for excerpts'</li>
+
 <li>end of political science</li>
 
 <li>everything permitted?</li>
+
+<li>excerpt-style</li>
 
 <li>happiness as chief good</li>
 
@@ -9813,7 +9815,7 @@ a[href=&quot;#&lt;&lt;urititle&gt;&gt;&quot;]:after { &lt;&lt;style-after&gt;&gt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201130195251525" list="[[tutorial for excerpts]] $:/ControlPanel [[happiness as chief good]] [[three lives]] [[Draft of 'Aristotle, Nicomachean Ethics']] [[everything permitted?]] [[youth and political science]] [[Beauvoir, Ethics of Ambiguity]]" modified="20201130210623677" title="$:/StoryList">
+<div created="20201130195251525" list="excerpt-style [[Draft of 'tutorial for excerpts']] $:/ControlPanel [[happiness as chief good]] [[three lives]] [[Draft of 'Aristotle, Nicomachean Ethics']] [[everything permitted?]] [[youth and political science]] [[Beauvoir, Ethics of Ambiguity]]" modified="20201130210623677" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201130200006288" modified="20201130200442581" title="$:/temp/advancedsearch">
@@ -9879,9 +9881,6 @@ a[href=&quot;#&lt;&lt;urititle&gt;&gt;&quot;]:after { &lt;&lt;style-after&gt;&gt
 </div>
 <div created="20201130201912449" modified="20201130201912449" title="$:/temp/NewTagName">
 <pre></pre>
-</div>
-<div created="20201130203557527" modified="20201130203558415" title="$:/temp/NewTagName--1593157566">
-<pre>template</pre>
 </div>
 <div created="20201130194257953" modified="20201130195222152" title="$:/temp/search">
 <pre></pre>
@@ -10027,11 +10026,61 @@ And the ethics which they have proposed to their disciples has always pursued th
 &lt;/$details&gt;
 </pre>
 </div>
+<div created="20201130194313365" draft.of="tutorial for excerpts" draft.title="tutorial for excerpts" linkstyle="color:&lt;&lt;colour code-foreground&gt;&gt;;" modified="20201130212424419" tags="TiddlyWiki" title="Draft of 'tutorial for excerpts'">
+<pre>Scalable approach to quotes/excerpts, in order of priority:
+
+# ''Make one tiddler for each excerpt''
+#* Until you do this, you won't really be tracking quotes
+# Make one tiddler for each source-text (''book'' / article / whatever) 
+#*Within that source tiddler, you can will set up an automatically-''filtered list'' or table of all the excerpts from that source
+#*Once you're comfortable with filtered lists, you can set up other &quot;slices&quot; such as quotes with a certain keyword, etc.
+# Use clearly-named ''fields'' for all metadata
+#* Be careful not to use system fields (Alas, &quot;source&quot; and &quot;title&quot; are taken, for example). 
+#*Any informational parameter that has data structure that you might want to format or rearrange down the road should be given its own field.
+#Get tiddlers to display crucial fields the way you want: 
+#* There are multiple ways of getting tiddlers to look the way you want, but getting basic data like source and page into the subtitle area is one easy start: $:/core/ui/ViewTemplate/subtitle
+#* Modifying a &quot;Shadowed Tiddler&quot; like the subtitle can be intimidating. Remember you can delete your custom version altogether, and TiddlyWiki will revert to the default version.
+#* The css to make quotes look nice is least important, but most fun. Add something like this stylesheet spec: 
+
+This tiddler will offer an overview of all the tiddlers here that are tagged: &lt;&lt;tag excerpt&gt;&gt;.
+
+&lt;$details summary=&quot;Why you should have one tiddler per excerpt, and one tiddler per source (relevant body-of-writing):&quot;&gt;
+
+* an excerpt probably wants its own metadata fields (page, comment, keywords, etc.) that don't apply to the larger source.
+* the overall source (I'll assume it's a book, but it could be or journal article, or anthology chapter, etc.) should track metadata (publisher, year, page-length, whatever) that aren't necessarily associated with the excerpts.
+
+The tiddler for the book should then be set up as a &quot;house&quot; within which you can make room for the excerpts that belong to it, as well as other reflections that may be proper to the book as a whole.
+
+:^^Note, on another site of mine, there are //also// lots of tiddlers tagged with &quot;excerpts&quot; (plural) — which reflects a less granular style of information that I do not recommend.)^^
+
+&lt;/$details&gt;
+
+For the purposes of illustration, I'm including a &quot;catch-all&quot; dynamic table with all the tiddlers tagged &quot;excerpt&quot;. 
+
+:^^Please note: if your project grows very large, such a catch-all location will become unwieldy. You'll instead find uses for cross-source slices (all excerpts, from any source, with the keyword &quot;ecology&quot;, for example).^^
+
+&lt;&lt;table-dynamic filter:&quot;[has[page]]&quot; fields:&quot;tbl-expand author text-title page title notes&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Use  @@.tcr ''﹥'' @@ in left column to preview content. Click any @@.tcr title@@ link for additional details''&quot;&gt;&gt;
+
+:^^Note: This tiddler uses &lt;mark&gt;dynamic tables&lt;/mark&gt; from [[$:/plugins/kookma/shiraz]] to organize information about excerpts. Other approaches, like using &quot;table of contents&quot; macro, are possible without plugins, but they're less flexible.^^
+
+A dynamic table can include any desired combination of fields, and you can add a dynamic table to any tiddler (even adding one to custom ViewTemplate formats so that authors or texts automatically get their own dynamic tables). Not only can a dynamic table be sorted on the fly, but both the meta-data field contents and the content itself can be edited on the fly using the little &quot;edit&quot; icon at the upper left of the table area.</pre>
+</div>
 <div author="Aristotle" created="20201130195620207" keyword="summum-bonum" modified="20201130195620207" notes="Discuss &quot;end&quot; as //telos//" page="1094" tags="excerpt" text-title="Nicomachean Ethics" title="end of political science">
 <pre>Suppose, then, that (a) there is some end of the things we pursue in our actions which we wish for because of itself, and because of which we wish for the other things; and (b) we do not choose everything because of something else, since (c) if we do, it will go on without limit... then clearly (d) this end  will be the good, i.e., the best good.&lt;br&gt;Then surely knowledge of this good is also of great importance. ...&lt;br&gt;[The end of political science] will include the ends of the other sciences, and so will be the human good. For though admittedly the good is the same for a city as for an individual, still the good of the city is apparently a greater and more complete good to acquire and preserve. </pre>
 </div>
 <div author="Beauvoir" created="20201130204936981" keywords="religion" modified="20201130205037576" notes="But compare to her admiration of the Jesuit priest..." page="265" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="everything permitted?">
 <pre>Dostoievsky asserted, “If God does not exist, everything is permitted.” Today’s believers use this formula for their own advantage. To reestablish man at the heart of his destiny is, they claim, to repudiate all ethics. However, far from God’s absence authorizing all license, the contrary is the case, because man is abandoned on the earth, because his acts are definitive, absolute engagements. He bears the responsibility for a world which is not the work of a strange power, but of himself, where his defeats are inscribed, and his victories as well.</pre>
+</div>
+<div created="20201130212657125" modified="20201130212852800" tags="$:/tags/Stylesheet" title="excerpt-style">
+<pre>div.tc-tagged-excerpt:before {
+	display: block;
+	content: &quot;\201C&quot;;
+	font-size: 80px;
+	position: absolute;
+	left: -2px;
+	top: -10px;
+	color: #864;
+}</pre>
 </div>
 <div author="Aristotle" created="20201130210022843" keywords="happiness" modified="20201130210054493" notes="" page="1097b01" source-text="Aristotle, Nicomachean Ethics" tags="excerpt" text-title="Nicomachean Ethics" title="happiness as chief good">
 <pre>Now happiness more than anything else seems unconditionally complete, since we always [choose it, and also] choose it because of itself, never because of something else.
