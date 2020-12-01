@@ -285,8 +285,6 @@ Error message and password prompt
 
 <li>denying ambiguity</li>
 
-<li>Draft of 'tutorial for excerpts'</li>
-
 <li>end of political science</li>
 
 <li>Epictetus, Enchiridion</li>
@@ -327,11 +325,13 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/subtitle" modified="20201201054520505" tags="$:/tags/ViewTemplate" title="#:/springer/source-info">
-<pre>&lt;$link to={{!!source-text}} /&gt;
+<div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/subtitle" modified="20201201054609926" tags="$:/tags/ViewTemplate" title="#:/springer/source-info">
+<pre>&lt;div class=&quot;tc-subtitle&quot;&gt;
+&lt;$link to={{!!source-text}} /&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;has[page]]&quot;&gt;, p. {{!!page}}&lt;/$list&gt;
 {{!!year}}
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[publisher]]&quot;&gt;&lt;&lt;hspace 1em&gt;&gt; ({{!!publisher}})&lt;/$list&gt;</pre>
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[publisher]]&quot;&gt;&lt;&lt;hspace 1em&gt;&gt; ({{!!publisher}})&lt;/$list&gt;
+&lt;/div&gt;</pre>
 </div>
 <div caption="Kookma Plugin Library" created="20200306121057751" modified="20200317175359110" tags="$:/tags/PluginLibrary" title="$:/config/KookmaPluginLibrary" type="text/vnd.tiddlywiki" url="https://kookma.github.io/TW-PluginLibrary/library/index.html">
 <pre>Kookma plugin library is a set of plugins developed by [[Mohammad|https://github.com/kookma]]. A good recommendation is to backup your data before installing any plugins. These plugins distributed under  MIT license.
@@ -10797,8 +10797,8 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div created="20201130210408465" modified="20201130210408465" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20201130200010289" modified="20201201054152429" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+<div created="20201130200010289" modified="20201201054717503" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div created="20201130210404538" modified="20201201034748682" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -10824,11 +10824,11 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201201033312229" list="[[Beauvoir, Ethics of Ambiguity]] #:/springer/source-info $:/AdvancedSearch [[Draft of 'tutorial for excerpts']] [[Aristotle considers three lives]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201054535003" title="$:/StoryList">
+<div created="20201201033312229" list="[[Beauvoir, Ethics of Ambiguity]] #:/springer/source-info $:/AdvancedSearch excerpt-style [[tutorial for excerpts]] [[Aristotle considers three lives]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201054720991" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20201130200006288" modified="20201201054226235" title="$:/temp/advancedsearch">
-<pre>$:/tags/ViewTemplate</pre>
+<div created="20201130200006288" modified="20201201054658512" title="$:/temp/advancedsearch">
+<pre>stylesheet</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -11068,60 +11068,6 @@ night palette tiddler: $:/config/nightpalette
 
 And the ethics which they have proposed to their disciples has always pursued the same goal. It has been a matter of eliminating the ambiguity by making oneself a pure inwardness or pure externality, by escaping from the sensible world or by being engulfed in it, by yielding to eternity or enclosing oneself in the pure moment.</pre>
 </div>
-<div created="20201130194313365" draft.of="tutorial for excerpts" draft.title="tutorial for excerpts" linkstyle="color:&lt;&lt;colour code-foreground&gt;&gt;;" modified="20201201054053635" tags="TiddlyWiki" title="Draft of 'tutorial for excerpts'">
-<pre>&lt;$details open=&quot;yes&quot; summary=&quot;Making a TiddlyWiki for quotes? How to build it so it scales well: &quot;&gt;
-
-# ''Plan to make one tiddler for each excerpt.''
-#; Why? 
-#: Think of each tiddler as an index card, something you might want to take in your pocket while leaving related things behind. This will allow you to access quotes flexibly as the project grows.
-#:;What goes in the &quot;body&quot; area of the tiddler?
-#:: Just the words from your source
-#:* (Everything else (author, bibliographic source, page-location, notes) belongs in special ''fields'' — more on those soon...)
-#:* (Don't panic if you initially find yourself with other key info jammed in there; you can decide over time whether this or that merits a field, and clean up as needed.)
-#:; How much text should I put into one tiddler?
-#::Usually just the sentence or paragraph (or dialogue-exchange, etc.) that's &quot;quotable&quot; (relative to your purposes).
-#:: (Don't panic if you find yourself with strings of quotes hastily pasted into one tiddler, but aim to parcel them out when you get a chance. Of course, there are tools for that, too. ;) )
-#:; How should these little tiddlers be titled?
-#:: Good question! 
-#::It actually doesn't matter much for now, as long as the title is unique. 
-#:: You could title it with a concise descriptive teaser, or with a quick string that abbreviates the title and page. (Add flibble's relink plugin to make internal links less fragile if you tinker with your names later.)
-#:; How about an example?
-#:: [[Aristotle considers three lives]]
-#:: [[inner vs outer]]
-#:; What are fields, and how do I work with them?
-#:: A field is a &quot;cubbyhole&quot; (or a labeled fill-in-the-blank) for information of a specific kind. 
-#:* Usually ~TiddlyWiki fields are created, and appear, only in edit mode. Find the field creation and editing controls below the body of each tiddler...
-#:* {{$:/plugins/kookma/utility/images/view-fields.svg}}Click the &quot;Show fields&quot; toggle control near the top of the sidebar... Now if you navigate back to the example tiddlers, you can see fields even while browsing. 
-#:; It sounds like each quote is so much work!
-#:: No need to re-enter all the details about the source each time!
-#::{{$:/core/images/clone-button}}Just ''clone'' the first tiddler once it's set up for the source you're currently reading.
-#:: (We can consider other time-saving tips later for the input process. The focus now is structure.)
-# ''Make one tiddler for each book'' (or article / anthology chapter, whatever) 
-#*Within that source tiddler, you'll have an automatically-''filtered list'' (or a table) of all the excerpts from that source. 
-#* Example: [[Aristotle, Nicomachean Ethics]]
-#*I recommend [[Shiraz|$:/plugins/kookma/shiraz]] dynamic tables to display a table that selects tiddlers based on a filter and can be sorted and adjusted on the fly. BUT you can also just use a filtered list function to transclude all the excerpts that belong to the book/text-source. 
-#*Once you're comfortable with filtered lists, you can set up other &quot;slices&quot; such as quotes with a certain keyword, etc.
-# Use clearly-named ''fields'' for all metadata
-#* Be careful not to use TW's own special-purpose fields. (Alas, &quot;source&quot; and &quot;title&quot; are taken, for example. So are &quot;type&quot; and &quot;name&quot;.) 
-#*Any informational parameter that has data structure that you might want to format or rearrange down the road should be given its own field.
-#Get tiddlers to display crucial fields the way you want: 
-#* There are multiple ways of getting tiddlers to look the way you want, but getting basic data like source and page into the subtitle area is one easy start: $:/core/ui/ViewTemplate/subtitle
-#** Here I've also added an element near the bottom of the [[ViewTemplate|$:/tags/ViewTemplate]] to display notes (from a ''notes'' field) if there are any...
-#** Modifying a &quot;Shadowed Tiddler&quot; like the subtitle can be intimidating. Remember you can delete your custom version altogether, and TiddlyWiki will revert to the default version.
-#* The css to make quotes look nice is least important, but most fun. Add something like this stylesheet spec: [[excerpt-style]]
-&lt;/$details&gt;
-
-
-This demo tiddler will next offer an overview of all the tiddlers here that are tagged: &lt;&lt;tag excerpt&gt;&gt;.
-
-:^^Please note: if your project grows very large, such a catch-all location will become unwieldy. You'll instead find uses for cross-source slices (all excerpts, from any source, with the keyword &quot;ecology&quot;, for example).^^
-
-&lt;&lt;table-dynamic filter:&quot;[has[page]]&quot; fields:&quot;tbl-expand author text-title page title notes&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Use  @@.tcr ''﹥'' @@ in left column to preview content. Click any @@.tcr title@@ link for additional details''&quot;&gt;&gt;
-
-:^^Note: This tiddler uses &lt;mark&gt;dynamic tables&lt;/mark&gt; from [[$:/plugins/kookma/shiraz]] to organize information about excerpts. Other approaches, like using &quot;table of contents&quot; macro, are possible without plugins, but they're less flexible.^^
-
-A dynamic table can include any desired combination of fields, and you can add a dynamic table to any tiddler (even adding one to custom ViewTemplate formats so that authors or texts automatically get their own dynamic tables). Not only can a dynamic table be sorted on the fly, but both the meta-data field contents and the content itself can be edited on the fly using the little &quot;edit&quot; icon at the upper left of the table area.</pre>
-</div>
 <div author="Aristotle" created="20201130195620207" keyword="summum-bonum" modified="20201130195620207" notes="Discuss &quot;end&quot; as //telos//" page="1094" tags="excerpt" text-title="Nicomachean Ethics" title="end of political science">
 <pre>Suppose, then, that (a) there is some end of the things we pursue in our actions which we wish for because of itself, and because of which we wish for the other things; and (b) we do not choose everything because of something else, since (c) if we do, it will go on without limit... then clearly (d) this end  will be the good, i.e., the best good.&lt;br&gt;Then surely knowledge of this good is also of great importance. ...&lt;br&gt;[The end of political science] will include the ends of the other sciences, and so will be the human good. For though admittedly the good is the same for a city as for an individual, still the good of the city is apparently a greater and more complete good to acquire and preserve. </pre>
 </div>
@@ -11219,7 +11165,7 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 <div caption="" list="" role="sliced-html" tags="[[Sliced up Epictetus excerpts:]]" title="Sliced up Epictetus excerpts:-anchor-" toc-type="anchor">
 <pre></pre>
 </div>
-<div created="20201130194313365" linkstyle="color:&lt;&lt;colour code-foreground&gt;&gt;;" modified="20201201052904194" tags="TiddlyWiki" title="tutorial for excerpts">
+<div created="20201130194313365" linkstyle="color:&lt;&lt;colour code-foreground&gt;&gt;;" modified="20201201055120671" tags="TiddlyWiki" title="tutorial for excerpts">
 <pre>&lt;$details open=&quot;yes&quot; summary=&quot;Making a TiddlyWiki for quotes? How to build it so it scales well: &quot;&gt;
 
 # ''Plan to make one tiddler for each excerpt.''
@@ -11256,10 +11202,10 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 #* Be careful not to use TW's own special-purpose fields. (Alas, &quot;source&quot; and &quot;title&quot; are taken, for example. So are &quot;type&quot; and &quot;name&quot;.) 
 #*Any informational parameter that has data structure that you might want to format or rearrange down the road should be given its own field.
 #Get tiddlers to display crucial fields the way you want: 
-#* There are multiple ways of getting tiddlers to look the way you want, but getting basic data like source and page into the subtitle area is one easy start: $:/core/ui/ViewTemplate/subtitle
-#** Here I've also modified the [[$:/core/ui/ViewTemplate/body]] to add a section to display notes (from a ''notes'' field) if there are any...
-#** Modifying a &quot;Shadowed Tiddler&quot; like the subtitle can be intimidating. Remember you can delete your custom version altogether, and TiddlyWiki will revert to the default version.
-#* The css to make quotes look nice is least important, but most fun. Add something like this stylesheet spec: [[excerpt-style]]
+#* There are multiple ways of getting tiddlers to look the way you want, but adding items to the ViewTemplate helps ensure that crucial fields are always in view.
+#** I've added a line under the subtitle to specify source information (as contained in the relevant fields)
+#** I've also added an element near the bottom of the [[ViewTemplate|$:/tags/ViewTemplate]] to display notes (from a ''notes'' field) if there are any...
+#* The css to make quotes display nicely is least important, but most fun. Add something like this stylesheet spec: [[excerpt-style]]
 &lt;/$details&gt;
 
 
