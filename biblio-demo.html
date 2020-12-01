@@ -331,8 +331,11 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/subtitle" modified="20201201054445122" tags="$:/tags/ViewTemplate" title="#:/springer/source-info">
-<pre></pre>
+<div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/subtitle" modified="20201201054520505" tags="$:/tags/ViewTemplate" title="#:/springer/source-info">
+<pre>&lt;$link to={{!!source-text}} /&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[page]]&quot;&gt;, p. {{!!page}}&lt;/$list&gt;
+{{!!year}}
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[publisher]]&quot;&gt;&lt;&lt;hspace 1em&gt;&gt; ({{!!publisher}})&lt;/$list&gt;</pre>
 </div>
 <div caption="Kookma Plugin Library" created="20200306121057751" modified="20200317175359110" tags="$:/tags/PluginLibrary" title="$:/config/KookmaPluginLibrary" type="text/vnd.tiddlywiki" url="https://kookma.github.io/TW-PluginLibrary/library/index.html">
 <pre>Kookma plugin library is a set of plugins developed by [[Mohammad|https://github.com/kookma]]. A good recommendation is to backup your data before installing any plugins. These plugins distributed under  MIT license.
@@ -10837,7 +10840,7 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201201033312229" list="#:/springer/source-info $:/AdvancedSearch [[Draft of '$:/core/ui/ViewTemplate/subtitle']] [[Draft of 'tutorial for excerpts']] [[Aristotle considers three lives]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201054229342" title="$:/StoryList">
+<div created="20201201033312229" list="[[Beauvoir, Ethics of Ambiguity]] #:/springer/source-info $:/AdvancedSearch [[Draft of '$:/core/ui/ViewTemplate/subtitle']] [[Draft of 'tutorial for excerpts']] [[Aristotle considers three lives]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201054450060" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201130200006288" modified="20201201054226235" title="$:/temp/advancedsearch">
