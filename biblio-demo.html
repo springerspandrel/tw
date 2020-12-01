@@ -141,8 +141,6 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
-<li>#:/springer/source-info</li>
-
 <li>$:/config/KookmaPluginLibrary</li>
 
 <li>$:/config/Plugins/Disabled/$:/plugins/kookma/shiraz</li>
@@ -214,6 +212,8 @@ Error message and password prompt
 <li>$:/SiteTitle</li>
 
 <li>$:/springer/add-notes-below</li>
+
+<li>$:/springer/source-info</li>
 
 <li>$:/state/addplugins/tab-1342078386</li>
 
@@ -325,14 +325,6 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/subtitle" modified="20201201054609926" tags="$:/tags/ViewTemplate" title="#:/springer/source-info">
-<pre>&lt;div class=&quot;tc-subtitle&quot;&gt;
-&lt;$link to={{!!source-text}} /&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[page]]&quot;&gt;, p. {{!!page}}&lt;/$list&gt;
-{{!!year}}
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[publisher]]&quot;&gt;&lt;&lt;hspace 1em&gt;&gt; ({{!!publisher}})&lt;/$list&gt;
-&lt;/div&gt;</pre>
-</div>
 <div caption="Kookma Plugin Library" created="20200306121057751" modified="20200317175359110" tags="$:/tags/PluginLibrary" title="$:/config/KookmaPluginLibrary" type="text/vnd.tiddlywiki" url="https://kookma.github.io/TW-PluginLibrary/library/index.html">
 <pre>Kookma plugin library is a set of plugins developed by [[Mohammad|https://github.com/kookma]]. A good recommendation is to backup your data before installing any plugins. These plugins distributed under  MIT license.
 
@@ -10769,6 +10761,14 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 
 &lt;/$list&gt;</pre>
 </div>
+<div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/subtitle" modified="20201201055158773" tags="$:/tags/ViewTemplate" title="$:/springer/source-info">
+<pre>&lt;div class=&quot;tc-subtitle&quot;&gt;
+&lt;$link to={{!!source-text}} /&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[page]]&quot;&gt;, p. {{!!page}}&lt;/$list&gt;
+{{!!year}}
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;has[publisher]]&quot;&gt;&lt;&lt;hspace 1em&gt;&gt; ({{!!publisher}})&lt;/$list&gt;
+&lt;/div&gt;</pre>
+</div>
 <div created="20201130235027391" modified="20201130235154469" title="$:/state/addplugins/tab-1342078386">
 <pre>$:/config/KookmaPluginLibrary</pre>
 </div>
@@ -10824,7 +10824,7 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201201033312229" list="[[Beauvoir, Ethics of Ambiguity]] #:/springer/source-info $:/AdvancedSearch excerpt-style [[tutorial for excerpts]] [[Aristotle considers three lives]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201054720991" title="$:/StoryList">
+<div created="20201201033312229" list="$:/springer/source-info $:/AdvancedSearch excerpt-style [[tutorial for excerpts]] [[Aristotle considers three lives]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201054720991" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201130200006288" modified="20201201054658512" title="$:/temp/advancedsearch">
