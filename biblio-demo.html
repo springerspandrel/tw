@@ -151,6 +151,8 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/core/ui/ViewTemplate/body</li>
+
 <li>$:/core/ui/ViewTemplate/subtitle</li>
 
 <li>$:/DefaultTiddlers</li>
@@ -266,6 +268,8 @@ Error message and password prompt
 <li>Beauvoir, Ethics of Ambiguity</li>
 
 <li>denying ambiguity</li>
+
+<li>Draft of 'denying ambiguity'</li>
 
 <li>end of political science</li>
 
@@ -9690,6 +9694,26 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
     }
 }</pre>
 </div>
+<div created="20201201000007036" modified="20201201000108116" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/body">
+<pre>&lt;$reveal tag=&quot;div&quot; class=&quot;tc-tiddler-body&quot; type=&quot;nomatch&quot; stateTitle=&lt;&lt;folded-state&gt;&gt; text=&quot;hide&quot; retain=&quot;yes&quot; animate=&quot;yes&quot;&gt;
+
+&lt;$list filter=&quot;[all[current]!has[plugin-type]!field:hide-body[yes]]&quot;&gt;
+
+&lt;$transclude&gt;
+
+&lt;$transclude tiddler=&quot;$:/language/MissingTiddler/Hint&quot;/&gt;
+
+&lt;/$transclude&gt;
+
+&lt;$list filter=&quot;[all[current]has[notes]&quot;&gt;
+
+Notes: {{!!Notes}}
+
+&lt;/$list&gt;
+
+&lt;/$reveal&gt;
+</pre>
+</div>
 <div created="20201130200626388" modified="20201130203047203" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/subtitle">
 <pre>\whitespace trim
 &lt;$reveal type=&quot;nomatch&quot; stateTitle=&lt;&lt;folded-state&gt;&gt; text=&quot;hide&quot; tag=&quot;div&quot; retain=&quot;yes&quot; animate=&quot;yes&quot;&gt;
@@ -9998,8 +10022,8 @@ wikilist-button-foreground: #000</pre>
 <div created="20201130210408465" modified="20201130210408465" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20201130200010289" modified="20201130234727795" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/System</pre>
+<div created="20201130200010289" modified="20201130235930450" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
 <div created="20201130210404538" modified="20201130235308182" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/Palette</pre>
@@ -10019,11 +10043,11 @@ wikilist-button-foreground: #000</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201130195251525" list="[[three lives]] [[tutorial for excerpts]]" modified="20201130235525740" title="$:/StoryList">
+<div created="20201130195251525" list="$:/AdvancedSearch $:/core/ui/ViewTemplate/body [[Draft of 'denying ambiguity']] [[tutorial for excerpts]]" modified="20201130235933926" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20201130200006288" modified="20201130235525740" title="$:/temp/advancedsearch">
-<pre>shiraz</pre>
+<div created="20201130200006288" modified="20201130235927546" title="$:/temp/advancedsearch">
+<pre>ViewTempla</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -10536,6 +10560,11 @@ For learning plugin features, syntax, tutorial and examples see the plugin demo 
 </pre>
 </div>
 <div author="Beauvoir" created="20201130195651550" keywords="dualism" modified="20201130201005668" notes="Consider how this critique applies to both ancient and modern theories..." page="262" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="denying ambiguity">
+<pre>They have denied death, either by integrating it with life or by promising to man immortality. Or, again they have denied life, considering it as a veil of illusion beneath which is hidden the truth of Nirvana.
+
+And the ethics which they have proposed to their disciples has always pursued the same goal. It has been a matter of eliminating the ambiguity by making oneself a pure inwardness or pure externality, by escaping from the sensible world or by being engulfed in it, by yielding to eternity or enclosing oneself in the pure moment.</pre>
+</div>
+<div author="Beauvoir" created="20201130195651550" draft.of="denying ambiguity" draft.title="denying ambiguity" keywords="dualism" modified="20201201000024407" notes="Consider how this critique applies to both ancient and modern theories..." page="262" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="Draft of 'denying ambiguity'">
 <pre>They have denied death, either by integrating it with life or by promising to man immortality. Or, again they have denied life, considering it as a veil of illusion beneath which is hidden the truth of Nirvana.
 
 And the ethics which they have proposed to their disciples has always pursued the same goal. It has been a matter of eliminating the ambiguity by making oneself a pure inwardness or pure externality, by escaping from the sensible world or by being engulfed in it, by yielding to eternity or enclosing oneself in the pure moment.</pre>
