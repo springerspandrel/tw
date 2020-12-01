@@ -11165,7 +11165,7 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 <div caption="" list="" role="sliced-html" tags="[[Sliced up Epictetus excerpts:]]" title="Sliced up Epictetus excerpts:-anchor-" toc-type="anchor">
 <pre></pre>
 </div>
-<div created="20201130194313365" linkstyle="color:&lt;&lt;colour code-foreground&gt;&gt;;" modified="20201201055405754" tags="TiddlyWiki" title="tutorial for excerpts">
+<div created="20201130194313365" linkstyle="color:&lt;&lt;colour code-foreground&gt;&gt;;" modified="20201201061122450" tags="TiddlyWiki" title="tutorial for excerpts">
 <pre>&lt;$details open=&quot;yes&quot; summary=&quot;Making a TiddlyWiki for quotes? How to build it so it scales well: &quot;&gt;
 
 # ''Plan to make one tiddler for each excerpt.''
@@ -11198,14 +11198,16 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 #* Example: [[Aristotle, Nicomachean Ethics]]
 #*I recommend [[Shiraz|$:/plugins/kookma/shiraz]] dynamic tables to display a table that selects tiddlers based on a filter and can be sorted and adjusted on the fly. BUT you can also just use a filtered list function to transclude all the excerpts that belong to the book/text-source. 
 #*Once you're comfortable with filtered lists, you can set up other &quot;slices&quot; such as quotes with a certain keyword, etc.
-# Use clearly-named ''fields'' for all metadata
+# ''Use clearly-named __fields__ for all metadata''
 #* Be careful not to use TW's own special-purpose fields. (Alas, &quot;source&quot; and &quot;title&quot; are taken, for example. So are &quot;type&quot; and &quot;name&quot;.) 
 #*Any informational parameter that has data structure that you might want to format or rearrange down the road should be given its own field.
-#Get tiddlers to display crucial fields the way you want: 
-#* There are multiple ways of getting tiddlers to look the way you want, but adding items to the ViewTemplate helps ensure that crucial fields are always in view.
-#** I've added [[a line under the subtitle|$:/springer/source-info]] to specify source information (as contained in the relevant fields)
-#** I've also added an element near the bottom of the [[ViewTemplate|$:/tags/ViewTemplate]] to [[display notes|$:/springer/add-notes-below]] (from a ''notes'' field) if there are any...
-#* The css to make quotes display nicely is least important, but most fun. Add something like this stylesheet spec: [[excerpt-style]]
+#''Play with how content is displayed''
+#; How do I see just the info I want to see, styled as I prefer? 
+#:Adding items to the ViewTemplate helps ensure that crucial fields are always in view.
+#:* I've added [[a line under the subtitle|$:/springer/source-info]] to specify source information (as contained in the relevant fields)
+#:* I've also added an element near the bottom of the [[ViewTemplate|$:/tags/ViewTemplate]] to [[display notes|$:/springer/add-notes-below]] (from a ''notes'' field) if there are any...
+#: Stylesheets add color and graphics; they can also be set up to (conditionally) hide elements that seem distracting.
+#:*Add something like this stylesheet spec: [[excerpt-style]]
 &lt;/$details&gt;
 
 
