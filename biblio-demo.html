@@ -155,6 +155,8 @@ Error message and password prompt
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info</li>
 
+<li>$:/config/ViewToolbarButtons/Visibility/$:/plugins/tiddlywiki/text-slicer/ui/slice-toolbar-button</li>
+
 <li>$:/core</li>
 
 <li>$:/core/ui/ControlPanel/Palette</li>
@@ -189,6 +191,8 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/keepstate/utility/toggle-view-fields</li>
+
 <li>$:/LinkStyle/Stylesheet</li>
 
 <li>$:/palette</li>
@@ -198,6 +202,8 @@ Error message and password prompt
 <li>$:/plugins/kookma/shiraz</li>
 
 <li>$:/plugins/kookma/utility</li>
+
+<li>$:/plugins/kookma/utility/viewtemplate/view-fields</li>
 
 <li>$:/plugins/telmiger/details</li>
 
@@ -224,6 +230,8 @@ Error message and password prompt
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab--1963855381</li>
+
+<li>$:/state/tab--360357784</li>
 
 <li>$:/state/tab-1749438307</li>
 
@@ -332,6 +340,9 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <pre>show</pre>
 </div>
 <div created="20201130234632747" modified="20201130234632747" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info">
+<pre>show</pre>
+</div>
+<div created="20201201044137239" modified="20201201044144922" title="$:/config/ViewToolbarButtons/Visibility/$:/plugins/tiddlywiki/text-slicer/ui/slice-toolbar-button">
 <pre>show</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
@@ -9802,6 +9813,9 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
+<div created="20201201044006751" modified="20201201044224584" title="$:/keepstate/utility/toggle-view-fields">
+<pre>hide</pre>
+</div>
 <div created="20160609120738579" creator="twMat" demo_comment="This little Stylesheet addition allows the ``linkstyle`` field to contain specifications for link colors and other aids to visual clarity." modified="20200517001344264" modifier="espringer" tags="$:/tags/Stylesheet [[inner stylesheet]]" title="$:/LinkStyle/Stylesheet">
 <pre>\define linkstyle()
 &lt;$set name=&quot;uri&quot; value=&lt;&lt;makedatauri &quot;&quot;&quot;$(tid)$&quot;&quot;&quot; &quot;text/plain&quot;&gt;&gt; &gt;
@@ -10258,6 +10272,101 @@ wikilist-button-foreground: #000</pre>
     }
 }</pre>
 </div>
+<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201201044224580" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
+<pre>\define lingo-base() $:/language/EditTemplate/
+\define config-title()
+$:/config/EditTemplateFields/Visibility/$(currentField)$
+\end
+
+\define config-filter()
+[[hide]] -[title{$(config-title)$}]
+\end
+
+\define new-field()
+&lt;$vars name={{$:/temp/newfieldname}}&gt;
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; default=&lt;&lt;name&gt;&gt;&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-add-field&quot;
+$name=&lt;&lt;name&gt;&gt;
+$value={{$:/temp/newfieldvalue}}/&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/newfieldname&quot;/&gt;
+&lt;$action-deletetiddler $tiddler=&quot;$:/temp/newfieldvalue&quot;/&gt;
+&lt;&lt;lingo Fields/Add/Button&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;&quot; default=&lt;&lt;name&gt;&gt;&gt;
+&lt;$button&gt;
+&lt;&lt;lingo Fields/Add/Button&gt;&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/$vars&gt;
+\end
+
+&lt;div class=&quot;tc-edit-fields&quot;&gt;
+&lt;table class=&quot;tc-edit-fields&quot;&gt;
+&lt;tbody&gt;
+&lt;$list filter=&quot;[all[current]fields[]] +[sort[title]]&quot; variable=&quot;currentField&quot;&gt;
+&lt;$list filter=&lt;&lt;config-filter&gt;&gt; variable=&quot;temp&quot;&gt;
+&lt;tr class=&quot;tc-edit-field&quot;&gt;
+&lt;td class=&quot;tc-edit-field-name&quot;&gt;
+&lt;$text text=&lt;&lt;currentField&gt;&gt;/&gt;:&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-value&quot;&gt;
+&lt;$edit-text tiddler=&lt;&lt;currentTiddler&gt;&gt; field=&lt;&lt;currentField&gt;&gt; placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}}/&gt;
+&lt;/td&gt;
+&lt;td class=&quot;tc-edit-field-remove&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; tooltip={{$:/language/EditTemplate/Field/Remove/Hint}} aria-label={{$:/language/EditTemplate/Field/Remove/Caption}}&gt;
+&lt;$action-deletefield $field=&lt;&lt;currentField&gt;&gt;/&gt;
+{{$:/core/images/delete-button}}
+&lt;/$button&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;$fieldmangler&gt;
+&lt;div class=&quot;tc-edit-field-add&quot;&gt;
+&lt;em class=&quot;tc-edit&quot;&gt;
+&lt;&lt;lingo Fields/Add/Prompt&gt;&gt;
+&lt;/em&gt;
+&lt;span class=&quot;tc-edit-field-add-name&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/newfieldname&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/EditTemplate/Fields/Add/Name/Placeholder}} focusPopup=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; class=&quot;tc-edit-texteditor tc-popup-handle&quot;/&gt;
+&lt;/span&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; class=&quot;tc-btn-invisible tc-btn-dropdown&quot; tooltip={{$:/language/EditTemplate/Field/Dropdown/Hint}} aria-label={{$:/language/EditTemplate/Field/Dropdown/Caption}}&gt;{{$:/core/images/down-arrow}}&lt;/$button&gt;
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/popup/field-dropdown&quot;&gt;&gt; type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot;&gt;
+&lt;div class=&quot;tc-block-dropdown tc-edit-type-dropdown&quot;&gt;
+&lt;$linkcatcher to=&quot;$:/temp/newfieldname&quot;&gt;
+&lt;div class=&quot;tc-dropdown-item&quot;&gt;
+&lt;&lt;lingo Fields/Add/Dropdown/User&gt;&gt;
+&lt;/div&gt;
+&lt;$list filter=&quot;[!is[shadow]!is[system]fields[]search:title{$:/temp/newfieldname}sort[]] -created -creator -draft.of -draft.title -modified -modifier -tags -text -title -type&quot;  variable=&quot;currentField&quot;&gt;
+&lt;$link to=&lt;&lt;currentField&gt;&gt;&gt;
+&lt;&lt;currentField&gt;&gt;
+&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;div class=&quot;tc-dropdown-item&quot;&gt;
+&lt;&lt;lingo Fields/Add/Dropdown/System&gt;&gt;
+&lt;/div&gt;
+&lt;$list filter=&quot;[fields[]search:title{$:/temp/newfieldname}sort[]] -[!is[shadow]!is[system]fields[]]&quot; variable=&quot;currentField&quot;&gt;
+&lt;$link to=&lt;&lt;currentField&gt;&gt;&gt;
+&lt;&lt;currentField&gt;&gt;
+&lt;/$link&gt;
+&lt;/$list&gt;
+&lt;/$linkcatcher&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;
+&lt;span class=&quot;tc-edit-field-add-value&quot;&gt;
+&lt;$edit-text tiddler=&quot;$:/temp/newfieldvalue&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}} class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;/span&gt;
+&lt;span class=&quot;tc-edit-field-add-button&quot;&gt;
+&lt;$macrocall $name=&quot;new-field&quot;/&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;/$fieldmangler&gt;
+</pre>
+</div>
 <div author="Thomas Elmiger" core-version="5.1.13" created="20170205215504722" description="DetailsWidget" list="readme license" modified="20180925212742614" name="Disclosure HTML element" plugin-type="plugin" source="https://tid.li/tw5/plugins.html" title="$:/plugins/telmiger/details" type="application/json" version="0.7.4">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -10701,6 +10810,9 @@ wikilist-button-foreground: #000</pre>
 <div created="20201130210404538" modified="20201201034748682" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
+<div created="20201201044114948" modified="20201201044121708" title="$:/state/tab--360357784">
+<pre>$:/core/ui/TiddlerInfo/Tools</pre>
+</div>
 <div created="20201130195253518" modified="20201201043453750" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Plugins</pre>
 </div>
@@ -10710,13 +10822,13 @@ wikilist-button-foreground: #000</pre>
 <div created="20201130195255147" modified="20201130195412496" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20201130194124206" modified="20201201043333098" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/ControlPanel/Palette</pre>
+<div created="20201130194124206" modified="20201201044228820" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201201033312229" list="[[tutorial for excerpts]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201043450980" title="$:/StoryList">
+<div created="20201201033312229" list="[[tutorial for excerpts]] [[three lives]] [[inner vs outer]] [[Aristotle, Nicomachean Ethics]] [[happiness as chief good]]" modified="20201201044004412" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201130200006288" modified="20201201034346731" title="$:/temp/advancedsearch">
