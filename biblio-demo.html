@@ -12386,49 +12386,62 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 <div created="20201130194313365" linkstyle="color:&lt;&lt;colour message-foreground&gt;&gt;;" linkstyle-before="content:&quot;START HERE: &quot;; position:relative; font-size:90%; color: &lt;&lt;colour foreground&gt;&gt;;" modified="20201204002513726" title="tutorial for excerpts">
 <pre>&lt;$details open=&quot;yes&quot; class=&quot;notification&quot; summary=&quot;Making a TiddlyWiki for quotes? How to build it so it scales well: &quot;&gt;
 
-# ''Plan to make one tiddler for each excerpt.''
-#; Why? 
-#: Think of each tiddler as an index card, something you might want to take in your pocket while leaving related things behind. This will allow you to access quotes flexibly as the project grows.
-#:;What goes in the &quot;body&quot; area of the tiddler?
-#:: Just the words from your source
-#:* (Everything else (author, bibliographic source, page-location, notes) belongs in special ''fields'' — more on those soon...)
-#:* (Don't panic if you initially find yourself with other key info jammed in there; you can decide over time whether this or that merits a field, and clean up as needed.)
-#:; How much text should I put into one tiddler?
-#::Usually just the sentence or paragraph (or dialogue-exchange, etc.) that's &quot;quotable&quot; (relative to your purposes).
-#:: (Don't panic if you find yourself with strings of quotes hastily pasted into one tiddler, but aim to parcel them out when you get a chance. Of course, there are tools for that, too. ;) )
-#:; How should these little tiddlers be titled?
-#:: Good question! 
-#::It actually doesn't matter much for now, as long as the title is unique. 
-#:: You could title it with a concise descriptive teaser, or with a quick string that abbreviates the title and page. (Add flibble's relink plugin to make internal links less fragile if you tinker with your names later.)
-#:; How about an example?
-#:: [[Aristotle considers three lives]]
-#:: [[inner vs outer]]
-#:; What are fields, and how do I work with them?
-#:: A field is a &quot;cubbyhole&quot; (or a labeled fill-in-the-blank) for information of a specific kind. 
-#:* Usually ~TiddlyWiki fields are created, and appear, only in edit mode. Find the field creation and editing controls below the body of each tiddler...
-#:* {{$:/plugins/kookma/utility/images/view-fields.svg}}Click the &quot;Show fields&quot; toggle control near the top of the sidebar... Now if you navigate back to the example tiddlers, you can see fields even while browsing. 
-#:; It sounds like each quote is so much work!
-#:: No need to re-enter all the details about the source each time!
-#::{{$:/core/images/clone-button}}Just ''clone'' the first tiddler once it's set up for the source you're currently reading.
-#:: (We can consider other time-saving tips later for the input process. The focus now is structure.)
-# ''Make one tiddler for each book'' (or article / anthology chapter, whatever) 
-#*Within that source tiddler, you'll have an automatically-''filtered list'' (or a table) of all the excerpts from that source. 
-#* Example: [[Aristotle, Nicomachean Ethics]]
-#*I recommend [[Shiraz|$:/plugins/kookma/shiraz]] dynamic tables to display a table that selects tiddlers based on a filter and can be sorted and adjusted on the fly. BUT you can also just use a filtered list function to transclude all the excerpts that belong to the book/text-source. 
-#*Once you're comfortable with filtered lists, you can set up other &quot;slices&quot; such as quotes with a certain keyword, etc.
-# ''Use clearly-named __fields__ for all metadata''
-#* Be careful not to use TW's own special-purpose fields. (Alas, &quot;source&quot; and &quot;title&quot; are taken, for example. So are &quot;type&quot; and &quot;name&quot;.) 
-#*Any informational parameter that has data structure that you might want to format or rearrange down the road should be given its own field.
-#''Play with how content is displayed''
-#; How do I see just the info I want to see, styled as I prefer? 
-#:Adding items to the ViewTemplate helps ensure that crucial fields are always in view.
-#:* I've added [[a line under the subtitle|$:/springer/source-info]] to specify source information (as contained in the relevant fields)
-#:* I've also added an element near the bottom of the [[ViewTemplate|$:/tags/ViewTemplate]] to [[display notes|$:/springer/add-notes-below]] (from a ''notes'' field) if there are any...
-#: Stylesheets add color and graphics; they can also be set up to (conditionally) hide elements that seem distracting.
-#:*Add something like this stylesheet spec: [[excerpt-style]]
+&lt;$details open=&quot;yes&quot; class=&quot;notification&quot; summary=&quot;Plan to make one tiddler for each excerpt&quot;&gt;
+
+; Why? 
+: Think of each tiddler as an index card, something you might want to take in your pocket while leaving related things behind. This will allow you to access quotes flexibly as the project grows.
+;What goes in the &quot;body&quot; area of the tiddler?
+: Just the words from your source
+* (Everything else (author, bibliographic source, page-location, notes) belongs in special ''fields'' — more on those soon...)
+* (Don't panic if you initially find yourself with other key info jammed in there; you can decide over time whether this or that merits a field, and clean up as needed.)
+; How much text should I put into one tiddler?
+:Usually just the sentence or paragraph (or dialogue-exchange, etc.) that's &quot;quotable&quot; (relative to your purposes).
+: (Don't panic if you find yourself with strings of quotes hastily pasted into one tiddler, but aim to parcel them out when you get a chance. Of course, there are tools for that, too. ;) )
+; How should these little tiddlers be titled?
+: Good question! 
+:It actually doesn't matter much for now, as long as the title is unique. 
+:: You could title it with a concise descriptive teaser, or with a quick string that abbreviates the title and page. (Add flibble's relink plugin to make internal links less fragile if you tinker with your names later.)
+; How about an example?
+: [[Aristotle considers three lives]]
+: [[inner vs outer]]
+; What are fields, and how do I work with them?
+: A field is a &quot;cubbyhole&quot; (or a labeled fill-in-the-blank) for information of a specific kind. 
+* Usually ~TiddlyWiki fields are created, and appear, only in edit mode. Find the field creation and editing controls below the body of each tiddler...
+* {{$:/plugins/kookma/utility/images/view-fields.svg}}Click the &quot;Show fields&quot; toggle control near the top of the sidebar... Now if you navigate back to the example tiddlers, you can see fields even while browsing. 
+; It sounds like each quote is so much work!
+: No need to re-enter all the details about the source each time!
+:{{$:/core/images/clone-button}}Just ''clone'' the first tiddler once it's set up for the source you're currently reading.
+: (We can consider other time-saving tips later for the input process. The focus now is structure.)
 &lt;/$details&gt;
 
+&lt;$details open=&quot;yes&quot; class=&quot;notification&quot; summary=&quot;Make one tiddler for each book (or article / anthology chapter, whatever)&quot;&gt;
 
+*Within that source tiddler, you'll have an automatically-''filtered list'' (or a table) of all the excerpts from that source. 
+* Example: [[Aristotle, Nicomachean Ethics]]
+*I recommend [[Shiraz|$:/plugins/kookma/shiraz]] dynamic tables to display a table that selects tiddlers based on a filter and can be sorted and adjusted on the fly. BUT you can also just use a filtered list function to transclude all the excerpts that belong to the book/text-source. 
+*Once you're comfortable with filtered lists, you can set up other &quot;slices&quot; such as quotes with a certain keyword, etc.
+&lt;/$details&gt;
+
+&lt;$details open=&quot;yes&quot; class=&quot;notification&quot; summary=&quot;tips&quot;&gt;
+
+;''Use clearly-named __fields__ for all metadata''
+* Be careful not to use TW's own special-purpose fields. (Alas, &quot;source&quot; and &quot;title&quot; are taken, for example. So are &quot;type&quot; and &quot;name&quot;.) 
+*Any informational parameter that has data structure that you might want to format or rearrange down the road should be given its own field.
+&lt;/$details&gt;
+&lt;$details open=&quot;yes&quot; class=&quot;notification&quot; summary=&quot;Play with how content is displayed&quot;&gt;
+
+; How can [[ViewTemplate|$:/tags/ViewTemplate]] customizations help me display field data
+
+* I've added [[a line under the subtitle|$:/springer/source-info]] to specify source information (as contained in the relevant fields)
+* I've also added an element near the bottom of the [[ViewTemplate|$:/tags/ViewTemplate]] to [[display notes|$:/springer/add-notes-below]] (from a ''notes'' field) if there are any...
+
+; How can I add style, color, and graphics?
+
+:Add something like this stylesheet spec: [[excerpt-style]]
+&lt;/$details&gt;
+&lt;/$details&gt;
+
+&lt;hr&gt;
 This demo tiddler will next offer an overview of all the tiddlers here that are tagged: &lt;&lt;tag excerpt&gt;&gt;.
 
 &lt;&lt;table-dynamic filter:&quot;[has[page]]&quot; fields:&quot;tbl-expand author text-title page title notes tbl-clone tbl-delete&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Use  @@.tcr ''﹥'' @@ in left column to preview content. Click any @@.tcr title@@ link for additional details''&quot;&gt;&gt;
