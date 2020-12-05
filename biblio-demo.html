@@ -217,6 +217,8 @@ Error message and password prompt
 
 <li>$:/palettes/SolarFlare</li>
 
+<li>$:/palettes/Twilight</li>
+
 <li>$:/palettes/Vanilla</li>
 
 <li>$:/palettes/Wesleyan</li>
@@ -281,11 +283,15 @@ Error message and password prompt
 
 <li>$:/state/palettemanager/$:/palettes/SolarFlare/message-foreground</li>
 
+<li>$:/state/palettemanager/showexternal</li>
+
 <li>$:/state/plugin-info--896887961-$:/plugins/kookma/shiraz</li>
 
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/ShowPaletteEditor</li>
+
+<li>$:/state/sidebar</li>
 
 <li>$:/state/tab--1498284803</li>
 
@@ -9884,7 +9890,7 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20201201044006751" modified="20201205202921424" title="$:/keepstate/utility/toggle-view-fields">
+<div created="20201201044006751" modified="20201205210217253" title="$:/keepstate/utility/toggle-view-fields">
 <pre>hide</pre>
 </div>
 <div created="20160609120738579" creator="twMat" demo_comment="This little Stylesheet addition allows the ``linkstyle`` field to contain specifications for link colors and other aids to visual clarity." modified="20200517001344264" modifier="espringer" tags="$:/tags/Stylesheet [[inner stylesheet]]" title="$:/LinkStyle/Stylesheet">
@@ -9911,7 +9917,7 @@ a[href=&quot;#&lt;&lt;urititle&gt;&gt;&quot;]:after { &lt;&lt;style-after&gt;&gt
 &lt;/$vars&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201130234239430" modified="20201205202751601" title="$:/palette">
+<div created="20201130234239430" modified="20201205212133679" title="$:/palette">
 <pre>$:/palettes/Wesleyan</pre>
 </div>
 <div created="20201203231547535" description="A blue theme" modified="20201204202613342" name="Blue" tags="$:/tags/Palette" title="$:/palettes/Blue" type="application/x-tiddler-dictionary">
@@ -10021,7 +10027,7 @@ toolbar-done-button: #5eb95e
 untagged-background: #999999
 very-muted-foreground: #888888</pre>
 </div>
-<div created="20201203214440382" description="High contrast and unambiguous (dark version)" modified="20201203215041412" name="Contrast (Dark)" tags="$:/tags/Palette" title="$:/palettes/ContrastDark" type="application/x-tiddler-dictionary">
+<div created="20201203214440382" description="High contrast and unambiguous (dark version)" modified="20201205211952699" name="Contrast (Dark)" tags="$:/tags/Palette" title="$:/palettes/ContrastDark" type="application/x-tiddler-dictionary">
 <pre>alert-background: #f00
 alert-border: &lt;&lt;colour background&gt;&gt;
 alert-highlight: &lt;&lt;colour foreground&gt;&gt;
@@ -10060,7 +10066,7 @@ modal-border: &lt;&lt;colour foreground&gt;&gt;
 modal-footer-background: &lt;&lt;colour background&gt;&gt;
 modal-footer-border: &lt;&lt;colour foreground&gt;&gt;
 modal-header-border: &lt;&lt;colour foreground&gt;&gt;
-muted-foreground: &lt;&lt;colour foreground&gt;&gt;
+muted-foreground: #878787
 notification-background: &lt;&lt;colour background&gt;&gt;
 notification-border: &lt;&lt;colour foreground&gt;&gt;
 page-background: &lt;&lt;colour background&gt;&gt;
@@ -10485,11 +10491,11 @@ toolbar-done-button:
 untagged-background: #2d3038
 very-muted-foreground: #2d3038</pre>
 </div>
-<div created="20201203233151519" description="Warm, relaxing earth colours" modified="20201203233317393" name="Solar Flare" tags="$:/tags/Palette" title="$:/palettes/SolarFlare" type="application/x-tiddler-dictionary">
+<div created="20201203233151519" description="Warm, relaxing earth colours" modified="20201205204812310" name="Solar Flare" tags="$:/tags/Palette" title="$:/palettes/SolarFlare" type="application/x-tiddler-dictionary">
 <pre>base03: #002b36
 base02: #073642
 base01: #586e75
-base00: #54b6d9
+base00: #4fa1bf
 base0: #839496
 base1: #93a1a1
 base2: #eee8d5
@@ -10613,12 +10619,127 @@ toolbar-done-button:
 untagged-background: #999999
 very-muted-foreground: #888888</pre>
 </div>
-<div created="20201130234211619" description="Pale and unobtrusive" modified="20201130234215747" name="Vanilla" tags="$:/tags/Palette" title="$:/palettes/Vanilla" type="application/x-tiddler-dictionary">
+<div author="Thomas Elmiger" created="20201205204919897" description="Delightful, soft darkness." modified="20201205205406201" name="Twilight" tags="$:/tags/Palette" title="$:/palettes/Twilight" type="application/x-tiddler-dictionary">
+<pre>alert-background: rgb(255, 255, 102)
+alert-border: rgb(232, 232, 125)
+alert-highlight: rgb(255, 51, 51)
+alert-muted-foreground: rgb(224, 82, 82)
+background: rgb(38, 38, 38)
+blockquote-bar: rgba(240, 196, 117, 0.7)
+button-background: rgb(63, 63, 63)
+button-border: rgb(127, 127, 127)
+button-foreground: rgb(179, 179, 179)
+code-background: rgba(0,0,0,0.03)
+code-border: rgba(0,0,0,0.08)
+code-foreground: rgb(255, 94, 94)
+diff-delete-background: #ffc9c9
+diff-delete-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-equal-background: 
+diff-equal-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-insert-background: #aaefad
+diff-insert-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-invisible-background: 
+diff-invisible-foreground: &lt;&lt;colour muted-foreground&gt;&gt;
+dirty-indicator: rgb(255, 94, 94)
+download-background: #19a974
+download-foreground: rgb(38, 38, 38)
+dragger-background: rgb(179, 179, 179)
+dragger-foreground: rgb(38, 38, 38)
+dropdown-background: rgb(38, 38, 38)
+dropdown-border: rgb(255, 255, 255)
+dropdown-tab-background: rgba(0,0,0,.1)
+dropdown-tab-background-selected: rgba(255,255,255,1)
+dropzone-background: #9eebcf
+external-link-background: inherit
+external-link-background-hover: inherit
+external-link-background-visited: inherit
+external-link-foreground: rgb(179, 179, 255)
+external-link-foreground-hover: inherit
+external-link-foreground-visited: rgb(153, 153, 255)
+foreground: rgb(179, 179, 179)
+message-background: &lt;&lt;colour tag-foreground&gt;&gt;
+message-border: #96ccff
+message-foreground: &lt;&lt;colour tag-background&gt;&gt;
+modal-backdrop: rgb(179, 179, 179)
+modal-background: rgb(38, 38, 38)
+modal-border: rgba(0,0,0,.5)
+modal-footer-background: #f4f4f4
+modal-footer-border: rgba(0,0,0,.1)
+modal-header-border: rgba(0,0,0,.2)
+muted-foreground: #ffd294
+notification-background: &lt;&lt;colour tag-foreground&gt;&gt;
+notification-border: &lt;&lt;colour tag-background&gt;&gt;
+page-background: rgb(26, 26, 26)
+pre-background: rgb(25, 25, 25)
+pre-border: rgba(0,0,0,.2)
+primary: #ffe999
+select-tag-background: 
+select-tag-foreground: 
+sidebar-button-foreground: rgb(179, 179, 179)
+sidebar-controls-foreground: rgb(153, 153, 153)
+sidebar-controls-foreground-hover: &lt;&lt;colour tiddler-controls-foreground-hover&gt;&gt;
+sidebar-foreground: rgb(141, 141, 141)
+sidebar-foreground-shadow: transparent
+sidebar-muted-foreground: rgba(0, 0, 0, 0.5)
+sidebar-muted-foreground-hover: rgb(141, 141, 141)
+sidebar-tab-background: rgba(141, 141, 141, 0.2)
+sidebar-tab-background-selected: rgb(26, 26, 26)
+sidebar-tab-border: rgb(127, 127, 127)
+sidebar-tab-border-selected: rgb(127, 127, 127)
+sidebar-tab-divider: rgb(127, 127, 127)
+sidebar-tab-foreground: rgb(179, 179, 179)
+sidebar-tab-foreground-selected: rgb(179, 179, 179)
+sidebar-tiddler-link-foreground: rgb(179, 179, 179)
+sidebar-tiddler-link-foreground-hover: rgb(115, 115, 115)
+site-title-foreground: rgb(255, 201, 102)
+static-alert-foreground: rgba(0,0,0,.3)
+tab-background: rgba(0,0,0,0.125)
+tab-background-selected: rgb(38, 38, 38)
+tab-border: rgb(255, 201, 102)
+tab-border-selected: rgb(255, 201, 102)
+tab-divider: rgb(255, 201, 102)
+tab-foreground: rgb(179, 179, 179)
+tab-foreground-selected: rgb(179, 179, 179)
+table-border: rgba(255,255,255,.3)
+table-footer-background: rgba(0,0,0,.4)
+table-header-background: rgba(0,0,0,.1)
+tag-background: &lt;&lt;colour primary&gt;&gt;
+tag-foreground: rgb(25, 25, 25)
+tiddler-background: rgb(38, 38, 38)
+tiddler-border: rgba(240, 196, 117, 0.7)
+tiddler-controls-foreground: rgb(128, 128, 128)
+tiddler-controls-foreground-hover: rgba(255, 255, 255, 0.8)
+tiddler-controls-foreground-selected: rgba(255, 255, 255, 0.9)
+tiddler-editor-background: rgb(33, 33, 33)
+tiddler-editor-border: rgb(63, 63, 63)
+tiddler-editor-border-image: rgb(25, 25, 25)
+tiddler-editor-fields-even: rgb(33, 33, 33)
+tiddler-editor-fields-odd: rgb(28, 28, 28)
+tiddler-info-background: rgb(43, 43, 43)
+tiddler-info-border: rgb(25, 25, 25)
+tiddler-info-tab-background: rgb(43, 43, 43)
+tiddler-link-background: rgb(38, 38, 38)
+tiddler-link-foreground: #748ab4
+tiddler-subtitle-foreground: rgb(255, 255, 255)
+tiddler-title-foreground: rgb(255, 192, 76)
+toolbar-cancel-button: 
+toolbar-close-button: 
+toolbar-delete-button: 
+toolbar-done-button: 
+toolbar-edit-button: 
+toolbar-info-button: 
+toolbar-new-button: 
+toolbar-options-button: 
+toolbar-save-button: 
+untagged-background: rgb(255, 255, 255)
+very-muted-foreground: rgba(240, 196, 117, 0.7)</pre>
+</div>
+<div created="20201130234211619" description="Pale and unobtrusive" modified="20201205205624310" name="Vanilla" tags="$:/tags/Palette" title="$:/palettes/Vanilla" type="application/x-tiddler-dictionary">
 <pre>alert-background: #ffe476
 alert-border: #b99e2f
 alert-highlight: #881122
 alert-muted-foreground: #b99e2f
-background: #ffffff
+background: #f7f6f2
 blockquote-bar: &lt;&lt;colour muted-foreground&gt;&gt;
 button-background: 
 button-foreground: 
@@ -10653,7 +10774,7 @@ external-link-foreground: #0000ee
 foreground: #333333
 message-background: #ecf2ff
 message-border: #cfd6e6
-message-foreground: #547599
+message-foreground: #3d5671
 modal-backdrop: &lt;&lt;colour foreground&gt;&gt;
 modal-background: &lt;&lt;colour background&gt;&gt;
 modal-border: #999999
@@ -10745,7 +10866,7 @@ wikilist-droplink-dragover: rgba(255,192,192,0.5)
 wikilist-button-background: #acacac
 wikilist-button-foreground: #000</pre>
 </div>
-<div created="20200522220536558" creator="ES" description="Cardinal coordination" modified="20201204002959786" modifier="ES" name="Wesleyan" tags="$:/tags/Palette" title="$:/palettes/Wesleyan" type="application/x-tiddler-dictionary">
+<div created="20200522220536558" creator="ES" description="Cardinal coordination" modified="20201205212314289" modifier="ES" name="Wesleyan" tags="$:/tags/Palette" title="$:/palettes/Wesleyan" type="application/x-tiddler-dictionary">
 <pre>alert-background: #ffe476
 alert-border: #b99e2f
 alert-highlight: #881122
@@ -10785,7 +10906,7 @@ external-link-foreground: #55e
 foreground: #333333
 message-background: #ece9da
 message-border: #bfb792
-message-foreground: #648bb4
+message-foreground: #4d6075
 modal-backdrop: &lt;&lt;colour foreground&gt;&gt;
 modal-background: &lt;&lt;colour background&gt;&gt;
 modal-border: #999999
@@ -10816,7 +10937,7 @@ sidebar-tab-divider: #e4e4e4
 sidebar-tab-foreground-selected: 
 sidebar-tab-foreground: &lt;&lt;colour tab-foreground&gt;&gt;
 sidebar-tiddler-link-foreground-hover: #aa4b4b
-sidebar-tiddler-link-foreground: #b68181
+sidebar-tiddler-link-foreground: #c37f7f
 site-title-foreground: #9b1717
 static-alert-foreground: #aaaaaa
 tab-background-selected: #ffffff
@@ -11392,7 +11513,7 @@ April 13, 2018
     }
 }</pre>
 </div>
-<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201205202921418" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
+<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201205210217250" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
 <pre>\define lingo-base() $:/language/EditTemplate/
 \define config-title()
 $:/config/EditTemplateFields/Visibility/$(currentField)$
@@ -11935,7 +12056,7 @@ message-background
 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201201052916117" list-after="$:/core/ui/ViewTemplate/body" modified="20201203221457596" tags="$:/tags/ViewTemplate" title="$:/springer/add-notes-below">
+<div created="20201201052916117" linkstyle-before="content:&quot;VIEW TEMPLATE: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " list-after="$:/core/ui/ViewTemplate/body" modified="20201205210126810" tags="$:/tags/ViewTemplate" title="$:/springer/add-notes-below">
 <pre>&lt;$list filter=&quot;[all[current]has[notes]]&quot;&gt;
 
 &lt;&lt;alert primary src:&quot;{{!!notes}} &quot;leftbar border-warning&quot;&gt;&gt;
@@ -11998,6 +12119,9 @@ message-background
 <div created="20201203233209129" modified="20201203233209129" title="$:/state/palettemanager/$:/palettes/SolarFlare/message-foreground">
 <pre>show</pre>
 </div>
+<div created="20201205210912519" modified="20201205210931945" title="$:/state/palettemanager/showexternal">
+<pre>no</pre>
+</div>
 <div created="20201130234903737" modified="20201130235228230" title="$:/state/plugin-info--896887961-$:/plugins/kookma/shiraz">
 <pre>no</pre>
 </div>
@@ -12005,6 +12129,9 @@ message-background
 <pre>no</pre>
 </div>
 <div created="20201130210408465" modified="20201130210408465" title="$:/state/ShowPaletteEditor">
+<pre>yes</pre>
+</div>
+<div created="20201205205750201" modified="20201205205832472" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20201130200010289" modified="20201205195438781" title="$:/state/tab--1498284803">
@@ -12034,7 +12161,7 @@ message-background
 <div created="20201205203334623" modified="20201205203347728" title="$:/state/tab-770302894">
 <pre>$:/core/ui/TiddlerInfo/Fields</pre>
 </div>
-<div created="20201130194124206" modified="20201205202759317" title="$:/state/tab/sidebar--595412856">
+<div created="20201130194124206" modified="20201205212327501" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -12043,11 +12170,11 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201205194240883" list="[[tutorial for excerpts]] [[Aristotle considers three lives]] [[Beauvoir, Ethics of Ambiguity]]" modified="20201205203136321" title="$:/StoryList">
+<div created="20201205194240883" list="[[tutorial for excerpts]] [[Beauvoir, Ethics of Ambiguity]]" modified="20201205212151491" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20201130200006288" modified="20201205202532599" title="$:/temp/advancedsearch">
-<pre>linkstyle</pre>
+<div created="20201130200006288" modified="20201205205902245" title="$:/temp/advancedsearch">
+<pre>viewtempl</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -12347,7 +12474,7 @@ Everything has two handles, one by which it may be carried and the other not. If
 <div author="Beauvoir" created="20201130204936981" keywords="religion" linkstyle-before="content:&quot;❝ &quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;;" modified="20201203201937321" notes="But compare to her admiration of the Jesuit priest..." page="265" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="everything permitted?">
 <pre>Dostoievsky asserted, “If God does not exist, everything is permitted.” Today’s believers use this formula for their own advantage. To reestablish man at the heart of his destiny is, they claim, to repudiate all ethics. However, far from God’s absence authorizing all license, the contrary is the case, because man is abandoned on the earth, because his acts are definitive, absolute engagements. He bears the responsibility for a world which is not the work of a strange power, but of himself, where his defeats are inscribed, and his victories as well.</pre>
 </div>
-<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201205201633142" tags="$:/tags/Stylesheet" title="excerpt-style">
+<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201205211922609" tags="$:/tags/Stylesheet" title="excerpt-style">
 <pre>div.tc-tagged-excerpt { color: &lt;&lt;colour message-foreground&gt;&gt;;
 background-image: url(&quot;quotesm.png&quot;); 
       background-position: left 5px center;
@@ -12363,9 +12490,9 @@ div.tc-tagged-excerpt .tc-subtitle { color:&lt;&lt;colour message-foreground&gt;
 }
 
 .alert-primary {
-  color: &lt;&lt;colour message-background&gt;&gt;;
-  background-color: &lt;&lt;colour message-foreground&gt;&gt;;
-  border-color: &lt;&lt;colour message-border&gt;&gt;;
+  color: &lt;&lt;colour muted-foreground&gt;&gt;;
+  background-color: rgba(255, 255, 220, .65);
+  border-color: rgba(255, 255, 220, .85);
 }
 
 .border-warning {
@@ -12426,7 +12553,7 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 <div author="Beauvoir" created="20201130202015010" keywords="existentialism" linkstyle-before="content:&quot;❝ &quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;;" modified="20201203201918318" notes="Sounds paradoxical, right?" page="263" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="man as ... being not to be">
 <pre>it is by ambiguity that... Sartre... fundamentally defined man, that being whose being is not to be, that subjectivity which realizes itself only as a presence in the world.... a being who makes himself a lack of being in order that there might be being.</pre>
 </div>
-<div author="Steve Lautenschlager" created="20201204175439802" linkstyle-before="content:&quot;❝ &quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;;" modified="20201123235900000" source-text="[[Never Write the Same Code Twice|https://www.cambiaresearch.com/articles/77/rule-3---never-write-the-same-code-twice#:~:text=Never%20is%20a%20Strong%20Word,begins%20with%20the%20word%20never.&amp;text=Situations%20such%20as%20this%20are,rule%20sparingly%2C%20but%20without%20shame.]]" tags="excerpt" title="Never Type the Same Quote Twice">
+<div author="Steve Lautenschlager" created="20201204175439802" linkstyle-before="content:&quot;❝ &quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;;" modified="20201123235900000" source-text="[[Programmer's Code|https://www.cambiaresearch.com/articles/77/rule-3]]" tags="excerpt" title="Never Type the Same Quote Twice">
 <pre>&quot;Never Type the Same Quote Twice&quot;</pre>
 </div>
 <div title="quotesm.png" type="image/png">
