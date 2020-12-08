@@ -53,7 +53,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <!--~~ Raw markup ~~-->
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;700&family=Kalam:wght@300;700&family=Kufam:ital,wght@0,400;0,700;1,400;1,700&family=Tillana:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;700&family=Kalam:wght@300;700&family=Kufam:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=Signika:wght@300;400;700&family=Tillana:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 <body class="tc-body">
@@ -349,6 +349,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/metrics/storywidth</li>
 
 <li>$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth</li>
+
+<li>$:/themes/tiddlywiki/vanilla/options/stickytitles</li>
 
 <li>$:/themes/tiddlywiki/vanilla/settings/fontfamily</li>
 
@@ -11146,7 +11148,7 @@ modal-border: #999999
 modal-footer-background: #f5f5f5
 modal-footer-border: #dddddd
 modal-header-border: #eeeeee
-muted-foreground: #bbb
+muted-foreground: #bbbbbb
 notification-background: #f3e5a0
 notification-border: #999999
 page-background: #f4f4f4
@@ -12257,7 +12259,7 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <pre>one tiddler per quote, [[why and how|tutorial for excerpts]]</pre>
 </div>
 <div created="20201130195229935" modified="20201130195232736" title="$:/SiteTitle">
-<pre>@@font-family:&quot;Kufam&quot;; Biblio excerpts demo@@</pre>
+<pre>@@font-family:&quot;Signika&quot;; Biblio excerpts demo@@</pre>
 </div>
 <div created="20201203232735599" modified="20201203232744647" title="$:/snippets/currpalettepreview">
 <pre>\define swatchStyle()
@@ -12386,7 +12388,7 @@ message-background
 <pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
 <div created="20201130195253518" modified="20201205203141617" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Appearance</pre>
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
 <div created="20201130235037912" modified="20201201043501723" title="$:/state/tab-1846149089">
 <pre>$:/core/ui/ControlPanel/Plugins/Add/Plugins</pre>
@@ -12406,7 +12408,7 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201208195002460" list="[[tutorial for excerpts]] [[Beauvoir, Ethics of Ambiguity]]" modified="20201208201543342" title="$:/StoryList">
+<div list="[[tutorial for excerpts]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201130200006288" modified="20201208201403621" title="$:/temp/advancedsearch">
@@ -12598,13 +12600,16 @@ message-background
 <pre>830px</pre>
 </div>
 <div created="20201201034831668" modified="20201205203205162" title="$:/themes/tiddlywiki/vanilla/metrics/storywidth">
-<pre>800px</pre>
+<pre>810px</pre>
 </div>
 <div created="20201201034838554" modified="20201205203256705" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
-<pre>750px</pre>
+<pre>770px</pre>
+</div>
+<div title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
+<pre>yes</pre>
 </div>
 <div title="$:/themes/tiddlywiki/vanilla/settings/fontfamily">
-<pre>&quot;Kufam&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;</pre>
+<pre>&quot;Public Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;</pre>
 </div>
 <div author="Aristotle" created="20201130205913835" keywords="values" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;" modified="20201204235900000" notes="Aristotle often ''starts'' by considering popular views, without yet endorsing any of them." page="1095b15" source-text="Aristotle, Nicomachean Ethics" tags="excerpt" text-title="Nicomachean Ethics" title="Aristotle considers three lives">
 <pre>... there are roughly three most favoured lives — the lives of gratification, of political activity, and third, of study.
@@ -12662,8 +12667,7 @@ the supporters of the “interest” side of the controversy habitually use the 
 Both sides assume that the self is a fixed and hence isolated quantity.</pre>
 </div>
 <div created="20201204054530858" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201205200825715" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;education&quot;." quote-style=".triangle-left" tags="keyword" title="education">
-<pre>
-&lt;$list filter=&quot;[keywords[education]]&quot;&gt; 
+<pre>&lt;$list filter=&quot;[keywords[education]]&quot;&gt; 
 @@.triangle-left
 &lt;$view field=text/&gt;&lt;br /&gt;
  &lt;&lt;hspace 2em&gt;&gt;  — &lt;$view field=source-text/&gt;, &lt;$view field=page/&gt;&lt;br /&gt;  &lt;&lt;hspace 2em&gt;&gt; &lt;$link /&gt;
@@ -12729,7 +12733,7 @@ div.tc-tagged-excerpt .tc-subtitle { color:&lt;&lt;colour message-foreground&gt;
 }
 
 .alert-primary {
-  color: &lt;&lt;colour muted-foreground&gt;&gt;;
+  color: &lt;&lt;colour primary&gt;&gt;;
   background-color: rgba(255, 255, 220, .65);
   border-color: rgba(255, 255, 220, .85);
   font-family: &quot;Tillana&quot;, &quot;Kalam&quot;, &quot;Caveat Brush&quot;, &quot;Caveat&quot;;
@@ -12771,12 +12775,12 @@ details summary {
 </div>
 <div created="20201208195502904" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201208200422684" tags="$:/tags/RawMarkup" title="google fonts">
 <pre>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot;&gt;
-&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Caveat+Brush&amp;family=Caveat:wght@400;700&amp;family=Kalam:wght@300;700&amp;family=Kufam:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tillana:wght@400;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;</pre>
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Caveat+Brush&amp;family=Caveat:wght@400;700&amp;family=Kalam:wght@300;700&amp;family=Kufam:ital,wght@0,400;0,700;1,400;1,700&amp;family=Public+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&amp;family=Signika:wght@300;400;700&amp;family=Tillana:wght@400;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;</pre>
 </div>
 <div created="20201205194353130" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201205202612032" tags="credits" title="gratitude to…">
 <pre>For [[TiddlyWiki|http://tiddlywiki.com]] itself, of course, deep appreciation to Jeremy Ruston and to the community of open-source developers steadily making the platform more powerful.
 
-For [[Shiraz|https://kookma.github.io/TW-Shiraz/]], as well as for the versatile [[TW utility|https://kookma.github.io/TW-Utility/]] plugin: Thanks to Mohammad's tireless development efforts, the dynamic tables in Shiraz allow more and more familiar spreadsheet-like interactions, which should help in quickly adding quotes to a batch for a book or article. (Currently, a tiddler's title can't be editing within dynamic tables, but the caption can be. So, I suggest using the caption field for anything that will help you recognize the quote, until a more efficient solution emerges.)
+For [[Shiraz|https://kookma.github.io/TW-Shiraz/]], as well as for the versatile [[TW utility|https://kookma.github.io/TW-Utility/]] plugin: Thanks to Mohammad's tireless development efforts, the dynamic tables in Shiraz allow more and more familiar spreadsheet-like interactions, which should help in quickly adding quotes to a batch for a book or article. (Currently, a tiddler's title can't be edited within dynamic tables, but the caption can be. So, I suggest using the caption field for anything that will help you recognize the quote, until a more efficient solution emerges.)
 
 For [[linkstyle|$:/LinkStyle/Stylesheet]]: Thanks to Mat von TWaddle for this [[elegant bit of code|http://linkstyle.tiddlyspot.com/]].
 
