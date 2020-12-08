@@ -52,6 +52,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 
 <!--~~ Raw markup ~~-->
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;700&family=Kalam:wght@300;700&family=Tillana:wght@400;700&display=swap" rel="stylesheet">
 
 
 </head>
@@ -213,9 +215,13 @@ Error message and password prompt
 
 <li>$:/palettes/GruvboxDark-springer</li>
 
+<li>$:/palettes/Muted</li>
+
 <li>$:/palettes/Nord</li>
 
 <li>$:/palettes/SolarFlare</li>
+
+<li>$:/palettes/SolarizedLight</li>
 
 <li>$:/palettes/Twilight</li>
 
@@ -254,6 +260,8 @@ Error message and password prompt
 <li>$:/springer/add-notes-below</li>
 
 <li>$:/springer/book-icon</li>
+
+<li>$:/springer/quote-icon</li>
 
 <li>$:/springer/source-info</li>
 
@@ -369,6 +377,8 @@ Error message and password prompt
 
 <li>excerpt-style</li>
 
+<li>google fonts</li>
+
 <li>gratitude to…</li>
 
 <li>happiness as chief good</li>
@@ -426,13 +436,13 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <pre>wiki</pre>
 </div>
 <div created="20201201031519974" modified="20201201031519974" title="$:/config/plugins/text-slicer/slice-rule">
-<pre>html-by-heading</pre>
+<pre>html-plain-paragraphs</pre>
 </div>
 <div created="20201201032513665" modified="20201201032513665" title="$:/config/RelinkOnRename">
 <pre>yes</pre>
 </div>
-<div created="20201203205714466" modified="20201204003319117" title="$:/config/TimestampDisable">
-<pre>no</pre>
+<div created="20201203205714466" modified="20201208201641276" title="$:/config/TimestampDisable">
+<pre>yes</pre>
 </div>
 <div created="20201130234624524" modified="20201130234624524" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/clone">
 <pre>show</pre>
@@ -9917,7 +9927,7 @@ a[href=&quot;#&lt;&lt;urititle&gt;&gt;&quot;]:after { &lt;&lt;style-after&gt;&gt
 &lt;/$vars&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201130234239430" modified="20201205212133679" title="$:/palette">
+<div created="20201130234239430" modified="20201208201332829" title="$:/palette">
 <pre>$:/palettes/Wesleyan</pre>
 </div>
 <div created="20201203231547535" description="A blue theme" modified="20201204202613342" name="Blue" tags="$:/tags/Palette" title="$:/palettes/Blue" type="application/x-tiddler-dictionary">
@@ -10134,7 +10144,7 @@ toolbar-done-button:
 untagged-background: &lt;&lt;colour foreground&gt;&gt;
 very-muted-foreground: #888888</pre>
 </div>
-<div created="20150402111612188" description="Good with dark photo backgrounds" modified="20201205201347104" name="DarkPhotos" tags="$:/tags/Palette" title="$:/palettes/DarkPhotos" type="application/x-tiddler-dictionary">
+<div created="20150402111612188" description="Good with dark photo backgrounds" modified="20201208201038787" name="DarkPhotos" tags="$:/tags/Palette" title="$:/palettes/DarkPhotos" type="application/x-tiddler-dictionary">
 <pre>alert-background: #ffe476
 alert-border: #b99e2f
 alert-highlight: #881122
@@ -10173,7 +10183,7 @@ modal-border: #999999
 modal-footer-background: #f5f5f5
 modal-footer-border: #dddddd
 modal-header-border: #eeeeee
-muted-foreground: #ddd
+muted-foreground: #849a88
 notification-background: #ffffdd
 notification-border: #999999
 page-background: #3b4e4f
@@ -10241,7 +10251,7 @@ toolbar-done-button:
 untagged-background: #999999
 very-muted-foreground: #888888</pre>
 </div>
-<div created="20201203221938694" description="Retro groove color scheme" license="https://github.com/morhetz/gruvbox" modified="20201204001501547" name="Gruvbox Dark" tags="$:/tags/Palette" title="$:/palettes/GruvboxDark-springer" type="application/x-tiddler-dictionary">
+<div created="20201203221938694" description="Retro groove color scheme" license="https://github.com/morhetz/gruvbox" modified="20201208201124824" name="Gruvbox Dark" tags="$:/tags/Palette" title="$:/palettes/GruvboxDark-springer" type="application/x-tiddler-dictionary">
 <pre>alert-background: #cc241d
 alert-border: #cc241d
 alert-highlight: #d79921
@@ -10290,7 +10300,7 @@ modal-border: #504945
 modal-footer-background: #3c3836
 modal-footer-border: #3c3836
 modal-header-border: #3c3836
-muted-foreground: #b39965
+muted-foreground: #7e6c49
 notification-background: &lt;&lt;colour primary&gt;&gt;
 notification-border: &lt;&lt;colour primary&gt;&gt;
 page-background: #282828
@@ -10373,6 +10383,113 @@ wikilist-button-remove-hover: &lt;&lt;colour alert-background&gt;&gt;
 wikilist-droplink-dragover: &lt;&lt;colour dropzone-background&gt;&gt;
 wikilist-button-reveal: &lt;&lt;colour sidebar-tiddler-link-foreground-hover&gt;&gt;
 wikilist-button-reveal-hover: &lt;&lt;colour message-background&gt;&gt;</pre>
+</div>
+<div created="20201208201242012" description="Bright tiddlers on a muted background" modified="20201208201246695" name="Muted" tags="$:/tags/Palette" title="$:/palettes/Muted" type="application/x-tiddler-dictionary">
+<pre>alert-background: #ffe476
+alert-border: #b99e2f
+alert-highlight: #881122
+alert-muted-foreground: #b99e2f
+background: #ffffff
+blockquote-bar: &lt;&lt;colour muted-foreground&gt;&gt;
+button-background: 
+button-foreground: 
+button-border: 
+code-background: #f7f7f9
+code-border: #e1e1e8
+code-foreground: #dd1144
+dirty-indicator: #ff0000
+download-background: #34c734
+download-foreground: &lt;&lt;colour background&gt;&gt;
+dragger-background: &lt;&lt;colour foreground&gt;&gt;
+dragger-foreground: &lt;&lt;colour background&gt;&gt;
+dropdown-background: &lt;&lt;colour background&gt;&gt;
+dropdown-border: &lt;&lt;colour muted-foreground&gt;&gt;
+dropdown-tab-background-selected: #fff
+dropdown-tab-background: #ececec
+dropzone-background: rgba(0,200,0,0.7)
+external-link-background-hover: inherit
+external-link-background-visited: inherit
+external-link-background: inherit
+external-link-foreground-hover: inherit
+external-link-foreground-visited: #0000aa
+external-link-foreground: #0000ee
+foreground: #333333
+message-background: #ecf2ff
+message-border: #cfd6e6
+message-foreground: #547599
+modal-backdrop: &lt;&lt;colour foreground&gt;&gt;
+modal-background: &lt;&lt;colour background&gt;&gt;
+modal-border: #999999
+modal-footer-background: #f5f5f5
+modal-footer-border: #dddddd
+modal-header-border: #eeeeee
+muted-foreground: #4d4747
+notification-background: #ffffdd
+notification-border: #999999
+page-background: #6f6f70
+pre-background: #f5f5f5
+pre-border: #cccccc
+primary: #29a6ee
+select-tag-background: 
+select-tag-foreground: 
+sidebar-button-foreground: &lt;&lt;colour foreground&gt;&gt;
+sidebar-controls-foreground-hover: #000000
+sidebar-controls-foreground: #c2c1c2
+sidebar-foreground-shadow: rgba(255,255,255,0)
+sidebar-foreground: #d3d2d4
+sidebar-muted-foreground-hover: #444444
+sidebar-muted-foreground: #c0c0c0
+sidebar-tab-background-selected: #6f6f70
+sidebar-tab-background: #666667
+sidebar-tab-border-selected: #999
+sidebar-tab-border: #515151
+sidebar-tab-divider: #999
+sidebar-tab-foreground-selected: 
+sidebar-tab-foreground: #999
+sidebar-tiddler-link-foreground-hover: #444444
+sidebar-tiddler-link-foreground: #d1d0d2
+site-title-foreground: &lt;&lt;colour tiddler-title-foreground&gt;&gt;
+static-alert-foreground: #aaaaaa
+tab-background-selected: #ffffff
+tab-background: #d8d8d8
+tab-border-selected: #d8d8d8
+tab-border: #cccccc
+tab-divider: #d8d8d8
+tab-foreground-selected: &lt;&lt;colour tab-foreground&gt;&gt;
+tab-foreground: #666666
+table-border: #dddddd
+table-footer-background: #a8a8a8
+table-header-background: #f0f0f0
+tag-background: #d5ad34
+tag-foreground: #ffffff
+tiddler-background: &lt;&lt;colour background&gt;&gt;
+tiddler-border: &lt;&lt;colour background&gt;&gt;
+tiddler-controls-foreground-hover: #888888
+tiddler-controls-foreground-selected: #444444
+tiddler-controls-foreground: #cccccc
+tiddler-editor-background: #f8f8f8
+tiddler-editor-border-image: #ffffff
+tiddler-editor-border: #cccccc
+tiddler-editor-fields-even: #e0e8e0
+tiddler-editor-fields-odd: #f0f4f0
+tiddler-info-background: #f8f8f8
+tiddler-info-border: #dddddd
+tiddler-info-tab-background: #f8f8f8
+tiddler-link-background: &lt;&lt;colour background&gt;&gt;
+tiddler-link-foreground: &lt;&lt;colour primary&gt;&gt;
+tiddler-subtitle-foreground: #c0c0c0
+tiddler-title-foreground: #182955
+toolbar-new-button: 
+toolbar-options-button: 
+toolbar-save-button: 
+toolbar-info-button: 
+toolbar-edit-button: 
+toolbar-close-button: 
+toolbar-delete-button: 
+toolbar-cancel-button: 
+toolbar-done-button: 
+untagged-background: #999999
+very-muted-foreground: #888888</pre>
 </div>
 <div created="20201203233421900" description="An arctic, north-bluish color palette." license="MIT, arcticicestudio, https://github.com/arcticicestudio/nord/blob/develop/LICENSE.md" modified="20201203234710141" name="Nord" tags="$:/tags/Palette" title="$:/palettes/Nord" type="application/x-tiddler-dictionary">
 <pre>alert-background: #D08770
@@ -10618,6 +10735,121 @@ toolbar-cancel-button:
 toolbar-done-button: 
 untagged-background: #999999
 very-muted-foreground: #888888</pre>
+</div>
+<div description="Precision colors for machines and people" license="MIT, Ethan Schoonover, https://github.com/altercation/solarized/blob/master/LICENSE" name="SolarizedLight" tags="$:/tags/Palette" title="$:/palettes/SolarizedLight" type="application/x-tiddler-dictionary">
+<pre>alert-background: #eee8d5
+alert-border: #073642
+alert-highlight: #cb4b16
+alert-muted-foreground: #586e75
+background: #fdf6e3
+blockquote-bar: &lt;&lt;colour muted-foreground&gt;&gt;
+button-background: #cb4b16
+button-foreground: #fdf6e3
+button-border: transparent
+code-background: #eee8d5
+code-border: #93a1a1
+code-foreground: #d33682
+diff-delete-background: #BF616A
+diff-delete-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-equal-background: 
+diff-equal-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-insert-background: #859900
+diff-insert-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-invisible-background: 
+diff-invisible-foreground: &lt;&lt;colour muted-foreground&gt;&gt;
+dirty-indicator: #D08770
+download-background: #859900
+download-foreground: &lt;&lt;colour background&gt;&gt;
+dragger-background: &lt;&lt;colour foreground&gt;&gt;
+dragger-foreground: &lt;&lt;colour background&gt;&gt;
+dropdown-background: &lt;&lt;colour background&gt;&gt;
+dropdown-border: &lt;&lt;colour background&gt;&gt;
+dropdown-tab-background-selected: #fdf6e3
+dropdown-tab-background: #93a1a1
+dropzone-background: #859900
+external-link-background-hover: inherit
+external-link-background-visited: inherit
+external-link-background: inherit
+external-link-foreground-hover: #d33682
+external-link-foreground-visited: #b58900
+external-link-foreground: #cb4b16
+foreground: #839496
+message-background: #586e75
+message-border: #586e75
+message-foreground: #eee8d5
+modal-backdrop: &lt;&lt;colour foreground&gt;&gt;
+modal-background: &lt;&lt;colour background&gt;&gt;
+modal-border: #eee8d5
+modal-footer-background: #eee8d5
+modal-footer-border: #eee8d5
+modal-header-border: #eee8d5
+muted-foreground: #a8c2c2
+notification-background: #EBCB8B
+notification-border: #D08770
+page-background: #eee8d5
+pre-background: #eee8d5
+pre-border: #93a1a1
+primary: #2aa198
+select-tag-background: #eee8d5
+select-tag-foreground: &lt;&lt;colour foreground&gt;&gt;
+sidebar-button-foreground: #eee8d5
+sidebar-controls-foreground-hover: #268bd2
+sidebar-controls-foreground: #586e75
+sidebar-foreground-shadow: transparent
+sidebar-foreground: #839496
+sidebar-muted-foreground-hover: #657b83
+sidebar-muted-foreground: #93a1a1
+sidebar-tab-background-selected: #eee8d5
+sidebar-tab-background: #839496
+sidebar-tab-border-selected: &lt;&lt;colour tab-border-selected&gt;&gt;
+sidebar-tab-border: #657b83
+sidebar-tab-divider: &lt;&lt;colour page-background&gt;&gt;
+sidebar-tab-foreground-selected: #839496
+sidebar-tab-foreground: &lt;&lt;colour tab-foreground&gt;&gt;
+sidebar-tiddler-link-foreground-hover: #859900
+sidebar-tiddler-link-foreground: #268bd2
+site-title-foreground: &lt;&lt;colour tiddler-title-foreground&gt;&gt;
+static-alert-foreground: #dc322f
+tab-background-selected: #fdf6e3
+tab-background: #839496
+tab-border-selected: #93a1a1
+tab-border: #93a1a1
+tab-divider: #fdf6e3
+tab-foreground-selected: #839496
+tab-foreground: #eee8d5
+table-border: #657b83
+table-footer-background: #657b83
+table-header-background: #93a1a1
+tag-background: #6c71c4
+tag-foreground: #eee8d5
+tiddler-background: &lt;&lt;colour background&gt;&gt;
+tiddler-border: &lt;&lt;colour background&gt;&gt;
+tiddler-controls-foreground-hover: #b58900
+tiddler-controls-foreground-selected: #b58900
+tiddler-controls-foreground: #073642
+tiddler-editor-background: #eee8d5
+tiddler-editor-border-image: #eee8d5
+tiddler-editor-border: #eee8d5
+tiddler-editor-fields-even: #eee8d5
+tiddler-editor-fields-odd: #fdf6e3
+tiddler-info-background: #eee8d5
+tiddler-info-border: #eee8d5
+tiddler-info-tab-background: #586e75
+tiddler-link-background: &lt;&lt;colour background&gt;&gt;
+tiddler-link-foreground: &lt;&lt;colour primary&gt;&gt;
+tiddler-subtitle-foreground: #586e75
+tiddler-title-foreground: #073642
+toolbar-new-button: 
+toolbar-options-button: 
+toolbar-save-button: 
+toolbar-info-button: 
+toolbar-edit-button: 
+toolbar-close-button: 
+toolbar-delete-button: 
+toolbar-cancel-button: 
+toolbar-done-button: 
+untagged-background: #839496
+very-muted-foreground: #93a1a1</pre>
 </div>
 <div author="Thomas Elmiger" created="20201205204919897" description="Delightful, soft darkness." modified="20201205205406201" name="Twilight" tags="$:/tags/Palette" title="$:/palettes/Twilight" type="application/x-tiddler-dictionary">
 <pre>alert-background: rgb(255, 255, 102)
@@ -12066,6 +12298,9 @@ message-background
 <div created="20201203204114840" modified="20201122235900000" tags="" title="$:/springer/book-icon">
 <pre>@</pre>
 </div>
+<div created="20201208201533046" modified="20201208201636500" tags="" title="$:/springer/quote-icon">
+<pre>@@color:&lt;&lt;colour message-background&gt;&gt;; ❝ @@</pre>
+</div>
 <div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/title" modified="20201201061515944" tags="$:/tags/ViewTemplate" title="$:/springer/source-info">
 <pre>&lt;div class=&quot;tc-subtitle&quot;&gt;
 &lt;$link to={{!!source-text}} /&gt;
@@ -12131,10 +12366,10 @@ message-background
 <div created="20201130210408465" modified="20201130210408465" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20201205205750201" modified="20201205205832472" title="$:/state/sidebar">
+<div created="20201205205750201" modified="20201208200737547" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
-<div created="20201130200010289" modified="20201205195438781" title="$:/state/tab--1498284803">
+<div created="20201130200010289" modified="20201208201410820" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div created="20201130210404538" modified="20201205203146143" title="$:/state/tab--1963855381">
@@ -12161,7 +12396,7 @@ message-background
 <div created="20201205203334623" modified="20201205203347728" title="$:/state/tab-770302894">
 <pre>$:/core/ui/TiddlerInfo/Fields</pre>
 </div>
-<div created="20201130194124206" modified="20201205212327501" title="$:/state/tab/sidebar--595412856">
+<div created="20201130194124206" modified="20201208201335802" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -12170,11 +12405,11 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201205194240883" list="[[tutorial for excerpts]] [[Beauvoir, Ethics of Ambiguity]]" modified="20201205212151491" title="$:/StoryList">
+<div created="20201208195002460" list="[[tutorial for excerpts]] [[Beauvoir, Ethics of Ambiguity]]" modified="20201208201543342" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20201130200006288" modified="20201205205902245" title="$:/temp/advancedsearch">
-<pre>viewtempl</pre>
+<div created="20201130200006288" modified="20201208201403621" title="$:/temp/advancedsearch">
+<pre>book</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -12243,7 +12478,7 @@ message-background
 <div created="20201130235146390" modified="20201130235150057" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>shiraz</pre>
 </div>
-<div created="20201130194257953" modified="20201205202532599" title="$:/temp/search">
+<div created="20201130194257953" modified="20201208201403621" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -12367,7 +12602,7 @@ message-background
 <div created="20201201034838554" modified="20201205203256705" title="$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth">
 <pre>750px</pre>
 </div>
-<div author="Aristotle" created="20201130205913835" keywords="values" linkstyle-before="content:&quot;❝ &quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;;" modified="20201203201850272" notes="Aristotle often starts by considering popular views, without yet endorsing any of them." page="1095b15" source-text="Aristotle, Nicomachean Ethics" tags="excerpt" text-title="Nicomachean Ethics" title="Aristotle considers three lives">
+<div author="Aristotle" created="20201130205913835" keywords="values" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;" modified="20201208200544170" notes="Aristotle often ''starts'' by considering popular views, without yet endorsing any of them." page="1095b15" source-text="Aristotle, Nicomachean Ethics" tags="excerpt" text-title="Nicomachean Ethics" title="Aristotle considers three lives">
 <pre>... there are roughly three most favoured lives — the lives of gratification, of political activity, and third, of study.
 The many, and the most vulgar, would seem to conceive the good and happiness as pleasure; and hence they also like the life of gratification. Here they appear completely slavish, since the life they decide on is a life for grazing animals; and yet they have some argument in their defence, since many in positions of power feel the same way...</pre>
 </div>
@@ -12474,7 +12709,7 @@ Everything has two handles, one by which it may be carried and the other not. If
 <div author="Beauvoir" created="20201130204936981" keywords="religion" linkstyle-before="content:&quot;❝ &quot;; position:relative; color: &lt;&lt;colour muted-foreground&gt;&gt;;" modified="20201203201937321" notes="But compare to her admiration of the Jesuit priest..." page="265" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="everything permitted?">
 <pre>Dostoievsky asserted, “If God does not exist, everything is permitted.” Today’s believers use this formula for their own advantage. To reestablish man at the heart of his destiny is, they claim, to repudiate all ethics. However, far from God’s absence authorizing all license, the contrary is the case, because man is abandoned on the earth, because his acts are definitive, absolute engagements. He bears the responsibility for a world which is not the work of a strange power, but of himself, where his defeats are inscribed, and his victories as well.</pre>
 </div>
-<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201205211922609" tags="$:/tags/Stylesheet" title="excerpt-style">
+<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201208200839506" tags="$:/tags/Stylesheet" title="excerpt-style">
 <pre>div.tc-tagged-excerpt { color: &lt;&lt;colour message-foreground&gt;&gt;;
 background-image: url(&quot;quotesm.png&quot;); 
       background-position: left 5px center;
@@ -12493,6 +12728,7 @@ div.tc-tagged-excerpt .tc-subtitle { color:&lt;&lt;colour message-foreground&gt;
   color: &lt;&lt;colour muted-foreground&gt;&gt;;
   background-color: rgba(255, 255, 220, .65);
   border-color: rgba(255, 255, 220, .85);
+  font-family: &quot;Tillana&quot;, &quot;Kalam&quot;, &quot;Caveat Brush&quot;, &quot;Caveat&quot;;
 }
 
 .border-warning {
@@ -12522,12 +12758,16 @@ details summary {
 
 .triangle-left:after { content: &quot;&quot;; position: absolute; display: block; width: 0; bottom: -20px; left: 40px; border-width: 20px 20px 0 0; border-style: solid; border-color: #075698 transparent; }
 
-.index-right { float: right; position: relative; padding: 10px; margin: .5em .5em 1em .5em; color: #339; font-family:&quot;Courier&quot;; background: #fff; background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#ccc)); background: -moz-linear-gradient(#fff, #ccc); background: -o-linear-gradient(#fff, #ccc); background: linear-gradient(#fff, #ccc);     background: linear-gradient(#fff, #fff 0.95em, #91D1D3 1em);
+.index-right { float: right; position: relative; padding: 10px; margin: .5em .5em 1em .5em; color: #339; font-family: &quot;Courier New&quot;, &quot;Courier&quot;, &quot;Lucida Typewriter&quot;, &quot;monospace&quot;; background: #fff; background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#ccc)); background: -moz-linear-gradient(#fff, #ccc); background: -o-linear-gradient(#fff, #ccc); background: linear-gradient(#fff, #ccc);     background: linear-gradient(#fff, #fff 0.95em, #91D1D3 1em);
     background-size: 1em 1em;
 	  min-height:1em; border-left: none; box-shadow: -5px 4px rgba(120, 120, 120, 0.5);  
 }
 
-
+.tc-sidebar-header {color: &lt;&lt;colour muted-foreground&gt;&gt;;}</pre>
+</div>
+<div created="20201208195502904" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201208200422684" tags="$:/tags/RawMarkup" title="google fonts">
+<pre>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot;&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Caveat+Brush&amp;family=Caveat:wght@400;700&amp;family=Kalam:wght@300;700&amp;family=Tillana:wght@400;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
 </pre>
 </div>
 <div created="20201205194353130" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201205202612032" tags="credits" title="gratitude to…">
