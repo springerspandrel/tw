@@ -55,15 +55,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,100;1,400;1,600&family=Caveat+Brush&family=Caveat:wght@400;700&family=Kalam:wght@300;700&family=Kufam:ital,wght@0,400;0,700;1,400;1,700&family=Public+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=Signika:wght@300;400;700&family=Tillana:wght@400;700&display=swap" rel="stylesheet">
 
-*@@font-family:"Bitter"; Bitter 400@@ — @@font-family:"Bitter";font-weight:600; Bitter 600@@
-*@@font-family:"Caveat"; Caveat 400@@ — @@font-family:"Caveat";font-weight:700; Caveat 700@@
-*@@font-family:"Caveat Brush"; Caveat Brush 400@@ — @@font-family:"Caveat Brush";font-weight:700; Caveat Brush 700@@
-*@@font-family:"Kufam"; Kufam 400@@ — @@font-family:"Kufam";font-weight:700; Kufam 700@@
-*@@font-family:"Kalam"; Kalam 300@@ — @@font-family:"Kalam";font-weight:700; Kalam 700@@
-*@@font-family:"Signika"; Signika 300@@ — @@font-family:"Signika";font-weight:700; Signika 700@@
-
-*@@font-family:"Tillana"; Tillana 400@@ — @@font-family:"Tillana";font-weight:700; Tillana 700@@
-
+@@color:<<colour background>>; {{!!preview}}@@
 
 
 </head>
@@ -401,6 +393,8 @@ Error message and password prompt
 
 <li>Beauvoir, Ethics of Ambiguity</li>
 
+<li>BibTex sources</li>
+
 <li>Day/night palette button</li>
 
 <li>denying ambiguity</li>
@@ -488,7 +482,7 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <pre>yes</pre>
 </div>
 <div created="20201203205714466" modified="20201209003729761" title="$:/config/TimestampDisable">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
 <div created="20201130234624524" modified="20201130234624524" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/clone">
 <pre>show</pre>
@@ -9941,7 +9935,25 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[favicon.png]]</pre>
+# [[RN17]]
+# [[RN2]]
+# [[RN19]]
+# [[RN12]]
+# [[RN14]]
+# [[RN20]]
+# [[RN5]]
+# [[RN13]]
+# [[RN11]]
+# [[RN15]]
+# [[RN18]]
+# [[RN8]]
+# [[RN22]]
+# [[RN10]]
+# [[RN4]]
+# [[RN9]]
+# [[RN3]]
+# [[RN6]]
+# [[RN16]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -12529,7 +12541,7 @@ message-background
 <pre>{
     &quot;hasnegate&quot;: &quot;false&quot;,
     &quot;negate&quot;: &quot;&quot;,
-    &quot;sortIndex&quot;: &quot;keywords&quot;
+    &quot;sortIndex&quot;: &quot;title&quot;
 }</pre>
 </div>
 <div created="20201201052119906" modified="20201201052119906" title="$:/state/edit/references-1092176433">
@@ -12608,9 +12620,9 @@ message-background
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
-<div list="$:/ControlPanel [[tutorial for excerpts]]" title="$:/StoryList">
+<div created="20201209195619505" list="[[BibTex sources]]" modified="20201209195619505" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201130200006288" modified="20201208201403621" title="$:/temp/advancedsearch">
@@ -12674,7 +12686,7 @@ message-background
     }
 }</pre>
 </div>
-<div created="20201130201912449" modified="20201205200634102" title="$:/temp/NewTagName">
+<div created="20201130201912449" modified="20201209195609348" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="Mohammad Rahmani" core-version="&gt;=5.1.22" dependents="" description="Tiddler Commander" list="readme history license authors" original-plugin-type="plugin" original-tags="" original-title="$:/plugins/kookma/commander" original-type="application/json" readme="&lt;style&gt;
@@ -13142,6 +13154,9 @@ The many, and the most vulgar, would seem to conceive the good and happiness as 
 &lt;/$details&gt;
 </pre>
 </div>
+<div created="20201209195611046" modified="20201209195611046" tags="BibTeX" title="BibTex sources">
+<pre>&lt;&lt;table-dynamic filter:&quot;[has[bibtex-title]]&quot; fields:&quot;tbl-expand bibtex-author bibtex-title bibtex-year bibtex-ISBN bibtex-booktitle bibtex-pages title&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
+</div>
 <div caption="{{$:/core/images/tip}} day/night palette" created="20200723143208165" creator="jd" description="Day/night palette" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201123235900000" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
 <pre>&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=&quot;
 day palette tiddler: $:/config/daypalette
@@ -13288,19 +13303,11 @@ details summary {
 
 .tc-sidebar-header {color: &lt;&lt;colour muted-foreground&gt;&gt;;}</pre>
 </div>
-<div created="20201208195502904" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209003410388" tags="$:/tags/RawMarkup" title="google fonts">
+<div created="20201208195502904" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209195827757" preview="@@font-family:&quot;Bitter&quot;; Bitter 400@@ — @@font-family:&quot;Bitter&quot;;font-weight:600; Bitter 600@@ • @@font-family:&quot;Caveat&quot;; Caveat 400@@ — @@font-family:&quot;Caveat&quot;;font-weight:700; Caveat 700@@ • @@font-family:&quot;Caveat Brush&quot;; Caveat Brush 400@@ — @@font-family:&quot;Caveat Brush&quot;;font-weight:700; Caveat Brush 700@@ • @@font-family:&quot;Kufam&quot;; Kufam 400@@ — @@font-family:&quot;Kufam&quot;;font-weight:700; Kufam 700@@ • @@font-family:&quot;Kalam&quot;; Kalam 300@@ — @@font-family:&quot;Kalam&quot;;font-weight:700; Kalam 700@@ • @@font-family:&quot;Signika&quot;; Signika 300@@ — @@font-family:&quot;Signika&quot;;font-weight:700; Signika 700@@ • @@font-family:&quot;Tillana&quot;; Tillana 400@@ — @@font-family:&quot;Tillana&quot;;font-weight:700; Tillana 700@@" tags="$:/tags/RawMarkup" title="google fonts">
 <pre>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot;&gt;
 &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,100;1,400;1,600&amp;family=Caveat+Brush&amp;family=Caveat:wght@400;700&amp;family=Kalam:wght@300;700&amp;family=Kufam:ital,wght@0,400;0,700;1,400;1,700&amp;family=Public+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&amp;family=Signika:wght@300;400;700&amp;family=Tillana:wght@400;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
 
-*@@font-family:&quot;Bitter&quot;; Bitter 400@@ — @@font-family:&quot;Bitter&quot;;font-weight:600; Bitter 600@@
-*@@font-family:&quot;Caveat&quot;; Caveat 400@@ — @@font-family:&quot;Caveat&quot;;font-weight:700; Caveat 700@@
-*@@font-family:&quot;Caveat Brush&quot;; Caveat Brush 400@@ — @@font-family:&quot;Caveat Brush&quot;;font-weight:700; Caveat Brush 700@@
-*@@font-family:&quot;Kufam&quot;; Kufam 400@@ — @@font-family:&quot;Kufam&quot;;font-weight:700; Kufam 700@@
-*@@font-family:&quot;Kalam&quot;; Kalam 300@@ — @@font-family:&quot;Kalam&quot;;font-weight:700; Kalam 700@@
-*@@font-family:&quot;Signika&quot;; Signika 300@@ — @@font-family:&quot;Signika&quot;;font-weight:700; Signika 700@@
-
-*@@font-family:&quot;Tillana&quot;; Tillana 400@@ — @@font-family:&quot;Tillana&quot;;font-weight:700; Tillana 700@@
-
+@@color:&lt;&lt;colour background&gt;&gt;; {{!!preview}}@@
 </pre>
 </div>
 <div created="20201205194353130" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209003425909" tags="credits" title="gratitude to…">
