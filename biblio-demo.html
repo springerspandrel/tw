@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title> Biblio excerpts demo — one tiddler per quote, why and how</title>
+<title> Biblio excerpts demo — one tiddler per quote, tutorial</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -168,7 +168,11 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/core/macros/timeline</li>
+
 <li>$:/core/ui/ControlPanel/Palette</li>
+
+<li>$:/core/ui/ViewTemplate/title</li>
 
 <li>$:/DefaultTiddlers</li>
 
@@ -195,6 +199,8 @@ Error message and password prompt
 <li>$:/GitLab/Username</li>
 
 <li>$:/Import</li>
+
+<li>$:/Import!!popup-Untitled</li>
 
 <li>$:/isEncrypted</li>
 
@@ -335,6 +341,8 @@ Error message and password prompt
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
+
+<li>$:/tags/ViewTemplate</li>
 
 <li>$:/temp/advancedsearch</li>
 
@@ -596,6 +604,8 @@ Error message and password prompt
 
 <li>BibTex sources</li>
 
+<li>book</li>
+
 <li>Day/night palette button</li>
 
 <li>denying ambiguity</li>
@@ -624,11 +634,17 @@ Error message and password prompt
 
 <li>inner vs outer</li>
 
+<li>language</li>
+
 <li>man as ... being not to be</li>
+
+<li>metaphor and science</li>
 
 <li>Never Type the Same Quote Twice</li>
 
 <li>quotesm.png</li>
+
+<li>reverence for being</li>
 
 <li>RN1</li>
 
@@ -653,6 +669,8 @@ Error message and password prompt
 <li>stages in moral education</li>
 
 <li>tutorial for excerpts</li>
+
+<li>viewtemplate/bibtex</li>
 
 <li>youth and political science</li>
 
@@ -696,8 +714,8 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <div created="20201201032513665" modified="20201201032513665" title="$:/config/RelinkOnRename">
 <pre>yes</pre>
 </div>
-<div created="20201203205714466" modified="20201209003729761" title="$:/config/TimestampDisable">
-<pre>no</pre>
+<div created="20201203205714466" modified="20201209214519341" title="$:/config/TimestampDisable">
+<pre>yes</pre>
 </div>
 <div created="20201130234624524" modified="20201130234624524" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/clone">
 <pre>show</pre>
@@ -10081,6 +10099,31 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
     }
 }</pre>
 </div>
+<div created="20141212105914482" modified="20201209203652577" tags="$:/tags/Macro" title="$:/core/macros/timeline">
+<pre>\define timeline-title()
+\whitespace trim
+&lt;!-- Override this macro with a global macro 
+     of the same name if you need to change 
+     how titles are displayed on the timeline 
+     --&gt;
+&lt;$transclude field=&quot;caption&quot;&gt;{{!!title}}&lt;/$transclude&gt;
+\end
+\define timeline(limit:&quot;100&quot;,format:&quot;DDth MMM YYYY&quot;,subfilter:&quot;&quot;,dateField:&quot;modified&quot;)
+&lt;div class=&quot;tc-timeline&quot;&gt;
+&lt;$list filter=&quot;[!is[system]$subfilter$has[$dateField$]!sort[$dateField$]limit[$limit$]eachday[$dateField$]]&quot;&gt;
+&lt;div class=&quot;tc-menu-list-item&quot;&gt;
+&lt;$view field=&quot;$dateField$&quot; format=&quot;date&quot; template=&quot;$format$&quot;/&gt;
+&lt;$list filter=&quot;[sameday:$dateField${!!$dateField$}!is[system]$subfilter$!sort[$dateField$]]&quot;&gt;
+&lt;div class=&quot;tc-menu-list-subitem&quot;&gt;
+&lt;$link to={{!!title}}&gt;&lt;&lt;timeline-title&gt;&gt;&lt;/$link&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+\end
+</pre>
+</div>
 <div caption="{{$:/language/ControlPanel/Palette/Caption}}" created="20201201034411491" modified="20201201034411491" tags="$:/tags/ControlPanel/Appearance $:/tags/SideBar" title="$:/core/ui/ControlPanel/Palette">
 <pre>\define lingo-base() $:/language/ControlPanel/Palette/
 
@@ -10100,6 +10143,49 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 &lt;/$reveal&gt;
 
 </pre>
+</div>
+<div created="20201209203340426" modified="20201209203351433" tags="$:/tags/ViewTemplate" title="$:/core/ui/ViewTemplate/title">
+<pre>\whitespace trim
+\define title-styles()
+fill:$(foregroundColor)$;
+\end
+\define config-title()
+$:/config/ViewToolbarButtons/Visibility/$(listItem)$
+\end
+&lt;div class=&quot;tc-tiddler-title&quot;&gt;
+&lt;div class=&quot;tc-titlebar&quot;&gt;
+&lt;span class=&quot;tc-tiddler-controls&quot;&gt;
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/ViewToolbar]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;&lt;$reveal type=&quot;nomatch&quot; state=&lt;&lt;config-title&gt;&gt; text=&quot;hide&quot;&gt;&lt;$set name=&quot;tv-config-toolbar-class&quot; filter=&quot;[&lt;tv-config-toolbar-class&gt;] [&lt;listItem&gt;encodeuricomponent[]addprefix[tc-btn-]]&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt;&lt;/$set&gt;&lt;/$reveal&gt;&lt;/$list&gt;
+&lt;/span&gt;
+&lt;$set name=&quot;tv-wikilinks&quot; value={{$:/config/Tiddlers/TitleLinks}}&gt;
+&lt;$link&gt;
+&lt;$set name=&quot;foregroundColor&quot; value={{!!color}}&gt;
+&lt;span class=&quot;tc-tiddler-title-icon&quot; style=&lt;&lt;title-styles&gt;&gt;&gt;
+&lt;$transclude tiddler={{!!icon}}&gt;
+&lt;$transclude tiddler={{$:/config/DefaultTiddlerIcon}}/&gt;
+&lt;/$transclude&gt;
+&lt;/span&gt;
+&lt;/$set&gt;
+&lt;$list filter=&quot;[all[current]removeprefix[$:/]]&quot;&gt;
+&lt;h2 class=&quot;tc-title&quot; title={{$:/language/SystemTiddler/Tooltip}}&gt;
+&lt;span class=&quot;tc-system-title-prefix&quot;&gt;$:/&lt;/span&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+&lt;/h2&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]!prefix[$:/]]&quot;&gt;
+&lt;h2 class=&quot;tc-title&quot;&gt;
+&lt;$transclude field=&quot;caption&quot;&gt;{{!!title}}&lt;/$transclude&gt;
+&lt;/h2&gt;
+&lt;/$list&gt;
+&lt;/$link&gt;
+&lt;/$set&gt;
+&lt;/div&gt;
+
+&lt;$reveal type=&quot;nomatch&quot; text=&quot;&quot; default=&quot;&quot; state=&lt;&lt;tiddlerInfoState&gt;&gt; class=&quot;tc-tiddler-info tc-popup-handle&quot; animate=&quot;yes&quot; retain=&quot;yes&quot;&gt;
+
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/TiddlerInfoSegment]!has[draft.of]] [[$:/core/ui/TiddlerInfo]]&quot; variable=&quot;listItem&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt; mode=&quot;block&quot;/&gt;&lt;/$list&gt;
+
+&lt;/$reveal&gt;
+&lt;/div&gt;</pre>
 </div>
 <div created="20201130195225044" modified="20201130195225044" title="$:/DefaultTiddlers">
 <pre>[list[$:/StoryList]]</pre>
@@ -10140,12 +10226,21 @@ To use in other wikis, drag and drop this link to those wikis: [[Kookma Plugin L
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Untitled]]</pre>
+# [[RN3]]
+# [[RN4]]
+# [[RN2]]
+# [[RN1]]
+# [[RN7]]
+# [[RN5]]
+# [[RN6]]</pre>
+</div>
+<div created="20201209204657455" modified="20201209204701075" title="$:/Import!!popup-Untitled">
+<pre>no</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20201201044006751" modified="20201209201905475" title="$:/keepstate/utility/toggle-view-fields">
+<div created="20201201044006751" modified="20201209214510209" title="$:/keepstate/utility/toggle-view-fields">
 <pre>hide</pre>
 </div>
 <div created="20160609120738579" creator="twMat" demo_comment="This little Stylesheet addition allows the ``linkstyle`` field to contain specifications for link colors and other aids to visual clarity." modified="20200517001344264" modifier="espringer" tags="$:/tags/Stylesheet [[inner stylesheet]]" title="$:/LinkStyle/Stylesheet">
@@ -12236,7 +12331,7 @@ April 13, 2018
     }
 }</pre>
 </div>
-<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201209201905475" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
+<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201209214510206" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
 <pre>\define lingo-base() $:/language/EditTemplate/
 \define config-title()
 $:/config/EditTemplateFields/Visibility/$(currentField)$
@@ -12796,7 +12891,7 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 }</pre>
 </div>
 <div created="20201130195234345" modified="20201201070323727" title="$:/SiteSubtitle">
-<pre>one tiddler per quote, [[why and how|tutorial for excerpts]]</pre>
+<pre>one tiddler per quote, [[tutorial|tutorial for excerpts]]</pre>
 </div>
 <div created="20201130195229935" modified="20201130195232736" title="$:/SiteTitle">
 <pre>@@font-family:&quot;Signika&quot;;font-weight:700; Biblio excerpts demo@@</pre>
@@ -12821,7 +12916,7 @@ message-foreground
 message-background
 &quot; variable=&quot;colour&quot;&gt;&lt;&lt;swatch&gt;&gt;&lt;/$list&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20201201062012497" list-before="$:/core/ui/ViewTemplate/body" modified="20201203205047842" tags="$:/tags/ViewTemplate" title="$:/springer/add-abstract-above">
+<div created="20201201062012497" modified="20201203205047842" tags="$:/tags/ViewTemplate" title="$:/springer/add-abstract-above">
 <pre>&lt;$list filter=&quot;[all[current]has[abstract]]&quot;&gt;
 
 &lt;$details open=&quot;yes&quot; summary=&quot;Abstract:&quot;&gt;
@@ -12831,7 +12926,7 @@ message-background
 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201201052916117" linkstyle-before="content:&quot;VIEW TEMPLATE: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " list-after="$:/core/ui/ViewTemplate/body" modified="20201205210126810" tags="$:/tags/ViewTemplate" title="$:/springer/add-notes-below">
+<div created="20201201052916117" linkstyle-before="content:&quot;VIEW TEMPLATE: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; " modified="20201205210126810" tags="$:/tags/ViewTemplate" title="$:/springer/add-notes-below">
 <pre>&lt;$list filter=&quot;[all[current]has[notes]]&quot;&gt;
 
 &lt;&lt;alert primary src:&quot;{{!!notes}} &quot;leftbar border-warning&quot;&gt;&gt;
@@ -12844,7 +12939,7 @@ message-background
 <div color="#ffffff" created="20201203204114840" explanation="Set the icon for all quotes at once. Set the color using a `&lt;&lt;colour&gt;&gt;` macro, or set it to  `{{!!color}}` to set manually." modified="20201208231509438" palette-value="&lt;&lt;colour download-background&gt;&gt;" tags="" title="$:/springer/quote-icon">
 <pre>❝ </pre>
 </div>
-<div created="20201201054324470" list-after="$:/core/ui/ViewTemplate/title" modified="20201201061515944" tags="$:/tags/ViewTemplate" title="$:/springer/source-info">
+<div created="20201201054324470" modified="20201201061515944" tags="$:/tags/ViewTemplate" title="$:/springer/source-info">
 <pre>&lt;div class=&quot;tc-subtitle&quot;&gt;
 &lt;$link to={{!!source-text}} /&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;has[page]]&quot;&gt;, p. {{!!page}}&lt;/$list&gt;
@@ -12855,12 +12950,12 @@ message-background
 <div created="20201130235027391" modified="20201209200959549" title="$:/state/addplugins/tab-1342078386">
 <pre>$:/config/OfficialPluginLibrary</pre>
 </div>
-<div created="20201203192045939" modified="20201208231451724" title="$:/state/dynamictables/excerpt overview list/edit-view-status" type="application/json">
+<div created="20201203192045939" modified="20201209214140077" title="$:/state/dynamictables/excerpt overview list/edit-view-status" type="application/json">
 <pre>{
-    &quot;mode&quot;: &quot;edit&quot;
+    &quot;mode&quot;: &quot;view&quot;
 }</pre>
 </div>
-<div created="20201130202252209" modified="20201205194924106" title="$:/state/dynamictables/excerpt overview list/expand" type="application/json">
+<div created="20201130202252209" modified="20201209203922991" title="$:/state/dynamictables/excerpt overview list/expand" type="application/json">
 <pre>{}</pre>
 </div>
 <div created="20201130205150835" modified="20201205194925079" title="$:/state/dynamictables/excerpt overview list/sortby" type="application/json">
@@ -12912,11 +13007,11 @@ message-background
 <div created="20201130210408465" modified="20201130210408465" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20201205205750201" modified="20201208200737547" title="$:/state/sidebar">
+<div created="20201205205750201" modified="20201209203931699" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
-<div created="20201130200010289" modified="20201209201604830" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+<div created="20201130200010289" modified="20201209212500394" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div created="20201130210404538" modified="20201205203146143" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -12934,7 +13029,7 @@ message-background
 <pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
 <div created="20201130195253518" modified="20201205203141617" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Plugins</pre>
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
 <div created="20201130235037912" modified="20201201043501723" title="$:/state/tab-1846149089">
 <pre>$:/core/ui/ControlPanel/Plugins/Add/Plugins</pre>
@@ -12945,7 +13040,7 @@ message-background
 <div created="20201205203334623" modified="20201205203347728" title="$:/state/tab-770302894">
 <pre>$:/core/ui/TiddlerInfo/Fields</pre>
 </div>
-<div created="20201130194124206" modified="20201209003708634" title="$:/state/tab/sidebar--595412856">
+<div created="20201130194124206" modified="20201209214410735" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -12954,11 +13049,14 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201209200057678" list="[[tutorial for excerpts]]" modified="20201209202419107" title="$:/StoryList">
+<div created="20201209203029713" list="[[tutorial for excerpts]]" modified="20201209214415978" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20201130200006288" modified="20201209202120363" title="$:/temp/advancedsearch">
-<pre>subtitle</pre>
+<div list="$:/core/ui/ViewTemplate/title $:/springer/source-info $:/core/ui/ViewTemplate/unfold $:/core/ui/ViewTemplate/subtitle $:/core/ui/ViewTemplate/tags $:/core/ui/ViewTemplate/classic $:/springer/add-abstract-above viewtemplate/bibtex $:/core/ui/ViewTemplate/body $:/springer/add-notes-below $:/core/ui/ViewTemplate/import $:/core/ui/ViewTemplate/plugin $:/plugins/kookma/shiraz/viewtemplates/sticky-footer $:/plugins/kookma/utility/viewtemplate/display-tiddler-raw-content $:/plugins/tiddlywiki/text-slicer/ui/view-template-segment" title="$:/tags/ViewTemplate">
+<pre></pre>
+</div>
+<div created="20201130200006288" modified="20201209212432713" title="$:/temp/advancedsearch">
+<pre>bibtex</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -14439,7 +14537,10 @@ The many, and the most vulgar, would seem to conceive the good and happiness as 
 <div created="20201209195611046" linkstyle-before="content:&quot;IN-PROGRESS: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209202008284" tags="BibTeX" title="BibTex sources">
 <pre>&lt;&lt;table-dynamic filter:&quot;[has[bibtex-title]]&quot; fields:&quot;tbl-expand bibtex-author bibtex-title bibtex-publisher bibtex-year title caption&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
 </div>
-<div caption="{{$:/core/images/tip}} day/night palette" created="20200723143208165" creator="jd" description="Day/night palette" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:80%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201123235900000" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
+<div created="20201209213855844" icon="$:/favicon.ico" modified="20201120235900000" title="book">
+<pre></pre>
+</div>
+<div created="20200723143208165" creator="jd" description="Day/night palette" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201123235900000" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
 <pre>&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=&quot;
 day palette tiddler: $:/config/daypalette
 night palette tiddler: $:/config/nightpalette
@@ -14464,7 +14565,7 @@ night palette tiddler: $:/config/nightpalette
 
 And the ethics which they have proposed to their disciples has always pursued the same goal. It has been a matter of eliminating the ambiguity by making oneself a pure inwardness or pure externality, by escaping from the sensible world or by being engulfed in it, by yielding to eternity or enclosing oneself in the pure moment.</pre>
 </div>
-<div created="20201201061659605" linkstyle-before="content:&quot;{{$:/springer/book-icon}} &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}};" modified="20201205194715257" tags="book" title="Dewey, Democracy and Education">
+<div created="20201201061659605" icon="$:/favicon.ico" linkstyle-before="content:&quot;{{$:/springer/book-icon}} &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}};" modified="20201209214115994" tags="book" title="Dewey, Democracy and Education">
 <pre>&lt;$details open=&quot;yes&quot; summary=&quot;Excerpts:&quot;&gt;
 &lt;&lt;table-dynamic filter:&quot;[source-text[Dewey, Democracy and Education]]&quot; fields:&quot;tbl-expand page title keywords caption notes tbl-clone&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Sort by any column. Preview content with @@.tcr ''﹥'' @@ at top left ''&quot;&gt;&gt;
 &lt;/$details&gt;
@@ -14478,7 +14579,7 @@ And the ethics which they have proposed to their disciples has always pursued th
 the supporters of the “interest” side of the controversy habitually use the term “self-interest”. Starting from the premisses that unless there is interest in an object or idea, there is no motive force, they end with the conclusion that even when a person claims to be acting from principle or from a sense of duty, he really acts as he does because there “is something in it” for himself. The premiss is sound; the conclusion false. In reply the other school argues that since man in capable of generous self-forgetting and even self-sacrificing action, he is capable of acting without interest. Again the premiss is sound, and the conclusion false....
 Both sides assume that the self is a fixed and hence isolated quantity.</pre>
 </div>
-<div created="20201204054530858" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour sidebar-muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209003330053" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;education&quot;." quote-style=".triangle-left" tags="keyword" title="education">
+<div created="20201204054530858" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color:{{$:/springer/quote-icon!!palette-value}}; text-transform: uppercase; font-weight:700; " modified="20201209214329258" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;education&quot;." quote-style=".triangle-left" tags="keyword" title="education">
 <pre>&lt;$list filter=&quot;[keywords[education]]&quot;&gt; 
 @@.triangle-left
 &lt;$view field=text/&gt;&lt;br /&gt;
@@ -14490,7 +14591,7 @@ Both sides assume that the self is a fixed and hence isolated quantity.</pre>
 <div author="Aristotle" created="20201130195620207" keyword="summum-bonum" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201203201834794" notes="Discuss &quot;end&quot; as //telos//" page="1094" source-text="Aristotle, Nicomachean Ethics" tags="excerpt" text-title="Nicomachean Ethics" title="end of political science">
 <pre>Suppose, then, that (a) there is some end of the things we pursue in our actions which we wish for because of itself, and because of which we wish for the other things; and (b) we do not choose everything because of something else, since (c) if we do, it will go on without limit... then clearly (d) this end  will be the good, i.e., the best good.&lt;br&gt;Then surely knowledge of this good is also of great importance. ...&lt;br&gt;[The end of political science] will include the ends of the other sciences, and so will be the human good. For though admittedly the good is the same for a city as for an individual, still the good of the city is apparently a greater and more complete good to acquire and preserve. </pre>
 </div>
-<div caption="{{$:/core/images/quote}} passages" created="20200114044407770" creator="espringer" hide-tags="yes" linkstyle-before="content: &quot;{{$:/core/images/quote}}&quot;; position:relative; " modified="20201201032853995" modifier="espringer" session="[[Epictetus, Enchiridion]]" tags="excerpts demo-test" title="Epictetus, Enchiridion">
+<div created="20200114044407770" creator="espringer" hide-tags="yes" linkstyle-before="content: &quot;{{$:/core/images/quote}}&quot;; position:relative; " modified="20200501235900000" modifier="espringer" session="[[Epictetus, Enchiridion]]" tags="excerpts demo-test" title="Epictetus, Enchiridion">
 <pre>&lt;&lt;alert source=&quot;Here are a bunch of passages from the Enchiridon. The ''slice'' button can divide this long tiddler of quotes up, yielding a set of smaller tiddlers, one per paragraph-length quote.&quot;&gt;&gt;
 
 1. Some things are up to us and some are not up to us. Our opinions are up to us, and our impulses, desires, aversions,—in short, whatever is our own doing. Our bodies are not up to us, nor are our possessions, our reputations, or our public offices, or,that is, whatever is not our own doing. The things that are up to us are by nature free, unhindered, and unimpeded; the things that are not up to us are weak, enslaved, hindered, not our own. (53)
@@ -14529,7 +14630,7 @@ Everything has two handles, one by which it may be carried and the other not. If
 <div author="Beauvoir" created="20201130204936981" keywords="religion" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201203201937321" notes="But compare to her admiration of the Jesuit priest..." page="265" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="everything permitted?">
 <pre>Dostoievsky asserted, “If God does not exist, everything is permitted.” Today’s believers use this formula for their own advantage. To reestablish man at the heart of his destiny is, they claim, to repudiate all ethics. However, far from God’s absence authorizing all license, the contrary is the case, because man is abandoned on the earth, because his acts are definitive, absolute engagements. He bears the responsibility for a world which is not the work of a strange power, but of himself, where his defeats are inscribed, and his victories as well.</pre>
 </div>
-<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209201835140" tags="$:/tags/Stylesheet" title="excerpt-style">
+<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209201835140" tags="$:/tags/Stylesheet" title="excerpt-style">
 <pre>div.tc-tagged-excerpt { color: &lt;&lt;colour message-foreground&gt;&gt;;
 background-image: url(&quot;quotesm.png&quot;); 
       background-position: left 5px center;
@@ -14583,15 +14684,60 @@ details summary {
 	  min-height:1em; border-left: none; box-shadow: -5px 4px rgba(120, 120, 120, 0.5);  
 }
 
+.bqdark {
+	font-family: Trebuchet MS, serif;
+	font-size: 15px;
+	width: auto;
+	margin: 0.25em 0 0 0;
+	padding: 0.25em 0.25em 0em 5em;
+	line-height: 1.4;
+	position: relative;
+	color: #eee;
+        background-color: #432;
+        border: none;
+}
+
+.bqdark:before {
+	display: block;
+	content: &quot;\201C&quot;;
+	font-size: 80px;
+	position: absolute;
+	left: -2px;
+	top: -10px;
+	color: #864;
+}
+
+.bqdark cite {
+	color: #cacecf;
+        text-align: right;
+	font-size: 15px;
+        font-style: normal; 
+        margin-right: 0em;
+	display: block;
+        background-image: linear-gradient(to bottom right, #432, #753);
+	margin-top: 0px;
+        padding-top: 0px; 
+
+}
+ 
+.bqdark cite:before {
+	font-size: 15px;
+        content: &quot;\2014 \2009&quot;;
+}
+
+.bqdark cite:after {
+	content: &quot;\2001&quot;;
+}
+
 .tc-sidebar-header {color: &lt;&lt;colour muted-foreground&gt;&gt;;}
 &lt;hr&gt;
 {{google fonts!!preview}}</pre>
 </div>
-<div created="20201208195502904" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209201809029" preview="@@font-family:&quot;Bitter&quot;; Bitter 400@@ — @@font-family:&quot;Bitter&quot;;font-weight:600; Bitter 600@@ • @@font-family:&quot;Caveat&quot;; Caveat 400@@ — @@font-family:&quot;Caveat&quot;;font-weight:700; Caveat 700@@ • @@font-family:&quot;Caveat Brush&quot;; Caveat Brush 400@@ — @@font-family:&quot;Caveat Brush&quot;;font-weight:700; Caveat Brush 700@@ • @@font-family:&quot;Kufam&quot;; Kufam 400@@ — @@font-family:&quot;Kufam&quot;;font-weight:700; Kufam 700@@ • @@font-family:&quot;Kalam&quot;; Kalam 300@@ — @@font-family:&quot;Kalam&quot;;font-weight:700; Kalam 700@@ • @@font-family:&quot;Signika&quot;; Signika 300@@ — @@font-family:&quot;Signika&quot;;font-weight:700; Signika 700@@ • @@font-family:&quot;Tillana&quot;; Tillana 400@@ — @@font-family:&quot;Tillana&quot;;font-weight:700; Tillana 700@@" tags="$:/tags/RawMarkup" title="google fonts">
+<div created="20201208195502904" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209201809029" preview="@@font-family:&quot;Bitter&quot;; Bitter 400@@ — @@font-family:&quot;Bitter&quot;;font-weight:600; Bitter 600@@ • @@font-family:&quot;Caveat&quot;; Caveat 400@@ — @@font-family:&quot;Caveat&quot;;font-weight:700; Caveat 700@@ • @@font-family:&quot;Caveat Brush&quot;; Caveat Brush 400@@ — @@font-family:&quot;Caveat Brush&quot;;font-weight:700; Caveat Brush 700@@ • @@font-family:&quot;Kufam&quot;; Kufam 400@@ — @@font-family:&quot;Kufam&quot;;font-weight:700; Kufam 700@@ • @@font-family:&quot;Kalam&quot;; Kalam 300@@ — @@font-family:&quot;Kalam&quot;;font-weight:700; Kalam 700@@ • @@font-family:&quot;Signika&quot;; Signika 300@@ — @@font-family:&quot;Signika&quot;;font-weight:700; Signika 700@@ • @@font-family:&quot;Tillana&quot;; Tillana 400@@ — @@font-family:&quot;Tillana&quot;;font-weight:700; Tillana 700@@" tags="$:/tags/RawMarkup" title="google fonts">
 <pre>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot;&gt;
 &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;1,100;1,400;1,600&amp;family=Caveat+Brush&amp;family=Caveat:wght@400;700&amp;family=Kalam:wght@300;700&amp;family=Kufam:ital,wght@0,400;0,700;1,400;1,700&amp;family=Public+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&amp;family=Signika:wght@300;400;700&amp;family=Tillana:wght@400;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;</pre>
 </div>
-<div created="20201205194353130" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209201459996" tags="credits" title="gratitude to…">
+<div created="20201205194353130" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209201459996" tags="credits" title="gratitude to…">
 <pre>For [[TiddlyWiki|http://tiddlywiki.com]] itself, of course, deep appreciation to Jeremy Ruston and to the community of open-source developers steadily making the platform more powerful.
 
 For [[Shiraz|https://kookma.github.io/TW-Shiraz/]], as well as for the versatile [[TW utility|https://kookma.github.io/TW-Utility/]] plugin: Thanks to Mohammad Rahmani's tireless development efforts, the dynamic tables in Shiraz allow more and more familiar spreadsheet-like interactions, which should help in quickly adding quotes to a batch for a book or article. (Currently, a tiddler's title can't be edited within dynamic tables, but the caption can be. So, I suggest using the caption field for anything that will help you recognize the quote, until a more efficient solution emerges.)
@@ -14611,8 +14757,20 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 <div author="Dewey" caption="inner vs outer?" created="20201130195547131" keywords="education" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201205194957907" notes="Compare to Beauvoir’s complaint in “Ethics of Ambiguity”" page="347" source-text="Dewey, Democracy and Education" tags="excerpt" text-title="Democracy and Education" title="inner vs outer">
 <pre>The first obstruction which meets us is the currency of moral ideas which split the course of activity into two opposed factors, ... the inner and outer, or the spiritual and the physical. This division is a culmination of the dualism of mind and the world, soul and body, end and means, which we have so frequently noted. In morals it takes the form of a sharp demarcation of the motive of action from its consequences, and of character from conduct. ... Different schools identify morality with either the inner state of mind or the outer act and results, each in separation from the other.</pre>
 </div>
+<div created="20201204054530858" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color:{{$:/springer/quote-icon!!palette-value}}; text-transform: uppercase; font-weight:700; " modified="20201209214329258" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;{{!!title}}&quot;." quote-style=".triangle-left" tags="keyword" title="language">
+<pre>&lt;$list filter=&quot;[keywords[language]]&quot;&gt; 
+@@.triangle-right
+&lt;$view field=text/&gt;&lt;br /&gt;
+ &lt;&lt;hspace 2em&gt;&gt;  — &lt;$view field=author/&gt;, &lt;$view field=text-title/&gt;, &lt;$view field=page/&gt;&lt;br /&gt;  &lt;&lt;hspace 2em&gt;&gt; &lt;$link /&gt;
+@@
+
+</pre>
+</div>
 <div author="Beauvoir" created="20201130202015010" keywords="existentialism" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201203201918318" notes="Sounds paradoxical, right?" page="263" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="man as ... being not to be">
 <pre>it is by ambiguity that... Sartre... fundamentally defined man, that being whose being is not to be, that subjectivity which realizes itself only as a presence in the world.... a being who makes himself a lack of being in order that there might be being.</pre>
+</div>
+<div author="Larson" caption="metaphor and science" created="20201205194849591" keywords="language" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201209170000000" notes="" page="4" source-text="RN1" tags="excerpt" text-title="Metaphors for Environmental Sustainability" title="metaphor and science">
+<pre>Although scientists have traditionally denounced metaphor as imprecise rhetorical embellishment, diverse scholars [note] the essential role of metaphors in science... Ted Brown... “Metaphorical reasoning is at the very core of what scientists do when they design experiments, make discoveries, formulate theories and models, and describe their results to others.” ... Metaphoric ambiguity may actually be a fertile source of inquiry, and metaphors may allow leaps beyond stabilized meanings ... revolutionize the process of scientific exploration. Science is built on metaphorical foundations, so metaphors occur in much of the science we hear about every day. Thus, we require greater sensitivity to their presence and implications.</pre>
 </div>
 <div author="Steve Lautenschlager" created="20201204175439802" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201123235900000" source-text="[[Programmer's Code|https://www.cambiaresearch.com/articles/77/rule-3]]" tags="excerpt" title="Never Type the Same Quote Twice">
 <pre>&quot;Never Type the Same Quote Twice&quot;</pre>
@@ -14620,12 +14778,21 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 <div title="quotesm.png" type="image/png">
 <pre>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</pre>
 </div>
-<div bibtex-ISBN="9780300151534 (hardcover alk. paper)
-0300151535 (hardcover alk. paper)" bibtex-address="New Haven Conn." bibtex-author="Larson, Brendon" bibtex-entry-type="book" bibtex-pages="xvi, 301 p." bibtex-publisher="Yale University Press" bibtex-title="Metaphors for environmental sustainability : redefining our relationship with nature" bibtex-type="Book" bibtex-year="2011" title="RN1">
-<pre></pre>
+<div author="Kimmerer" caption="reverence for being" created="20201205194849591" keywords="language" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201209170000000" notes="" page="56" source-text="RN2" tags="excerpt" text-title="Braiding Sweetgrass" title="reverence for being">
+<pre>… //Yawe//— the animate to be. I am, you are, s/he is. To speak of those possessed with life and spirit we must say //yawe//. By what linguistic confluence do //Yahweh// of the Old Testament and //yawe// of the New World both fall from the mouths of the reverent? Isn’t this just what it means, to be, to have the breath of life within, to be the offspring of Creation? The language reminds us, in every sentence, of our kinship with all of the animate world.</pre>
 </div>
-<div bibtex-ISBN="9781571311771" bibtex-address="Minneapolis, Minnesota" bibtex-author="Kimmerer, Robin Wall" bibtex-entry-type="book" bibtex-pages="pages cm" bibtex-publisher="Milkweed Editions" bibtex-title="Braiding sweetgrass : indigenous wisdom, scientific knowledge, and the teachings of plants" bibtex-type="Book" bibtex-year="2020" title="RN2">
-<pre></pre>
+<div bibtex-ISBN="9780300151534 (hardcover alk. paper)
+0300151535 (hardcover alk. paper)" bibtex-address="New Haven Conn." bibtex-author="Larson, Brendon" bibtex-entry-type="book" bibtex-pages="xvi, 301 p." bibtex-publisher="Yale University Press" bibtex-title="Metaphors for environmental sustainability : redefining our relationship with nature" bibtex-type="Book" bibtex-year="2011" caption="Larson, Metaphors (2011)" created="20201209204729310" linkstyle-before="content:&quot;{{$:/springer/book-icon}} &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}};" modified="20201209204734214" tags="book" title="RN1">
+<pre>&lt;$details open=&quot;yes&quot; summary=&quot;Excerpts:&quot;&gt;
+&lt;&lt;table-dynamic filter:&quot;[source-text[RN1]]&quot; fields:&quot;tbl-expand page caption keywords notes tbl-clone&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Sort by any column. Preview content with @@.tcr ''﹥'' @@ at top left ''&quot;&gt;&gt;
+&lt;/$details&gt;
+</pre>
+</div>
+<div bibtex-ISBN="9781571311771" bibtex-address="Minneapolis, Minnesota" bibtex-author="Kimmerer, Robin Wall" bibtex-entry-type="book" bibtex-pages="pages cm" bibtex-publisher="Milkweed Editions" bibtex-title="Braiding sweetgrass : indigenous wisdom, scientific knowledge, and the teachings of plants" bibtex-type="Book" bibtex-year="2020" caption="Kimmerer, Braiding (2020)" created="20201209204738846" linkstyle-before="content:&quot;{{$:/springer/book-icon}} &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}};" modified="20201209204744502" tags="book" title="RN2">
+<pre>&lt;$details open=&quot;yes&quot; summary=&quot;Excerpts:&quot;&gt;
+&lt;&lt;table-dynamic filter:&quot;[source-text[RN2]]&quot; fields:&quot;tbl-expand page caption notes keywords tbl-clone&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Sort by any column. Preview content with @@.tcr ''﹥'' @@ at top left ''&quot;&gt;&gt;
+&lt;/$details&gt;
+</pre>
 </div>
 <div bibtex-ISBN="9780253355324 (cl alk. paper)
 025335532X (cl alk. paper)
@@ -14654,7 +14821,7 @@ Open Humanities Press ebook collection http://www.openhumanitiespress.org/book-t
 9780816689231 (pb alk. paper)" bibtex-address="Minneapolis" bibtex-author="Morton, Timothy" bibtex-entry-type="book" bibtex-pages="x, 229 pages, 8 unnumbered pages of plates" bibtex-publisher="University of Minnesota Press" bibtex-series="Posthumanities" bibtex-title="Hyperobjects : philosophy and ecology after the end of the world" bibtex-type="Book" bibtex-year="2013" title="RN7">
 <pre></pre>
 </div>
-<div created="20201201061659605" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour primary&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209003353950" tags="how-to" title="setting icon style">
+<div created="20201201061659605" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209003353950" tags="how-to" title="setting icon style">
 <pre>To get icons before quotes and books, use the linkstyle plugin, see how the linkstyle-before field is used in various tiddlers, and then see how color and icon value settings can be changed at once:
 
 &lt;&lt;table-dynamic filter:&quot;[has[explanation]]&quot; fields:&quot;tbl-expand explanation title color palette-value&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Sort by any column. Preview content with @@.tcr ''﹥'' @@ at left ''&quot;&gt;&gt;</pre>
@@ -14668,7 +14835,7 @@ Open Humanities Press ebook collection http://www.openhumanitiespress.org/book-t
 <div author="Kohlberg" created="20201204062141676" keywords="education" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201205194304624" page="520" source-text="Kohlberg, The Child as a Moral Philosopher" tags="excerpt" text-title="The Child as a Moral Philosopher" title="stages in moral education">
 <pre>Rest (1973) [showed] that students prefer the highest stage of reasoning they comprehend but that they do not comprehend more than one stage above their own. As a result, assimilation of reasoning occurs primarily when it is the next  stage up from the student’s level. Developmental moral discussion thus arouses cognitive-moral conflict and exposes students to reasoning by other students at the next stage above their own.</pre>
 </div>
-<div created="20201130194313365" linkstyle-before="content:&quot;➥ START HERE: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour foreground&gt;&gt;; font-weight:700; " modified="20201209003443869" title="tutorial for excerpts">
+<div created="20201130194313365" linkstyle-before="content:&quot;➥ START HERE: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour foreground&gt;&gt;; font-weight:700; " modified="20201209204517762" title="tutorial for excerpts">
 <pre>&lt;$details open=&quot;yes&quot; class=&quot;notification&quot; summary=&quot;Making a TiddlyWiki for quotes? How to build it so it scales well: &quot;&gt;
 
 &lt;$details open=&quot;yes&quot; class=&quot;notification&quot; summary=&quot;Plan to make one tiddler for each excerpt&quot;&gt;
@@ -14744,7 +14911,41 @@ This demo tiddler will next offer an overview of all the tiddlers here that are 
 
 :^^If your project grows very large, such a catch-all location will become unwieldy. You'll instead find uses for cross-source slices (all excerpts, from any source, with [[education]], for example).^^
 
-A dynamic table can include any desired combination of fields, and you can add a dynamic table to any tiddler (even adding one to custom ViewTemplate formats so that authors or texts automatically get their own dynamic tables). Not only can a dynamic table be sorted on the fly, but both the meta-data field contents and the content itself can be edited on the fly using the little &quot;edit&quot; icon at the upper left of the table area.</pre>
+A dynamic table can include any desired combination of fields, and you can add a dynamic table to any tiddler (even adding one to custom ViewTemplate formats so that authors or texts automatically get their own dynamic tables). Not only can a dynamic table be sorted on the fly, but both the meta-data field contents and the content itself can be edited on the fly using the little &quot;edit&quot; icon at the upper left of the table area.
+
+&lt;$details summary=&quot;Advanced experimentation&quot;&gt;
+
+It's preferable not to overwrite shadow tiddlers, since changes made to a tiddlywiki file in this way will not carry over when the core is updated. 
+
+However, overwriting a shadow tiddler can be a good way to learn.
+
+Currently, two shadow tiddlers have been overwritten to allow the caption field to be displayed (where it's available) instead of the title. Those two overwritten shadow tiddlers are:
+
+[[$:/core/macros/timeline]]
+[[$:/core/ui/ViewTemplate/title]]
+
+In each case, the pivotal invocation of the title field was replaced by:
+
+`&lt;$transclude field=&quot;caption&quot;&gt;{{!!title}}&lt;/$transclude&gt;`
+
+&lt;/$details&gt;</pre>
+</div>
+<div caption="bibtex view template" created="20181220142502642" creator="Mohammad" linkstyle-before="content:&quot;TWEAKED: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201208235900000" modifier="Mohammad" tags="bibtex $:/tags/ViewTemplate" title="viewtemplate/bibtex">
+<pre>&lt;$list filter=&quot;[all[current]has[bibtex-doi]]&quot;&gt;
+* ''DOI'': {{!!bibtex-doi}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]has[bibtex-title]]&quot;&gt;
+''Published'': {{!!bibtex-journal}}{{!!bibtex-publisher}}, {{!!bibtex-year}}
+&lt;div style=&quot;font-size:1.3em;font-weight:700;text-align:center;padding:10px;&quot;&gt; &lt;$text text={{!!bibtex-title}}/&gt;&lt;/div&gt;
+&lt;div style=&quot;font-weight:500;text-align:center;color:indigo;&quot;&gt; &lt;$text text={{!!bibtex-author}}/&gt;&lt;/div&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]has[bibtext-abstract]]&quot;&gt;
+!! ''Abstract''
+&gt;&lt;$text text={{!!bibtex-abstract}}/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[all[current]has[bibtex-keywords]]&quot;&gt;
+''Keywords'': {{!!bibtex-keywords}}
+&lt;/$list&gt;</pre>
 </div>
 <div author="Aristotle" created="20201130195523122" keywords="education" linkstyle-before="content:&quot;{{$:/springer/quote-icon}}&quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201130205320761" notes="Focal point for analysis and for  articulating objections properly" page="1095" source-text="Aristotle, Nicomachean Ethics" tags="excerpt" text-title="Nicomachean Ethics" title="youth and political science">
 <pre>Now each man judges well the things he knows, and of these he is a good judge. And so the man who has been educated in a subject is a good judge of that subject, and the man who has received an all-round education is a good judge in general . Hence a young man is not a proper hearer of lectures on political science; for he is inexperienced in the actions that occur in life, but its discussions start from these and are about these; and, further, since he tends to follow his passions, his study will be vain and unprofitable, because the end aimed at is not knowledge but action.</pre>
