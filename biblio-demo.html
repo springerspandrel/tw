@@ -272,6 +272,8 @@ Error message and password prompt
 
 <li>$:/plugins/kookma/utility/viewtemplate/view-fields</li>
 
+<li>$:/plugins/sk/FancyQuotes</li>
+
 <li>$:/plugins/telmiger/details</li>
 
 <li>$:/plugins/TheDiveO/FontAwesome</li>
@@ -10321,12 +10323,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mclaren2009climate]]
-# [[haraway1988situated]]
-# [[mortimer2010queer]]
-# [[weston1992before]]
-# [[whyte2017technology]]
-# [[scranton2015learning]]</pre>
+# [[$:/plugins/sk/FancyQuotes]]</pre>
 </div>
 <div created="20201209204657455" modified="20201209204701075" title="$:/Import!!popup-Untitled">
 <pre>no</pre>
@@ -12583,6 +12580,77 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 &lt;/$fieldmangler&gt;
 </pre>
 </div>
+<div author="Stephen Kimmel" description="Fancy Quotes" list="Fancy Quotes List" plugin-type="plugin" title="$:/plugins/sk/FancyQuotes" type="application/json" version="0.0.4">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/core/images/format-fancy&quot;: {
+            &quot;text&quot;: &quot;&lt;svg class=\&quot;tc-image-format-quote tc-image-button\&quot; width=\&quot;22pt\&quot; height=\&quot;22pt\&quot; viewBox=\&quot;0 0 32 32\&quot;&gt;\n&lt;path d=\&quot;M7.031000137329102,14c3.866000175476074,0,7,3.134000778198242,7,7s-3.133999824523926,7,-7,7s-7,-3.134000778198242,-7,-7l-0.03099999949336052,-1c0,-7.732000350952148,6.26800012588501,-14,14,-14v4c-2.670999526977539,0,-5.182000160217285,1.0399999618530273,-7.071000099182129,2.928999900817871c-0.3639998435974121,0.3640003204345703,-0.695000171661377,0.7510004043579102,-0.994999885559082,1.1569995880126953c0.35699987411499023,-0.055999755859375,0.7239999771118164,-0.08600044250488281,1.0970001220703125,-0.08600044250488281ZM25.0310001373291,14c3.865999221801758,0,6.999998092651367,3.134000778198242,6.999998092651367,7s-3.134000778198242,7,-7,7s-7,-3.134000778198242,-7,-7l-0.031000137329101562,-1c0,-7.732000350952148,6.267999649047852,-14,14,-14v4c-2.670999526977539,0,-5.182001113891602,1.0399999618530273,-7.071001052856445,2.928999900817871c-0.3640003204345703,0.3640003204345703,-0.6949996948242188,0.7510004043579102,-0.9950008392333984,1.1569995880126953c0.3579998016357422,-0.055999755859375,0.7240009307861328,-0.08600044250488281,1.0970001220703125,-0.08600044250488281Z\&quot; transform=\&quot;matrix(-0.83362, 0.0159513, -0.0159513, -0.83362, 29.554, 29.6366)\&quot;/&gt;\n&lt;/svg&gt;&quot;,
+            &quot;created&quot;: &quot;20160314124720819&quot;,
+            &quot;modified&quot;: &quot;20160314125000764&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Image&quot;,
+            &quot;title&quot;: &quot;$:/core/images/format-fancy&quot;
+        },
+        &quot;$:/core/modules/editor-operations/text/fancyquotes.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/core/modules/editor-operations/text/replace-selection.js\ntype: application/javascript\nmodule-type: texteditoroperation\n\nText editor operation to replace the selection\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports[\&quot;fancyquotes\&quot;] = function(event,operation) {\nvar listtext=operation.selection;\n\n  listtext= listtext.replace(/\\.\\.\\./gm,'…');\n// opening quotes\n  listtext= listtext.replace(/([\\\\n \\(\\t])\\\&quot;/gm,'$1“');\n  listtext= listtext.replace(/([\\\\n \\(\\t])\\'/gm,'$1‘');\n//substitute prime and double prime if following numbers\n  listtext= listtext.replace(/([0-9])'/gm,'$1′');\n  listtext= listtext.replace(/([0-9])\&quot;/gm,'$1″');\n//rearrange \&quot;. to .\&quot;\n// remove this one because it is only Americans who insist on this.\n//  listtext= listtext.replace(/\&quot;([.!?])/gm,'$1”');\n// closing quote\n  listtext= listtext.replace(/([?!.,])\&quot;([\\n \\t\\)])/gm,'$1”$2');\n  listtext= listtext.replace(/\&quot;([!?., ][\\n \\t\\)])/gm,'”$1');\n  listtext= listtext.replace(/'([\\n \\t])/gm,'’$1');\n  listtext= listtext.replace(/'([!?.])/gm,'’$1');\n//apostrophes\n  listtext= listtext.replace(/([a-zA-Z])'([a-zA-Z])/gm,'$1’$2');\n//convert post sentence double space to single\n  listtext= listtext.replace(/([\\.?!] ) /gm,'$1');\n//convert x to × when between numbers\n  listtext= listtext.replace(/([0-9])x([0-9])/gm,'$1×$2');\n//convert superscript small o to °\n  listtext= listtext.replace(/\\^\\^o\\^\\^/gm,'°');\n//convert ens and ems\n  listtext= listtext.replace(/--/gm,'–');\n  listtext= listtext.replace(/---/gm,'—');\n\n\noperation.replacement=listtext;\n\toperation.cutStart = operation.selStart;\n\toperation.cutEnd = operation.selEnd;\n\toperation.newSelStart = operation.selStart;\n\toperation.newSelEnd = operation.selStart + operation.replacement.length;\n};\n\n})();\n&quot;,
+            &quot;created&quot;: &quot;20160328022859019&quot;,
+            &quot;modified&quot;: &quot;20160328023036499&quot;,
+            &quot;module-type&quot;: &quot;texteditoroperation&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;title&quot;: &quot;$:/core/modules/editor-operations/text/fancyquotes.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;
+        },
+        &quot;$:/core/ui/TextEditorToolbar/fancyquotes&quot;: {
+            &quot;text&quot;: &quot;&lt;$action-sendmessage\n\t$message=\&quot;tm-edit-text-operation\&quot;\n\t$param=\&quot;fancyquotes\&quot;\n/&gt;&quot;,
+            &quot;caption&quot;: &quot;{{$:/language/Buttons/FancyQuotes/Caption}}&quot;,
+            &quot;condition&quot;: &quot;[all[current]!is[image]]&quot;,
+            &quot;created&quot;: &quot;20160315204947548&quot;,
+            &quot;creator&quot;: &quot;Stephen&quot;,
+            &quot;description&quot;: &quot;{{$:/language/Buttons/FancyQuotes/Hint}}&quot;,
+            &quot;icon&quot;: &quot;$:/core/images/format-fancy&quot;,
+            &quot;list-after&quot;: &quot;$:/core/ui/TextEditorToolbar/balancecheck&quot;,
+            &quot;modified&quot;: &quot;20160505115433049&quot;,
+            &quot;modifier&quot;: &quot;Stephen&quot;,
+            &quot;shortcuts&quot;: &quot;((fancyquotes))&quot;,
+            &quot;tags&quot;: &quot;$:/tags/EditorToolbar&quot;,
+            &quot;title&quot;: &quot;$:/core/ui/TextEditorToolbar/fancyquotes&quot;
+        },
+        &quot;$:/language/Buttons/FancyQuotes/Caption&quot;: {
+            &quot;text&quot;: &quot;Convert fancy quotes&quot;,
+            &quot;created&quot;: &quot;20150316114656395&quot;,
+            &quot;creator&quot;: &quot;Stephen&quot;,
+            &quot;modified&quot;: &quot;20160315205408027&quot;,
+            &quot;modifier&quot;: &quot;Stephen&quot;,
+            &quot;title&quot;: &quot;$:/language/Buttons/FancyQuotes/Caption&quot;
+        },
+        &quot;$:/language/Buttons/FancyQuotes/Hint&quot;: {
+            &quot;text&quot;: &quot;Convert quotes, apostrophes, etc to fancy versions&quot;,
+            &quot;created&quot;: &quot;20150202172430962&quot;,
+            &quot;creator&quot;: &quot;Stephen&quot;,
+            &quot;modified&quot;: &quot;20160315205424399&quot;,
+            &quot;modifier&quot;: &quot;Stephen&quot;,
+            &quot;title&quot;: &quot;$:/language/Buttons/FancyQuotes/Hint&quot;
+        },
+        &quot;$:/config/ShortcutInfo/fancyquotes&quot;: {
+            &quot;text&quot;: &quot;{{$:/language/Buttons/FancyQuotes/Hint}}&quot;,
+            &quot;created&quot;: &quot;20160505024752187&quot;,
+            &quot;creator&quot;: &quot;Stephen&quot;,
+            &quot;modified&quot;: &quot;20160505024818758&quot;,
+            &quot;modifier&quot;: &quot;Stephen&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;title&quot;: &quot;$:/config/ShortcutInfo/fancyquotes&quot;
+        },
+        &quot;$:/config/shortcuts/fancyquotes&quot;: {
+            &quot;text&quot;: &quot;ctrl-alt-Q&quot;,
+            &quot;created&quot;: &quot;20160505024826431&quot;,
+            &quot;creator&quot;: &quot;Stephen&quot;,
+            &quot;modified&quot;: &quot;20160505121918050&quot;,
+            &quot;modifier&quot;: &quot;Stephen&quot;,
+            &quot;tags&quot;: &quot;&quot;,
+            &quot;title&quot;: &quot;$:/config/shortcuts/fancyquotes&quot;
+        }
+    }
+}</pre>
+</div>
 <div author="Thomas Elmiger" core-version="5.1.13" created="20170205215504722" description="DetailsWidget" list="readme license" modified="20180925212742614" name="Disclosure HTML element" plugin-type="plugin" source="https://tid.li/tw5/plugins.html" title="$:/plugins/telmiger/details" type="application/json" version="0.7.4">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -13217,9 +13285,9 @@ message-background
 <pre>$:/core/ui/ControlPanel/Toolbars/PageControls</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
-<div created="20201210180125270" list="[[BibTex sources]] [[tutorial for excerpts]]" modified="20201210190151063" title="$:/StoryList">
+<div created="20201210180125270" list="$:/Import [[BibTex sources]] [[tutorial for excerpts]]" modified="20201210190151063" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time" title="$:/tags/PageControls">
@@ -14565,7 +14633,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <pre>loaded</pre>
 </div>
 <div title="$:/temp/time">
-<pre>2:02:46 PM</pre>
+<pre>2:07:06 PM</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
