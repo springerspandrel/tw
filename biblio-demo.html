@@ -256,7 +256,13 @@ Error message and password prompt
 
 <li>$:/plugins/kookma/shiraz/styles/bs/alerts</li>
 
+<li>$:/plugins/kookma/shiraz/styles/colorful-sidebar-tab</li>
+
 <li>$:/plugins/kookma/shiraz/styles/dynamic-tables</li>
+
+<li>$:/plugins/kookma/shiraz/styles/misc/edit-buttons</li>
+
+<li>$:/plugins/kookma/shiraz/styles/misc/tiddler-button-visibility</li>
 
 <li>$:/plugins/kookma/shiraz/styles/tables</li>
 
@@ -353,6 +359,8 @@ Error message and password prompt
 <li>$:/state/tab-2065006209</li>
 
 <li>$:/state/tab-770302894</li>
+
+<li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
 
@@ -11974,6 +11982,15 @@ html .tc-time:hover {
 }
 </pre>
 </div>
+<div created="20191209105546612" modified="20200323093719997" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/shiraz/styles/colorful-sidebar-tab" type="text/css">
+<pre>.tc-sidebar-lists .tc-tab-buttons button.tc-tab-selected {
+    background: none;
+    border: none;
+    border-bottom: solid 1px #737373 !important;
+    font-weight: bold;
+    color: #DB4C3F !important;
+}</pre>
+</div>
 <div created="20191128184537594" modified="20201204002209155" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/shiraz/styles/dynamic-tables" type="text/css">
 <pre>/* edit-text box for dynamic table */
 .shiraz-dtable-textbox {
@@ -12015,6 +12032,25 @@ table thead .tbl-delete-confirm &gt; th &gt; button {
 	background:#f0f0f0; 
 	border:none;
 }</pre>
+</div>
+<div created="20191029091851469" modified="20200323093720062" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/shiraz/styles/misc/edit-buttons" type="text/css">
+<pre>/*Edit buttons as traffic lights*/
+.tc-tiddler-controls .tc-image-delete-button {fill:#ebb;}
+.tc-tiddler-controls .tc-image-cancel-button {fill:#ed9;}
+.tc-tiddler-controls .tc-image-done-button {fill:#beb;}</pre>
+</div>
+<div created="20191029094209435" modified="20200323093720069" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/shiraz/styles/misc/tiddler-button-visibility" type="text/css">
+<pre>/* Mouseover toolbar visibility: courtesy from Tobias Beer*/
+.tc-tiddler-frame .tc-titlebar button {
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+.tc-tiddler-frame:hover .tc-titlebar button {
+  zoom: 1;
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+</pre>
 </div>
 <div created="20180413092232257" modified="20201204002205714" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/shiraz/styles/tables" type="text/css">
 <pre>.table-tight{
@@ -13105,7 +13141,7 @@ message-background
 <pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
 <div created="20201130195253518" modified="20201205203141617" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Plugins</pre>
+<pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
 <div created="20201130235037912" modified="20201201043501723" title="$:/state/tab-1846149089">
 <pre>$:/core/ui/ControlPanel/Plugins/Add/Plugins</pre>
@@ -13116,8 +13152,11 @@ message-background
 <div created="20201205203334623" modified="20201205203347728" title="$:/state/tab-770302894">
 <pre>$:/core/ui/TiddlerInfo/Fields</pre>
 </div>
+<div title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/plugins/kookma/shiraz/ui/ControlPanel/Settings</pre>
+</div>
 <div created="20201130194124206" modified="20201209214410735" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/ViewToolbar</pre>
@@ -13125,7 +13164,7 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>yes</pre>
 </div>
-<div list="$:/ControlPanel $:/plugins/kookma/utility [[reverence for being]] $:/springer/source-info [[“Real” quote-marks]]" title="$:/StoryList">
+<div list="$:/ControlPanel $:/plugins/kookma/shiraz $:/plugins/kookma/utility [[reverence for being]] $:/springer/source-info [[“Real” quote-marks]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/ViewTemplate/title $:/springer/source-info $:/core/ui/ViewTemplate/unfold $:/core/ui/ViewTemplate/subtitle $:/core/ui/ViewTemplate/tags $:/core/ui/ViewTemplate/classic $:/springer/add-abstract-above viewtemplate/bibtex $:/core/ui/ViewTemplate/body $:/springer/add-notes-below $:/core/ui/ViewTemplate/import $:/core/ui/ViewTemplate/plugin $:/plugins/kookma/shiraz/viewtemplates/sticky-footer $:/plugins/kookma/utility/viewtemplate/display-tiddler-raw-content $:/plugins/tiddlywiki/text-slicer/ui/view-template-segment" title="$:/tags/ViewTemplate">
