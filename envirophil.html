@@ -215,15 +215,23 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/encryption</li>
 
+<li>$:/config/PageControlButtons/Visibility/$:/plugins/kookma/utility/pagecontrol/view-fields-button</li>
+
 <li>$:/config/Plugins/Disabled/$:/plugins/sq/bullets</li>
 
 <li>$:/config/RelinkOnRename</li>
+
+<li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit</li>
 
 <li>$:/core</li>
 
 <li>$:/core/modules/widgets/action-createtiddler.js</li>
 
 <li>$:/core/modules/widgets/droppable.js</li>
+
+<li>$:/core/ui/SideBar/More</li>
+
+<li>$:/core/ui/SideBar/Tools</li>
 
 <li>$:/DefaultTiddlers</li>
 
@@ -276,6 +284,8 @@ Error message and password prompt
 <li>$:/plugins/tiddlywiki/highlight</li>
 
 <li>$:/plugins/TWaddle/tw-admin</li>
+
+<li>$:/plugins/TWaddle/tw-admin/content</li>
 
 <li>$:/plugins/TWaddle/tw-admin/sample</li>
 
@@ -1520,14 +1530,20 @@ Relink plugin - might be removed if a more lightweight yet robust rename mechani
 <div bag="default" created="20200524075037730" modified="20200524075223496" revision="0" tags="" title="$:/config/FileSystemPaths" type="text/vnd.tiddlywiki">
 <pre>[is[system]removeprefix[$:/]]</pre>
 </div>
-<div created="20200615165743203" modified="20200615165743203" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/encryption">
-<pre>show</pre>
+<div created="20200615165743203" modified="20201210165605313" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/encryption">
+<pre>hide</pre>
+</div>
+<div created="20201210165612128" modified="20201210165612128" title="$:/config/PageControlButtons/Visibility/$:/plugins/kookma/utility/pagecontrol/view-fields-button">
+<pre>hide</pre>
 </div>
 <div created="20200827210254324" modified="20200827210254324" title="$:/config/Plugins/Disabled/$:/plugins/sq/bullets">
 <pre>yes</pre>
 </div>
 <div bag="default" created="20200528004422450" modified="20200528184916850" revision="0" sq-bullet-uuid="e6d75a21-431a-488c-999b-62417d972b73" sq-bullets="$:/bullets/ef708b45-7873-478a-9778-bae39856f825" title="$:/config/RelinkOnRename" type="text/vnd.tiddlywiki">
 <pre>yes</pre>
+</div>
+<div created="20201210165540019" modified="20201210165540019" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit">
+<pre>hide</pre>
 </div>
 <div author="JeremyRuston" bag="default" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" revision="0" title="$:/core" type="application/json" version="5.1.22-prerelease">
 <pre>{
@@ -11081,6 +11097,42 @@ exports.droppable = DroppableWidget;
 
 })();</pre>
 </div>
+<div caption="{{$:/language/SideBar/More/Caption}}" created="20201210165533030" modified="20201210165533030" tags="" title="$:/core/ui/SideBar/More">
+<pre>&lt;div class=&quot;tc-more-sidebar&quot;&gt;
+&lt;$macrocall $name=&quot;tabs&quot; tabsList=&quot;[all[shadows+tiddlers]tag[$:/tags/MoreSideBar]!has[draft.of]]&quot; default={{$:/config/DefaultMoreSidebarTab}} state=&quot;$:/state/tab/moresidebar&quot; class=&quot;tc-vertical tc-sidebar-tabs-more&quot; /&gt;
+&lt;/div&gt;</pre>
+</div>
+<div caption="{{$:/language/SideBar/Tools/Caption}}" created="20201210165530792" modified="20201210165530792" tags="" title="$:/core/ui/SideBar/Tools">
+<pre>\define lingo-base() $:/language/ControlPanel/
+\define config-title()
+$:/config/PageControlButtons/Visibility/$(listItem)$
+\end
+
+&lt;&lt;lingo Basics/Version/Prompt&gt;&gt; &lt;&lt;version&gt;&gt;
+
+&lt;$set name=&quot;tv-config-toolbar-icons&quot; value=&quot;yes&quot;&gt;
+
+&lt;$set name=&quot;tv-config-toolbar-text&quot; value=&quot;yes&quot;&gt;
+
+&lt;$set name=&quot;tv-config-toolbar-class&quot; value=&quot;&quot;&gt;
+
+&lt;$list filter=&quot;[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]&quot; variable=&quot;listItem&quot;&gt;
+
+&lt;div style=&quot;position:relative;&quot; class={{{ [&lt;listItem&gt;encodeuricomponent[]addprefix[tc-btn-]] }}}&gt;
+
+&lt;$checkbox tiddler=&lt;&lt;config-title&gt;&gt; field=&quot;text&quot; checked=&quot;show&quot; unchecked=&quot;hide&quot; default=&quot;show&quot;/&gt; &lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt;/&gt; &lt;i class=&quot;tc-muted&quot;&gt;&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt; field=&quot;description&quot;/&gt;&lt;/i&gt;
+
+&lt;/div&gt;
+
+&lt;/$list&gt;
+
+&lt;/$set&gt;
+
+&lt;/$set&gt;
+
+&lt;/$set&gt;
+</pre>
+</div>
 <div bag="default" created="20200524075324139" modified="20200524075325162" revision="0" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki">
 <pre>[list[$:/StoryList]]</pre>
 </div>
@@ -12727,6 +12779,11 @@ $value={{$:/temp/newfieldvalue}}/&gt;
     }
 }</pre>
 </div>
+<div caption="TW Admin Panel" created="20170129121725770" creator="twMat" list-before="" modified="20201210165521205" modifier="Mat von TWaddle" tags="" title="$:/plugins/TWaddle/tw-admin/content">
+<pre>&lt;div style=&quot;float:right&quot;&gt;&lt;$vars tv-config-toolbar-icons=&quot;yes&quot;&gt;{{$:/plugins/TWaddle/tw-admin/button}}&lt;br&gt;{{$:/core/ui/Buttons/save-wiki}}&lt;/$vars&gt;&lt;/div&gt;
+
+{{$:/plugins/TWaddle/tw-admin/sample}}</pre>
+</div>
 <div created="20170402185752623" creator="Mat von TWaddle" modified="20180914231305946" modifier="Mat von TWaddle" tags="tw-admin" title="$:/plugins/TWaddle/tw-admin/sample">
 <pre>Edit this sample content freely,  [[here|$:/plugins/TWaddle/tw-admin/sample]]. 
 
@@ -13105,11 +13162,11 @@ a.tc-tiddlylink-external {
 <div created="20200601233627390" modified="20201118042557512" title="$:/state/tab--761431316">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20200612233352372" modified="20200827220551878" title="$:/state/tab-2027485122">
-<pre>$:/core/ui/ControlPanel/Palette</pre>
+<div created="20200612233352372" modified="20201210165559912" title="$:/state/tab-2027485122">
+<pre>$:/core/ui/ControlPanel/Toolbars</pre>
 </div>
-<div created="20200601233623546" modified="20201204165005806" title="$:/state/tab-390999370">
-<pre>$:/core/ui/ControlPanel/Plugins</pre>
+<div created="20200601233623546" modified="20201210165556599" title="$:/state/tab-390999370">
+<pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
 <div created="20200612233903343" modified="20200612233903343" title="$:/state/tab/moresidebar-65670323">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
@@ -13135,7 +13192,7 @@ a.tc-tiddlylink-external {
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20201204165003575" list="[[Extension of existing moral theories…]] [[final wrap-up]] ethics syllabus" modified="20201209155915100" title="$:/StoryList">
+<div created="20201204165003575" list="[[Extension of existing moral theories…]] [[final wrap-up]] ethics syllabus" modified="20201210165553620" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200827221418214" modified="20201123123938433" title="$:/temp/advancedsearch">
