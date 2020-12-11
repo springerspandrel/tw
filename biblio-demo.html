@@ -392,6 +392,8 @@ Error message and password prompt
 
 <li>$:/temp/advancedsearch</li>
 
+<li>$:/temp/bimlas/highlight-searched-text/counter</li>
+
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/NewTagName</li>
@@ -695,6 +697,8 @@ Error message and password prompt
 <li>haraway1988situated</li>
 
 <li>inner vs outer</li>
+
+<li>keyword</li>
 
 <li>laduke1999all</li>
 
@@ -10349,8 +10353,8 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20201201044006751" modified="20201210224810231" title="$:/keepstate/utility/toggle-view-fields">
-<pre>hide</pre>
+<div created="20201201044006751" modified="20201211213009432" title="$:/keepstate/utility/toggle-view-fields">
+<pre>show</pre>
 </div>
 <div created="20160609120738579" creator="twMat" demo_comment="This little Stylesheet addition allows the ``linkstyle`` field to contain specifications for link colors and other aids to visual clarity." modified="20200517001344264" modifier="espringer" tags="$:/tags/Stylesheet [[inner stylesheet]]" title="$:/LinkStyle/Stylesheet">
 <pre>\define linkstyle()
@@ -13440,7 +13444,7 @@ April 13, 2018
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201210224810231" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
+<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201211213009432" tags="$:/tags/ViewTemplate" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
 <pre>\define lingo-base() $:/language/EditTemplate/
 \define config-title()
 $:/config/EditTemplateFields/Visibility/$(currentField)$
@@ -14194,8 +14198,8 @@ message-background
 <div title="$:/state/plugin-info-1966737534-$:/plugins/ajh/tiddlytime--268265594">
 <pre>contents</pre>
 </div>
-<div created="20201130201343571" modified="20201204190805003" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20201130201343571" modified="20201211210628406" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20201130210408465" modified="20201130210408465" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
@@ -14236,16 +14240,16 @@ message-background
 <div title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Shadows</pre>
 </div>
-<div created="20201130194124206" modified="20201210213639794" title="$:/state/tab/sidebar--595412856">
+<div created="20201130194124206" modified="20201211213142824" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/PageControls</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
-<div created="20201210202551381" list="[[tutorial for excerpts]] [[Aristotle, Nicomachean Ethics]]" modified="20201210224517135" title="$:/StoryList">
+<div created="20201211210355597" list="" modified="20201211213607670" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time" title="$:/tags/PageControls">
@@ -14256,6 +14260,9 @@ message-background
 </div>
 <div created="20201130200006288" modified="20201210213530664" title="$:/temp/advancedsearch">
 <pre>caption</pre>
+</div>
+<div created="20201211213608074" title="$:/temp/bimlas/highlight-searched-text/counter">
+<pre>(0)</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -15591,7 +15598,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <pre>loaded</pre>
 </div>
 <div title="$:/temp/time">
-<pre>5:51:29 PM</pre>
+<pre>4:37:35 PM</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -15746,7 +15753,7 @@ The many, and the most vulgar, would seem to conceive the good and happiness as 
 <div created="20201209195611046" linkstyle-before="content:&quot;IN-PROGRESS: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209202008284" tags="BibTeX" title="BibTex sources">
 <pre>&lt;&lt;table-dynamic filter:&quot;[has[bibtex-title]]&quot; fields:&quot;tbl-expand bibtex-author bibtex-title bibtex-publisher bibtex-year title caption&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
 </div>
-<div created="20201209213855844" icon="$:/favicon.ico" linkstyle-after="content:&quot; CATEGORY&quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " linkstyle-before="content:&quot;{{$:/springer/book-icon}} &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}};" modified="20201210224524067" title="book">
+<div created="20201209213855844" icon="$:/favicon.ico" linkstyle-after="content:&quot; CATEGORY&quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " linkstyle-before="content:&quot;{{$:/springer/book-icon}} &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}}; text-shadow: 1px 1px &lt;&lt;colour alert-background&gt;&gt;;" modified="20201211213617819" stylesheet-detail="&lt;$list filter=&quot;&quot;&quot;[tag[book]] [bibtex-entry-type[book]]&quot;&quot;&quot;&gt;&lt;$vars tid={{!!title}} style-before={{book!!linkstyle-before}}&gt;&lt;&lt;linkstyle-alt&gt;&gt;&lt;/$vars&gt;&lt;/$list&gt;" title="book">
 <pre>&lt;&lt;table-dynamic filter:&quot;[tag[book]] [bibtex-entry-type[book]]&quot; fields:&quot;tbl-expand bibtex-author bibtex-title bibtex-publisher publisher bibtex-year year text-title title caption tbl-clone tbl-delete&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
 </div>
 <div created="20200723143208165" creator="jd" description="Day/night palette" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201123235900000" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
@@ -15788,7 +15795,7 @@ And the ethics which they have proposed to their disciples has always pursued th
 the supporters of the “interest” side of the controversy habitually use the term “self-interest”. Starting from the premisses that unless there is interest in an object or idea, there is no motive force, they end with the conclusion that even when a person claims to be acting from principle or from a sense of duty, he really acts as he does because there “is something in it” for himself. The premiss is sound; the conclusion false. In reply the other school argues that since man in capable of generous self-forgetting and even self-sacrificing action, he is capable of acting without interest. Again the premiss is sound, and the conclusion false....
 Both sides assume that the self is a fixed and hence isolated quantity.</pre>
 </div>
-<div created="20201204054530858" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color:{{$:/springer/quote-icon!!palette-value}}; text-transform: uppercase; font-weight:700; " modified="20201209214329258" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;education&quot;." quote-style=".triangle-left" tags="keyword" title="education">
+<div created="20201204054530858" modified="20201211212815753" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;education&quot;." quote-style=".triangle-left" tags="keyword" title="education">
 <pre>&lt;$list filter=&quot;[keywords[education]]&quot;&gt; 
 @@.triangle-left
 &lt;$view field=text/&gt;&lt;br /&gt;
@@ -15839,7 +15846,7 @@ Everything has two handles, one by which it may be carried and the other not. If
 <div author="Beauvoir" created="20201130204936981" keywords="religion" linkstyle-before="" modified="20201203201937321" notes="But compare to her admiration of the Jesuit priest..." page="265" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="everything permitted?">
 <pre>Dostoievsky asserted, “If God does not exist, everything is permitted.” Today’s believers use this formula for their own advantage. To reestablish man at the heart of his destiny is, they claim, to repudiate all ethics. However, far from God’s absence authorizing all license, the contrary is the case, because man is abandoned on the earth, because his acts are definitive, absolute engagements. He bears the responsibility for a world which is not the work of a strange power, but of himself, where his defeats are inscribed, and his victories as well.</pre>
 </div>
-<div created="20201210205347719" linkstyle-after="content:&quot; CATEGORY&quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " linkstyle-before="content:&quot;{{$:/springer/quote-icon}} &quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}};" modified="20201210224750160" tags="" title="excerpt">
+<div created="20201210205347719" linkstyle-after="content:&quot; CATEGORY&quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " linkstyle-before="content:&quot;{{$:/springer/quote-icon}} &quot;; position:relative; color: {{$:/springer/quote-icon!!palette-value}}; text-shadow: -0.5px -2px &lt;&lt;colour alert-background&gt;&gt;;" modified="20201211213553058" stylesheet-detail="&lt;$list filter=&quot;&quot;&quot;[tag[excerpt]]&quot;&quot;&quot;&gt;&lt;$vars tid={{!!title}} style-before={{excerpt!!linkstyle-before}}&gt;&lt;&lt;linkstyle-alt&gt;&gt;&lt;/$vars&gt;&lt;/$list&gt;" tags="" title="excerpt">
 <pre>&lt;&lt;table-dynamic filter:&quot;[tag[excerpt]]&quot; fields:&quot;tbl-expand author text-title page title notes tbl-clone tbl-delete&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;
 
 :^^Note: This tiddler uses &lt;mark&gt;dynamic tables&lt;/mark&gt; from [[$:/plugins/kookma/shiraz]] to organize information about excerpts. Other approaches, like using &quot;table of contents&quot; macro, are possible without plugins, but they're less flexible.^^
@@ -15848,9 +15855,8 @@ Everything has two handles, one by which it may be carried and the other not. If
 
 A dynamic table can include any desired combination of fields, and you can add a dynamic table to any tiddler (even adding one to custom ViewTemplate formats so that authors or texts automatically get their own dynamic tables). Not only can a dynamic table be sorted on the fly, but both the meta-data field contents and the content itself can be edited on the fly using the little &quot;edit&quot; icon at the upper left of the table area.</pre>
 </div>
-<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201210224323622" tags="$:/tags/Stylesheet" title="excerpt-style">
-<pre>
-\define linkstyle-alt()
+<div created="20201130212657125" linkstyle-before="content:&quot;STYLESHEET: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201211212804739" tags="$:/tags/Stylesheet" title="excerpt-style">
+<pre>\define linkstyle-alt()
 &lt;$set name=&quot;uri&quot; value=&lt;&lt;makedatauri &quot;&quot;&quot;$(tid)$&quot;&quot;&quot; &quot;text/plain&quot;&gt;&gt; &gt;
 &lt;$list variable=&quot;urititle&quot; filter=&quot;&quot;&quot;[&lt;uri&gt;removeprefix[data:text/plain,]]&quot;&quot;&quot;&gt;
 &lt;style&gt;
@@ -15863,21 +15869,9 @@ a[href=&quot;#&lt;&lt;urititle&gt;&gt;&quot;]:after { &lt;&lt;style-after&gt;&gt
 &lt;/$set&gt;
 \end
 
-&lt;$list filter=&quot;&quot;&quot;[tag[book]] [bibtex-entry-type[book]]&quot;&quot;&quot;&gt;
-&lt;$vars tid={{!!title}}
-            style-before={{book!!linkstyle-before}}
-&gt;&lt;&lt;linkstyle-alt&gt;&gt;
-&lt;/$vars&gt;
-&lt;/$list&gt;
-
-&lt;$list filter=&quot;&quot;&quot;[tag[excerpt]]&quot;&quot;&quot;&gt;
-&lt;$vars tid={{!!title}}
-            style-before={{excerpt!!linkstyle-before}}
-&gt;
-&lt;&lt;linkstyle-alt&gt;&gt;
-&lt;/$vars&gt;
-&lt;/$list&gt;
-
+{{book!!stylesheet-detail}}
+{{excerpt!!stylesheet-detail}}
+{{keyword!!stylesheet-detail}}
 
 div.tc-tagged-excerpt { color: &lt;&lt;colour message-foreground&gt;&gt;;
 background-image: url(&quot;quotesm.png&quot;); 
@@ -16041,10 +16035,13 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 <div author="Dewey" caption="inner vs outer?" created="20201130195547131" keywords="education" linkstyle-before="" modified="20201205194957907" notes="Compare to Beauvoir’s complaint in “Ethics of Ambiguity”" page="347" source-text="Dewey, Democracy and Education" tags="excerpt" text-title="Democracy and Education" title="inner vs outer">
 <pre>The first obstruction which meets us is the currency of moral ideas which split the course of activity into two opposed factors, ... the inner and outer, or the spiritual and the physical. This division is a culmination of the dualism of mind and the world, soul and body, end and means, which we have so frequently noted. In morals it takes the form of a sharp demarcation of the motive of action from its consequences, and of character from conduct. ... Different schools identify morality with either the inner state of mind or the outer act and results, each in separation from the other.</pre>
 </div>
+<div created="20201211211708858" linkstyle-after="content:&quot; CATEGORY&quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " linkstyle-before="content:&quot;☛ &quot;; position:relative; font-family: &quot;Adobe Pi Std&quot;; font-size:100%; color: {{keyword!!palette-value}}; text-shadow: 1px 1px &lt;&lt;colour alert-background&gt;&gt;;" modified="20201211213433065" palette-value="&lt;&lt;colour code-foreground&gt;&gt;" stylesheet-detail="&lt;$list filter=&quot;&quot;&quot;[tag[keyword]]&quot;&quot;&quot;&gt;&lt;$vars tid={{!!title}} style-before={{keyword!!linkstyle-before}}&gt;&lt;&lt;linkstyle-alt&gt;&gt;&lt;/$vars&gt;&lt;/$list&gt;" tags="" title="keyword">
+<pre>&lt;&lt;table-dynamic filter:&quot;[tag[keyword]]&quot; fields:&quot;tbl-expand title caption tbl-clone tbl-delete&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
+</div>
 <div bibtex-author="LaDuke, Winona" bibtex-entry-type="book" bibtex-publisher="South End Press" bibtex-title="All our relations: Native struggles for land and life" bibtex-year="1999" title="laduke1999all">
 <pre></pre>
 </div>
-<div created="20201204054530858" linkstyle-before="content:&quot;{{!!tags}}: &quot;; position:relative; font-size:75%; color:{{$:/springer/quote-icon!!palette-value}}; text-transform: uppercase; font-weight:700; " modified="20201209214329258" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;{{!!title}}&quot;." quote-style=".triangle-left" tags="keyword" title="language">
+<div created="20201204054530858" modified="20201211212824505" notes="Filtered lists can be used to pull quotes together based on any criteria you like. These are quotes that share the keyword &quot;{{!!title}}&quot;." quote-style=".triangle-left" tags="keyword" title="language">
 <pre>&lt;$list filter=&quot;[keywords[language]]&quot;&gt; 
 @@.triangle-right
 &lt;$view field=text/&gt;&lt;br /&gt;
