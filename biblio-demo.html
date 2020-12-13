@@ -276,6 +276,8 @@ Error message and password prompt
 
 <li>$:/plugins/kookma/utility</li>
 
+<li>$:/plugins/kookma/utility/macro/transclusion</li>
+
 <li>$:/plugins/kookma/utility/styles/tw-version</li>
 
 <li>$:/plugins/kookma/utility/viewtemplate/view-fields</li>
@@ -667,6 +669,8 @@ Error message and password prompt
 <li>Dewey, Democracy and Education</li>
 
 <li>disappointed seriousness</li>
+
+<li>dropzone</li>
 
 <li>duty vs interest?</li>
 
@@ -10324,7 +10328,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div created="20201130195335809" modified="20201130195336794" title="$:/GitHub/Repo">
 <pre>springerspandrel/tw</pre>
 </div>
-<div created="20201130195332129" modified="20201130195332129" title="$:/GitHub/Username">
+<div created="20201130195332129" modified="20201213011926209" title="$:/GitHub/Username">
 <pre>springerspandrel</pre>
 </div>
 <div created="20201130195319832" modified="20201130195320065" title="$:/GitLab/Branch">
@@ -10345,7 +10349,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/plugins/bimlas/highlight-searched-text]]</pre>
+# [[Untitled 1]]</pre>
 </div>
 <div created="20201209204657455" modified="20201209204701075" title="$:/Import!!popup-Untitled">
 <pre>no</pre>
@@ -10353,7 +10357,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20201201044006751" modified="20201211220948057" title="$:/keepstate/utility/toggle-view-fields">
+<div created="20201201044006751" modified="20201213011504559" title="$:/keepstate/utility/toggle-view-fields">
 <pre>hide</pre>
 </div>
 <div created="20160609120738579" creator="twMat" demo_comment="This little Stylesheet addition allows the ``linkstyle`` field to contain specifications for link colors and other aids to visual clarity." modified="20201211214119224" modifier="espringer" tags="$:/tags/Stylesheet" title="$:/LinkStyle/Stylesheet">
@@ -10380,8 +10384,8 @@ a[href=&quot;#&lt;&lt;urititle&gt;&gt;&quot;]:after { &lt;&lt;style-after&gt;&gt
 &lt;/$vars&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201130234239430" modified="20201211221443631" title="$:/palette">
-<pre>$:/palettes/Vanilla</pre>
+<div created="20201130234239430" modified="20201213011700656" title="$:/palette">
+<pre>$:/palettes/Wesleyan</pre>
 </div>
 <div created="20201203231547535" description="A blue theme" modified="20201204202613342" name="Blue" tags="$:/tags/Palette" title="$:/palettes/Blue" type="application/x-tiddler-dictionary">
 <pre>alert-background: #ffe476
@@ -13433,18 +13437,58 @@ April 13, 2018
     }
 }</pre>
 </div>
-<div created="20180906042308596" modified="20200325164200123" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/utility/styles/tw-version" type="text/vnd.tiddlywiki">
+<div created="20190930050545887" modified="20201213011433946" tags="$:/tags/Macro" title="$:/plugins/kookma/utility/macro/transclusion" type="text/vnd.tiddlywiki">
+<pre>\define code(tiddler)
+&lt;$set name=selected-tiddler value=&quot;$tiddler$&quot; emptyValue=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$codeblock language={{{[&lt;selected-tiddler&gt;get[type]]}}} code={{{[&lt;selected-tiddler&gt;get[text]]}}}/&gt;
+&lt;/$set&gt;
+\end
+
+\define code-link(tiddler)
+&lt;$set name=selected-tiddler value=&quot;$tiddler$&quot; emptyValue=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;selected-tiddler&gt;&gt;/&gt;
+&lt;$codeblock language={{{[&lt;selected-tiddler&gt;get[type]]}}} code={{{[&lt;selected-tiddler&gt;get[text]]}}}/&gt;
+&lt;/$set&gt;
+\end
+
+\define content(tiddler)
+&lt;$set name=selected-tiddler value=&quot;$tiddler$&quot; emptyValue=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;selected-tiddler&gt;&gt;/&gt;
+&lt;$transclude tiddler=&lt;&lt;selected-tiddler&gt;&gt; mode=&quot;block&quot;/&gt;
+&lt;/$set&gt;
+\end
+
+\define fields(tiddler)
+&lt;$set name=selected-tiddler value=&quot;$tiddler$&quot; emptyValue=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;selected-tiddler&gt;&gt;/&gt;
+&lt;$list filter='[&lt;selected-tiddler&gt;fields[]] -[enlist[text title created modified tags creator modifier]] +[limit[1]]' variable=&quot;ignore&quot;&gt;&lt;!--check if there is any user field --&gt;
+&lt;table class=&quot;table-striped-col;&quot;&gt;
+&lt;$list filter='[&lt;selected-tiddler&gt;fields[]] -[enlist[text title created modified tags creator modifier]]' variable=&quot;fld&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align:right&quot;&gt;&lt;&lt;fld&gt;&gt;:&lt;/td&gt;&lt;td&gt;&lt;$text text={{{[&lt;selected-tiddler&gt;get&lt;fld&gt;]}}}/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/$list&gt;
+&lt;/table&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+\end
+
+\define description(tiddler)
+&lt;$set name=selected-tiddler value=&quot;$tiddler$&quot; emptyValue=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;dl&gt;&lt;dt&gt;&lt;$link to=&lt;&lt;selected-tiddler&gt;&gt;/&gt;&lt;/dt&gt;&lt;dd&gt;&lt;$transclude tiddler=&lt;&lt;selected-tiddler&gt;&gt; field=&quot;description&quot;/&gt;&lt;/dd&gt;&lt;/dl&gt;
+&lt;/$set&gt;
+\end</pre>
+</div>
+<div created="20180906042308596" modified="20201213010239355" tags="$:/tags/Stylesheet" title="$:/plugins/kookma/utility/styles/tw-version" type="text/vnd.tiddlywiki">
 <pre>&lt;pre&gt;/* TW-version added to site title */
 .tc-site-title:before {
   content:&quot;TW &lt;&lt;version&gt;&gt;&quot;;
   position:absolute;
   margin-top:-1.9em;
-  color:silver;
+  color: &lt;&lt;colour muted-foreground&gt;&gt;;
   font-size:13px;
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201211220948057" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
+<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201213011504559" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
 <pre>\define lingo-base() $:/language/EditTemplate/
 \define config-title()
 $:/config/EditTemplateFields/Visibility/$(currentField)$
@@ -14189,7 +14233,7 @@ message-background
 <div created="20201209201408638" modified="20201209201512954" title="$:/state/plugin-info--1812014690-$:/plugins/.mr/refnotes---1873164945">
 <pre>usage</pre>
 </div>
-<div title="$:/state/plugin-info--1868225090-$:/plugins/kookma/utility---60672440">
+<div created="20201213005724635" modified="20201213005822160" title="$:/state/plugin-info--1868225090-$:/plugins/kookma/utility---60672440">
 <pre>contents</pre>
 </div>
 <div created="20201130234903737" modified="20201130235228230" title="$:/state/plugin-info--896887961-$:/plugins/kookma/shiraz">
@@ -14207,7 +14251,7 @@ message-background
 <div created="20201205205750201" modified="20201211221236331" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
-<div created="20201130200010289" modified="20201211220152246" title="$:/state/tab--1498284803">
+<div created="20201130200010289" modified="20201213005449017" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div created="20201130210404538" modified="20201205203146143" title="$:/state/tab--1963855381">
@@ -14225,22 +14269,22 @@ message-background
 <div created="20201205202107882" modified="20201205202438360" title="$:/state/tab--86143343">
 <pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
-<div created="20201130195253518" modified="20201210190748678" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Plugins</pre>
+<div created="20201130195253518" modified="20201213011920661" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Saving</pre>
 </div>
 <div created="20201130235037912" modified="20201201043501723" title="$:/state/tab-1846149089">
 <pre>$:/core/ui/ControlPanel/Plugins/Add/Plugins</pre>
 </div>
-<div created="20201130195255147" modified="20201203191907605" title="$:/state/tab-2065006209">
-<pre>$:/core/ui/ControlPanel/Saving/General</pre>
+<div created="20201130195255147" modified="20201212220844173" title="$:/state/tab-2065006209">
+<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
 <div created="20201205203334623" modified="20201205203347728" title="$:/state/tab-770302894">
 <pre>$:/core/ui/TiddlerInfo/Fields</pre>
 </div>
-<div title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/Shadows</pre>
+<div created="20201213005321650" modified="20201213005559322" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/plugins/kookma/utility/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201130194124206" modified="20201211221453413" title="$:/state/tab/sidebar--595412856">
+<div created="20201130194124206" modified="20201213011705231" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -14249,7 +14293,7 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201211210355597" list="" modified="20201211221639427" title="$:/StoryList">
+<div created="20201212220627702" list="" modified="20201213011918525" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time" title="$:/tags/PageControls">
@@ -14258,10 +14302,10 @@ message-background
 <div list="$:/core/ui/ViewTemplate/title $:/springer/source-info $:/core/ui/ViewTemplate/unfold $:/core/ui/ViewTemplate/subtitle $:/core/ui/ViewTemplate/tags $:/core/ui/ViewTemplate/classic $:/springer/add-abstract-above viewtemplate/bibtex $:/core/ui/ViewTemplate/body $:/springer/add-notes-below $:/core/ui/ViewTemplate/import $:/core/ui/ViewTemplate/plugin $:/plugins/kookma/shiraz/viewtemplates/sticky-footer $:/plugins/kookma/utility/viewtemplate/display-tiddler-raw-content $:/plugins/tiddlywiki/text-slicer/ui/view-template-segment" title="$:/tags/ViewTemplate">
 <pre></pre>
 </div>
-<div created="20201130200006288" modified="20201211220141096" title="$:/temp/advancedsearch">
-<pre>.tc-tag</pre>
+<div created="20201130200006288" modified="20201213010337701" title="$:/temp/advancedsearch">
+<pre>borderless</pre>
 </div>
-<div created="20201211221639828" title="$:/temp/bimlas/highlight-searched-text/counter">
+<div created="20201213011918938" title="$:/temp/bimlas/highlight-searched-text/counter">
 <pre>(0)</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -14309,11 +14353,11 @@ message-background
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1366&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;768&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -15588,7 +15632,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201130235146390" modified="20201210202255790" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20201130194257953" modified="20201211213823021" title="$:/temp/search">
+<div created="20201130194257953" modified="20201213005043508" title="$:/temp/search">
 <pre></pre>
 </div>
 <div tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://kookma.github.io/TW-PluginLibrary/library/index.html" url="https://kookma.github.io/TW-PluginLibrary/library/index.html">
@@ -15598,7 +15642,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <pre>loaded</pre>
 </div>
 <div title="$:/temp/time">
-<pre>5:17:05 PM</pre>
+<pre>8:19:58 PM</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -15789,6 +15833,24 @@ And the ethics which they have proposed to their disciples has always pursued th
 </div>
 <div author="Beauvoir" created="20201203192153893" keywords="nihilism" linkstyle-before="" modified="20201211220857258" notes="" page="267" source-text="Beauvoir, Ethics of Ambiguity" tags="excerpt" text-title="Ethics of Ambiguity" title="disappointed seriousness">
 <pre>Nihilism is disappointed seriousness which has turned back upon itself.... right in thinking that the world possesses no justification and that he himself is nothing. But he forgets that it is up to him to justify the world and to make himself exist validly.</pre>
+</div>
+<div created="20201212220434325" modified="20201212220455227" tags="$:/tags/SideBar" title="dropzone">
+<pre>\define dropbibtex()
+&lt;$wikify name=&quot;source&quot; text=&lt;&lt;actionTiddler&gt;&gt;&gt;
+&lt;$set name=&quot;source&quot; filter=&quot;[&lt;source&gt;removeprefix[@book{]removesuffix[}]split[,]rest[]join[,]]&quot; select=0&gt;
+   &lt;$list filter=&quot;[&lt;source&gt;split[}]first[]trim[]removeprefix[title={]]&quot; variable=&quot;title&quot;&gt;
+      &lt;$list filter=&quot;[&lt;source&gt;split[}]]&quot; variable=&quot;item&quot;&gt;
+         &lt;$vars f={{{ [&lt;item&gt;split[={]first[]trim[,]trim[]] }}} v={{{ [&lt;item&gt;split[={]rest[]trim[,]trim[]] }}}&gt;
+         &lt;$action-setfield $tiddler=&lt;&lt;title&gt;&gt; $field=&lt;&lt;f&gt;&gt; $value=&lt;&lt;v&gt;&gt; /&gt;
+         &lt;/$vars&gt;
+      &lt;/$list&gt;
+   &lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/$wikify&gt;
+\end
+&lt;$droppable actions=&lt;&lt;dropbibtex&gt;&gt;&gt;
+&lt;$button style=&quot;width:10em;height:10em;&quot;&gt;drop bibtex here&lt;/$button&gt;
+&lt;/$droppable&gt;</pre>
 </div>
 <div author="Dewey" caption="duty vs interest?" created="20201205194849591" keywords="education" linkstyle-before="" modified="20201211220857258" notes="" page="350" source-text="Dewey, Democracy and Education" tags="excerpt" text-title="Democracy and Education" title="duty vs interest?">
 <pre>[T]o act according to interest is, so the allegation runs, to act selfishly, with one’s own personal profit in view...
@@ -16105,9 +16167,11 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 &lt;/$details&gt;
 </pre>
 </div>
-<div bibtex-address="New York" bibtex-author="Gardiner, Stephen Mark" bibtex-entry-type="book" bibtex-isbn="9780195379440 (alk. paper)
-0195379446 (alk. paper)" bibtex-pages="xvii, 489 p." bibtex-publisher="Oxford University Press" bibtex-series="Environmental ethics and science policy series" bibtex-title="A perfect moral storm : the ethical tragedy of climate change" bibtex-type="Book" bibtex-year="2011" caption="Gardiner, Perfect (2011)" created="20201210181354992" modified="20201210205313900" tags="book" title="RN10">
-<pre></pre>
+<div abstract="Climate change is a global problem that is predominantly an intergenerational conflict, and which takes place in a setting where our ethical impulses are weak. This &quot;perfect moral storm&quot; poses a profound challenge to humanity. This book explains how the &quot;perfect storm&quot; metaphor makes sense of our current malaise, and why a better ethics can help see our way out." bibtex-address="New York" bibtex-author="Gardiner, Stephen Mark" bibtex-entry-type="book" bibtex-isbn="9780195379440 (alk. paper)
+0195379446 (alk. paper)" bibtex-pages="xvii, 489 p." bibtex-publisher="Oxford University Press" bibtex-series="Environmental ethics and science policy series" bibtex-title="A perfect moral storm : the ethical tragedy of climate change" bibtex-type="Book" bibtex-year="2011" caption="Gardiner, Perfect (2011)" created="20201210181354992" modified="20201213011153287" tags="book" title="RN10">
+<pre>&lt;$details summary=&quot;citation details&quot;&gt;
+&lt;&lt;fields&gt;&gt;
+&lt;/$details&gt;</pre>
 </div>
 <div bibtex-address="Minneapolis, Minnesota" bibtex-author="Kimmerer, Robin Wall" bibtex-entry-type="book" bibtex-isbn="9781571311771" bibtex-pages="pages cm" bibtex-publisher="Milkweed Editions" bibtex-title="Braiding sweetgrass : indigenous wisdom, scientific knowledge, and the teachings of plants" bibtex-type="Book" bibtex-year="2020" caption="Kimmerer, Braiding (2020)" created="20201209204738846" linkstyle-before="" modified="20201209204744502" tags="book" title="RN2">
 <pre>&lt;$details open=&quot;yes&quot; summary=&quot;Excerpts:&quot;&gt;
@@ -16135,8 +16199,8 @@ Open Humanities Press ebook collection http://www.openhumanitiespress.org/book-t
 <pre></pre>
 </div>
 <div bibtex-address="Minneapolis" bibtex-author="Shotwell, Alexis" bibtex-entry-type="book" bibtex-isbn="9780816698622 (hc alk. paper)
-9780816698646 (pb alk. paper)" bibtex-pages="236 pages" bibtex-publisher="University of Minnesota Press" bibtex-title="Against purity : living ethically in compromised times" bibtex-type="Book" bibtex-year="2016" caption="Shotwell, Against (2016)" created="20201210181425716" modified="20201210181505249" title="RN5">
-<pre></pre>
+9780816698646 (pb alk. paper)" bibtex-pages="236 pages" bibtex-publisher="University of Minnesota Press" bibtex-title="Against purity : living ethically in compromised times" bibtex-type="Book" bibtex-year="2016" caption="Shotwell, Against (2016)" created="20201210181425716" modified="20201213010023651" title="RN5">
+<pre>&lt;&lt;fields&gt;&gt;</pre>
 </div>
 <div bibtex-address="Minneapolis" bibtex-author="Morton, Timothy" bibtex-entry-type="book" bibtex-isbn="9780816689224 (hc alk. paper)
 9780816689231 (pb alk. paper)" bibtex-pages="x, 229 pages, 8 unnumbered pages of plates" bibtex-publisher="University of Minnesota Press" bibtex-series="Posthumanities" bibtex-title="Hyperobjects : philosophy and ecology after the end of the world" bibtex-type="Book" bibtex-year="2013" caption="Morton, Hyperobjects (2013)" created="20201210181432207" modified="20201210181508748" title="RN7">
