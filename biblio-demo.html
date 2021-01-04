@@ -674,6 +674,10 @@ Error message and password prompt
 
 <li>book</li>
 
+<li>clear-both</li>
+
+<li>cover-from-isbn</li>
+
 <li>Day/night palette button</li>
 
 <li>denying ambiguity</li>
@@ -10387,7 +10391,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[file-pdf-solid.svg]]</pre>
+# [[clear-both]]</pre>
 </div>
 <div created="20201209204657455" modified="20201209204701075" title="$:/Import!!popup-Untitled">
 <pre>no</pre>
@@ -10395,7 +10399,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div created="20201201044006751" modified="20201221225615621" title="$:/keepstate/utility/toggle-view-fields">
+<div created="20201201044006751" modified="20210104222940160" title="$:/keepstate/utility/toggle-view-fields">
 <pre>hide</pre>
 </div>
 <div created="20160609120738579" creator="twMat" demo_comment="This little Stylesheet addition allows the ``linkstyle`` field to contain specifications for link colors and other aids to visual clarity." modified="20201211214119224" modifier="espringer" tags="$:/tags/Stylesheet" title="$:/LinkStyle/Stylesheet">
@@ -13526,7 +13530,7 @@ April 13, 2018
 }
 &lt;/pre&gt;</pre>
 </div>
-<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20201221225615621" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
+<div created="20181010162537613" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20210104222940160" tags="" title="$:/plugins/kookma/utility/viewtemplate/view-fields" type="text/vnd.tiddlywiki">
 <pre>\define lingo-base() $:/language/EditTemplate/
 \define config-title()
 $:/config/EditTemplateFields/Visibility/$(currentField)$
@@ -14182,13 +14186,20 @@ message-foreground
 message-background
 &quot; variable=&quot;colour&quot;&gt;&lt;&lt;swatch&gt;&gt;&lt;/$list&gt;&lt;/div&gt;</pre>
 </div>
-<div created="20201201062012497" modified="20201203205047842" tags="$:/tags/ViewTemplate" title="$:/springer/add-abstract-above">
-<pre>&lt;$list filter=&quot;[all[current]has[abstract]]&quot;&gt;
+<div created="20201201062012497" modified="20210104223426810" tags="$:/tags/ViewTemplate" title="$:/springer/add-abstract-above">
+<pre>\define makeimg() [img[https://covers.openlibrary.org/b/isbn/$(isbn)$-M.jpg]]
+&lt;$vars isbn={{!!bibtext-isbn}}&gt; &lt;&lt;makeimg&gt;&gt; &lt;/$vars&gt;
+
+&lt;$list filter=&quot;[all[current]has[abstract]]&quot;&gt;
 
 &lt;$details open=&quot;yes&quot; summary=&quot;Abstract:&quot;&gt;
 
-@@float:right;{{!!image}}@@ {{!!abstract}}
+@@float:right;{{!!image}}@@ {{!!abstract}}{{clear-both}}
+
 &lt;/$details&gt;
+
+
+
 
 &lt;/$list&gt;</pre>
 </div>
@@ -14319,10 +14330,10 @@ message-background
 <div created="20201205203334623" modified="20201205203347728" title="$:/state/tab-770302894">
 <pre>$:/core/ui/TiddlerInfo/Fields</pre>
 </div>
-<div created="20201213005321650" modified="20201213005559322" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/plugins/kookma/utility/ui/ControlPanel/Settings</pre>
+<div created="20201213005321650" modified="20210104223922231" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20201130194124206" modified="20201221202008444" title="$:/state/tab/sidebar--595412856">
+<div created="20201130194124206" modified="20210104224154197" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -14331,7 +14342,7 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210104220933896" list="[[man as ... being not to be]] [[tutorial for excerpts]]" modified="20210104220933896" title="$:/StoryList">
+<div created="20210104220933896" list="cover-from-isbn RN7 $:/springer/add-abstract-above" modified="20210104224002225" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time" title="$:/tags/PageControls">
@@ -14340,10 +14351,10 @@ message-background
 <div list="$:/core/ui/ViewTemplate/title $:/springer/source-info $:/core/ui/ViewTemplate/unfold $:/core/ui/ViewTemplate/subtitle $:/core/ui/ViewTemplate/tags $:/core/ui/ViewTemplate/classic $:/springer/add-abstract-above viewtemplate/bibtex $:/core/ui/ViewTemplate/body $:/springer/add-notes-below $:/core/ui/ViewTemplate/import $:/core/ui/ViewTemplate/plugin $:/plugins/kookma/shiraz/viewtemplates/sticky-footer $:/plugins/kookma/utility/viewtemplate/display-tiddler-raw-content $:/plugins/tiddlywiki/text-slicer/ui/view-template-segment" title="$:/tags/ViewTemplate">
 <pre></pre>
 </div>
-<div created="20201130200006288" modified="20201221225619433" title="$:/temp/advancedsearch">
-<pre>show fields</pre>
+<div created="20201130200006288" modified="20210104223845647" title="$:/temp/advancedsearch">
+<pre>macro</pre>
 </div>
-<div created="20210104220943245" title="$:/temp/bimlas/highlight-searched-text/counter">
+<div created="20210104224211076" title="$:/temp/bimlas/highlight-searched-text/counter">
 <pre>(0)</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -15670,8 +15681,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201130235146390" modified="20201210202255790" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre></pre>
 </div>
-<div created="20201130194257953" modified="20210104220857026" title="$:/temp/search">
-<pre>~Tiddly</pre>
+<div created="20201130194257953" modified="20210104223845647" title="$:/temp/search">
+<pre></pre>
 </div>
 <div tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://kookma.github.io/TW-PluginLibrary/library/index.html" url="https://kookma.github.io/TW-PluginLibrary/library/index.html">
 <pre>loaded</pre>
@@ -15680,7 +15691,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <pre>loaded</pre>
 </div>
 <div title="$:/temp/time">
-<pre>5:09:51 PM</pre>
+<pre>5:44:37 PM</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -15835,8 +15846,14 @@ The many, and the most vulgar, would seem to conceive the good and happiness as 
 <div created="20201209195611046" linkstyle-before="content:&quot;IN-PROGRESS: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201209202008284" tags="BibTeX" title="BibTex sources">
 <pre>&lt;&lt;table-dynamic filter:&quot;[has[bibtex-title]]&quot; fields:&quot;tbl-expand bibtex-author bibtex-title bibtex-publisher bibtex-year title caption&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
 </div>
-<div created="20201209213855844" icon="$:/favicon.ico" linkstyle="text-transform: uppercase; font-size: 90%; font-weight: 700; " linkstyle-after="content:&quot; CATEGORY&quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " linkstyle-before="content:&quot;{{$:/springer/book-icon}}  &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}}; text-shadow: 1px -1px &lt;&lt;colour alert-background&gt;&gt;;" modified="20201211215931371" stylesheet-detail="&lt;$list filter=&quot;&quot;&quot;[tag[book]] [bibtex-entry-type[book]]&quot;&quot;&quot;&gt;&lt;$vars tid={{!!title}} style-before={{book!!linkstyle-before}}&gt;&lt;&lt;linkstyle-alt&gt;&gt;&lt;/$vars&gt;&lt;/$list&gt;" title="book">
-<pre>&lt;&lt;table-dynamic filter:&quot;[tag[book]] [bibtex-entry-type[book]]&quot; fields:&quot;tbl-expand title bibtex-author bibtex-title bibtex-publisher publisher bibtex-year year text-title caption tbl-clone tbl-delete&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
+<div created="20201209213855844" icon="$:/favicon.ico" linkstyle="text-transform: uppercase; font-size: 90%; font-weight: 700; " linkstyle-after="content:&quot; CATEGORY&quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " linkstyle-before="content:&quot;{{$:/springer/book-icon}}  &quot;; position:relative; color: {{$:/springer/book-icon!!palette-value}}; text-shadow: 1px -1px &lt;&lt;colour alert-background&gt;&gt;;" modified="20210104222302036" stylesheet-detail="&lt;$list filter=&quot;&quot;&quot;[tag[book]] [bibtex-entry-type[book]]&quot;&quot;&quot;&gt;&lt;$vars tid={{!!title}} style-before={{book!!linkstyle-before}}&gt;&lt;&lt;linkstyle-alt&gt;&gt;&lt;/$vars&gt;&lt;/$list&gt;" title="book">
+<pre>&lt;&lt;table-dynamic filter:&quot;[tag[book]] [bibtex-entry-type[book]]&quot; fields:&quot;tbl-expand title bibtex-author bibtex-title bibtex-publisher bibtex-year caption tbl-clone tbl-delete&quot; sortOp:&quot;nsort&quot; stateTiddler:&quot;excerpt overview list&quot; sort:page class:&quot;w-100 thead-dark&quot; caption:&quot;''Click any column header to sort. Preview row content with @@.tcr ''﹥'' @@ at left.''&quot;&gt;&gt;</pre>
+</div>
+<div caption="Name as shown in menu" tags="utility $:/tags/TextEditor/Snippet" title="clear-both">
+<pre>&lt;br style=&quot;clear:both&quot; /&gt;</pre>
+</div>
+<div created="20210104224006568" modified="20210104224424071" tags="$:/tags/Macro" title="cover-from-isbn">
+<pre>\define makeimg() [img[https://covers.openlibrary.org/b/isbn/$(isbn)$-M.jpg]]</pre>
 </div>
 <div created="20200723143208165" creator="jd" description="Day/night palette" linkstyle-before="content:&quot;ADD-ON: &quot;; position:relative; font-size:75%; color: &lt;&lt;colour muted-foreground&gt;&gt;; text-transform: uppercase; font-weight:700; " modified="20201123235900000" modifier="jd" tags="$:/tags/PageControls" title="Day/night palette button">
 <pre>&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=&quot;
@@ -16269,8 +16286,7 @@ Honour, pleasure, understanding and every virtue we certainly choose because of 
 &lt;/$details&gt;
 </pre>
 </div>
-<div abstract="Climate change is a global problem that is predominantly an intergenerational conflict, and which takes place in a setting where our ethical impulses are weak. This &quot;perfect moral storm&quot; poses a profound challenge to humanity. This book explains how the &quot;perfect storm&quot; metaphor makes sense of our current malaise, and why a better ethics can help see our way out." bibtex-address="New York" bibtex-author="Gardiner, Stephen Mark" bibtex-entry-type="book" bibtex-isbn="9780195379440 (alk. paper)
-0195379446 (alk. paper)" bibtex-pages="xvii, 489 p." bibtex-publisher="Oxford University Press" bibtex-series="Environmental ethics and science policy series" bibtex-title="A perfect moral storm : the ethical tragedy of climate change" bibtex-type="Book" bibtex-year="2011" caption="Gardiner, Perfect (2011)" created="20201210181354992" modified="20201213011153287" tags="book" title="RN10">
+<div abstract="Climate change is a global problem that is predominantly an intergenerational conflict, and which takes place in a setting where our ethical impulses are weak. This &quot;perfect moral storm&quot; poses a profound challenge to humanity. This book explains how the &quot;perfect storm&quot; metaphor makes sense of our current malaise, and why a better ethics can help see our way out." bibtex-address="New York" bibtex-author="Gardiner, Stephen Mark" bibtex-entry-type="book" bibtex-isbn="9780195379440" bibtex-pages="xvii, 489 p." bibtex-publisher="Oxford University Press" bibtex-series="Environmental ethics and science policy series" bibtex-title="A perfect moral storm : the ethical tragedy of climate change" bibtex-type="Book" bibtex-year="2011" caption="Gardiner, Perfect (2011)" created="20201210181354992" image="[img[moral-storm-cover|http://covers.openlibrary.org/b/isbn/9780195379440-M.jpg]]" img-url="http://covers.openlibrary.org/b/isbn/9780195379440-M.jpg" modified="20210104222936902" tags="book" title="RN10">
 <pre>&lt;$details summary=&quot;citation details&quot;&gt;
 &lt;&lt;fields&gt;&gt;
 &lt;/$details&gt;</pre>
@@ -16301,12 +16317,13 @@ Open Humanities Press ebook collection http://www.openhumanitiespress.org/book-t
 <pre></pre>
 </div>
 <div bibtex-address="Minneapolis" bibtex-author="Shotwell, Alexis" bibtex-entry-type="book" bibtex-isbn="9780816698622 (hc alk. paper)
-9780816698646 (pb alk. paper)" bibtex-pages="236 pages" bibtex-publisher="University of Minnesota Press" bibtex-title="Against purity : living ethically in compromised times" bibtex-type="Book" bibtex-year="2016" caption="Shotwell, Against (2016)" created="20201210181425716" modified="20201213010023651" title="RN5">
-<pre>&lt;&lt;fields&gt;&gt;</pre>
+9780816698646 (pb alk. paper)" bibtex-pages="236 pages" bibtex-publisher="University of Minnesota Press" bibtex-title="Against purity : living ethically in compromised times" bibtex-type="Book" bibtex-year="2016" caption="Shotwell, Against (2016)" created="20201210181425716" modified="20210104221145883" tags="book" title="RN5">
+<pre>&lt;$details summary=&quot;citation details&quot;&gt;
+&lt;&lt;fields&gt;&gt;
+&lt;/$details&gt;</pre>
 </div>
-<div bibtex-address="Minneapolis" bibtex-author="Morton, Timothy" bibtex-entry-type="book" bibtex-isbn="9780816689224 (hc alk. paper)
-9780816689231 (pb alk. paper)" bibtex-pages="x, 229 pages, 8 unnumbered pages of plates" bibtex-publisher="University of Minnesota Press" bibtex-series="Posthumanities" bibtex-title="Hyperobjects : philosophy and ecology after the end of the world" bibtex-type="Book" bibtex-year="2013" caption="Morton, Hyperobjects (2013)" created="20201210181432207" modified="20201210181508748" title="RN7">
-<pre></pre>
+<div abstract="Climate policy, climate communication and cognitive science researches have identified that better ways of conveying the climate change story are needed; specifically, a new frame or narrative is required. There are also increasing calls for the arts and humanities to play a greater role in the 'meaning-making' task around climate change. Philosopher and literary theorist Timothy Morton has created a new approach, one which frames global warming as a 'hyperobject'. Morton's work demonstrates the value of artistic and philosophical approaches in helping people perceive climate change, as well as understand how it may feel. It opens up a potentially crucial discussion about ontology (the study of 'Being' and existence) illuminating the difficult emotional and conceptual territory humans must cross. His work is intended to awaken people abruptly but debate exists as to whether Morton's approach is too harsh and disempowering, or whether it is the spur required for humans to adjust cognitively and emotionally to a new climate reality. Morton's frame vividly captures human vulnerability, but his association of vulnerability with shame and humiliation is concerning. Morton's narrative style, brilliantly evocative at times, is at others contentiously obscure. While this engenders what may be a necessary experience of dislocation, it also risks rendering his more valuable ideas impenetrable to many readers. [[@ResearchGate|https://www.researchgate.net/publication/303801414_Climate_change_as_a_'hyperobject'_a_critical_review_of_Timothy_Morton's_reframing_narrative_Climate_change_as_a_hyperobject]]" bibtex-address="Minneapolis" bibtex-author="Morton, Timothy" bibtex-entry-type="book" bibtex-isbn="9780816689231" bibtex-pages="x, 229 pages, 8 unnumbered pages of plates" bibtex-publisher="University of Minnesota Press" bibtex-series="Posthumanities" bibtex-title="Hyperobjects : philosophy and ecology after the end of the world" bibtex-type="Book" bibtex-year="2013" caption="Morton, Hyperobjects (2013)" created="20201210181432207" modified="20210104224355248" title="RN7">
+<pre>&lt;$macrocall $name=&quot;makeimg&quot; isbn={{!!bibtex-isbn}} /&gt;</pre>
 </div>
 <div bibtex-author="Scranton, Roy" bibtex-entry-type="book" bibtex-publisher="City Lights Publishers" bibtex-title="Learning to Die in the Anthropocene: Reflections on the End of a Civilization" bibtex-year="2015" caption="Scranton, //Learning to Die// (2015)" title="scranton2015learning">
 <pre></pre>
