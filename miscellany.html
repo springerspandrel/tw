@@ -159,6 +159,8 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/palette</li>
+
 <li>$:/plugins/Odin/Recipe</li>
 
 <li>$:/plugins/Odin/Recipe/Selection</li>
@@ -170,6 +172,10 @@ Error message and password prompt
 <li>$:/state/plugin-info--896887961-$:/plugins/Odin/Recipe</li>
 
 <li>$:/state/plugin-info-1726136306-$:/plugins/Odin/Recipe--482556964</li>
+
+<li>$:/state/ShowPaletteEditor</li>
+
+<li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab-1749438307</li>
 
@@ -10097,6 +10103,9 @@ Error message and password prompt
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
+<div created="20210112212108630" creator="e" modified="20210112212112430" modifier="e" title="$:/palette">
+<pre>$:/palettes/CupertinoDark</pre>
+</div>
 <div author="Odin" core-version="5.1.22" created="20201113141305152" description="For storing your recipes" list="Readme License Config" modified="20201116121459676" name="Recipe Plugin" plugin-type="plugin" source="https://odinjorna.github.io/recipe-plugin/" title="$:/plugins/Odin/Recipe" type="application/json" version="1.2.4">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -10335,8 +10344,14 @@ Error message and password prompt
 <div created="20210112173106933" creator="e" modified="20210112173106933" modifier="e" title="$:/state/plugin-info-1726136306-$:/plugins/Odin/Recipe--482556964">
 <pre>contents</pre>
 </div>
-<div created="20210112172728355" creator="e" modified="20210112175243345" modifier="e" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Saving</pre>
+<div created="20210112212117796" creator="e" modified="20210112212117796" modifier="e" title="$:/state/ShowPaletteEditor">
+<pre>yes</pre>
+</div>
+<div created="20210112212104572" creator="e" modified="20210112212104572" modifier="e" title="$:/state/tab--1963855381">
+<pre>$:/core/ui/ControlPanel/Palette</pre>
+</div>
+<div created="20210112172728355" creator="e" modified="20210112212102724" modifier="e" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
 <div created="20210112172730044" creator="e" modified="20210112180210494" modifier="e" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
@@ -10344,8 +10359,8 @@ Error message and password prompt
 <div created="20210112173053328" creator="e" modified="20210112173053328" modifier="e" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20210112173049500" creator="e" modified="20210112173256121" modifier="e" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20210112173049500" creator="e" modified="20210112212132561" modifier="e" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
@@ -10353,7 +10368,7 @@ Error message and password prompt
 <div created="20210112172828844" modified="20210112172828844" title="$:/status/UserName">
 <pre>e</pre>
 </div>
-<div created="20210112173054823" creator="e" list="[[recipe plugin feedback]] [[beet salad]]" modified="20210112180208733" modifier="e" title="$:/StoryList">
+<div created="20210112212100599" creator="e" list="$:/AdvancedSearch [[recipe plugin feedback]] [[beet salad]]" modified="20210112212202912" modifier="e" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10487,10 +10502,13 @@ Add spices to taste, and mix thoroughly, stirring in parsley for the last round 
 " recipe-portions="2" recipe-quote="Tart colorful salad with zing! Ideal for holiday brunches." tags="Recipe" title="beet salad">
 <pre></pre>
 </div>
-<div created="20210112180013682" creator="e" modified="20210112180205858" modifier="e" tags="" title="recipe plugin feedback">
-<pre>Recipe vs recipe discrepancy in documentation caused confusion.
-course/type field does not display the view mode anywhere. Or it tries but fails?
-empty fields (source, kitchen) should probably be suppressed in view mode.</pre>
+<div created="20210112180013682" creator="e" modified="20210112212250437" modifier="e" tags="" title="recipe plugin feedback">
+<pre>
+* Recipe vs recipe discrepancy in documentation caused confusion.
+* course/type field does not display the view mode anywhere. Or it tries but fails?
+* empty fields (source, kitchen) should probably be suppressed in view mode.
+* Ingrediënts are listed, rather than Ingredients ;) 
+</pre>
 </div>
 
 
