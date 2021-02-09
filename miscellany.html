@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/plugins/Odin/Recipe/Selection</li>
 
+<li>$:/plugins/tobibeer/setvars</li>
+
 <li>$:/recipe plugin feedback</li>
 
 <li>$:/SiteSubtitle</li>
@@ -216,6 +218,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>Crito</li>
+
+<li>Draft of 'random' by e</li>
 
 <li>random</li>
 
@@ -10143,7 +10147,7 @@ Add spices to taste, and mix thoroughly, stirring in parsley for the last round 
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/plugins/kookma/shiraz]]</pre>
+# [[$:/plugins/tobibeer/setvars]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10481,6 +10485,22 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div created="20201116115349929" creator="e" modified="20210114175953411" modifier="e" title="$:/plugins/Odin/Recipe/Selection">
 <pre>ginger-molasses cookies</pre>
 </div>
+<div author="Tobias Beer" bag="default" core-version="&gt;=5.1.9" dependents="" description="Set multiple, complex variables based on attributes, filters, or conditionals" documentation="https://tobibeer.github.io/tw5-setvars" list="readme" plugin-type="plugin" requires="" revision="0" source="https://github.com/tobibeer/tw5-setvars" title="$:/plugins/tobibeer/setvars" type="application/json" version="0.6.0">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/tobibeer/setvars/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tobibeer/setvars/readme&quot;,
+            &quot;text&quot;: &quot;Provides the widget `&lt;$setvars&gt;`...\n\n!!Usage\n\n```\r\n&lt;$setvars\r\n_attr1=&lt;&lt;currentTiddler&gt;&gt;\r\n_attr2={{!!title}}\r\n_attr3=\&quot;1 2 3\&quot;\r\n_attr4=\&quot;[all[current]tagging[]]\&quot;\r\nvar1=\&quot;attr1 \\ = literal = \\ attr2\&quot;\r\nvar2=\&quot;attr3[n] \\ \\ [attr4[1,2][when-empty]] \\ \\ [attr3[][][ - ]]\&quot;\r\nvar3=\&quot;if(attr1 ? [attr4]) || attr3 attr2\&quot;\r\nvar4=\&quot;if(attr1 == attr2 ? attr3[1]) || [attr3[2]]\&quot;&gt;\n\n* &lt;&lt;var1&gt;&gt;\r\n* &lt;&lt;var2&gt;&gt;\r\n* &lt;&lt;var3&gt;&gt;\r\n* &lt;&lt;var4&gt;&gt;\n\n&lt;/$setvars&gt;\r\n```\n\n; documentation / examples / demos...\r\n: http://tobibeer.github.io/tw5-plugins#setvars&quot;
+        },
+        &quot;$:/plugins/tobibeer/setvars/widgets.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tobibeer/setvars/widgets.js&quot;,
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tobibeer/setvars/widgets.js\r\ntype: application/javascript\r\nmodule-type: widget\r\n\r\nAllows to set multiple variables in one go joining widget attributes:\r\n\r\n@preserve\r\n\\*/\n(function(){\&quot;use strict\&quot;;var e=require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;var t=function(t,i){e.call(this);this.initialise(t,i)};t.prototype=Object.create(e.prototype);t.prototype.render=function(e,t){this.parentDomNode=e;this.computeAttributes();this.execute();this.renderChildren(e,t)};t.prototype.execute=function(){var e=this,t=function(t,i,s){var r,n,f=s[3],h=s[4],a=s[5],l=s[6],u=parseInt(f),c=parseInt(h),o=i||f||h;if(i){n=e.wiki.filterTiddlers(t,e)}else{n=f||h?$tw.utils.parseStringArray(t):[t]}r=n.length;if(r&amp;&amp;(f||h)){if(f===\&quot;n\&quot;){u=r}else if(f===\&quot;-n\&quot;){u=1}else if(!f){u=1}if(h===\&quot;n\&quot;){c=r}else if(h===\&quot;-n\&quot;){c=-(u&lt;0?r+u+1:u)}else if(!h){c=1}u=Math.max(1,u&lt;0?r+u+(c&lt;0?c+2:1):c&lt;0?u+c+1:u);c=Math.max(1,Math.abs(c));n=n.splice(u-1,c)}if(!n.length&amp;&amp;a){n.push(a)}return o?l===undefined?$tw.utils.stringifyList(n):n.join(l):n[0]};if(!this.refreshing){this.refreshing=0;this.$={vars:{},attr:{},set:{}};$tw.utils.each(this.attributes,function(t,i){if(i===\&quot;$refresh\&quot;){e.refreshAll=1}else if(i.charAt(0)===\&quot;_\&quot;){e.$.attr[i.substr(1)]=t}else{e.$.vars[i]=t}})}if(this.refreshing&lt;2){$tw.utils.each(e.$.vars,function(i,s){var r,n,f,h,a,l,u=\&quot;\&quot;,c=0,o=0,g=\&quot;\&quot;,p=i,d=[[/^\\s+/,1,function(){return false}],[/^\\\\([^\\\\]*)\\\\/,2,function(e){return e[1]}],[/^(if\\s*\\(|\\(|\\?|\\|\\||\\)|==|!=)/i,0,function(e){var t=e[1];if(t.charAt(t.length-1)===\&quot;(\&quot;){r=1;if(c){o=1}else{f=c=0;h=\&quot;\&quot;;if(t.length===1){f=1}}}else{switch(t){case\&quot;||\&quot;:if(u.length){c=1}break;case\&quot;?\&quot;:if(r&amp;&amp;!o){f=h.length;c=!f;h=\&quot;\&quot;}break;case\&quot;)\&quot;:if(r){if(f){g+=h}r=f=c=0;h=\&quot;\&quot;}o=0;break;case\&quot;==\&quot;:case\&quot;!=\&quot;:if(r){n=t}break}}return false}],[/^(\\[)?(\\w+)(?:\\[(-?\\d*|-?n)(?:,(-?\\d*|-?n))?\\])?(?:\\[([^\\]]*)\\])?(?:\\[([^\\]]*)\\])?(\\])?/,2,function(i){var s=e.$.attr[i[2]];if(s===undefined){s=e.$.set[i[2]]}if(s){if(i[1]&amp;&amp;i[7]){s=t(s,true,i)}else if(!i[1]&amp;&amp;!i[7]){s=t(s,false,i)}else{s=null}}else{s=\&quot;\&quot;}return s}]];while(p.length){l=p;var v=\&quot;\&quot;;$tw.utils.each(d,function(e){var t=e[0].exec(p);if(t){if(!c||!e[1]){v=e[2].call(this,t);if(v===null){v=\&quot;error: missing bracket in setvars\&quot;}else if(typeof v===\&quot;string\&quot;){u=v}}a=e[1]===2;p=p.substr(t[0].length);return false}});if(v){if(r){if(n){u=n===\&quot;==\&quot;&amp;&amp;h===v||n===\&quot;!=\&quot;&amp;&amp;h!==v?\&quot;true\&quot;:\&quot;\&quot;;h=u;n=\&quot;\&quot;}else{h+=v}}else if(!c){g+=v}}if(!r&amp;&amp;a){c=0}if(l===p){g=\&quot;setvars error: invalid syntax\&quot;;p=\&quot;\&quot;}}e.$.set[s]=g;e.setVariable(s,g)})}if(!this.refreshing||this.refreshing===2){this.makeChildWidgets()}};t.prototype.refresh=function(e){var t=0,i,s=this,r=this.computeAttributes();if(Object.keys(r).length){this.refreshSelf();return true}else if(this.refreshAll){i=JSON.parse(JSON.stringify(this.$.set));this.refreshing=1;this.execute();$tw.utils.each(i,function(e,i){if(e!==s.$.set[i]){t=1;return false}});if(t){this.refreshing=2;this.refreshSelf();return true}this.refreshing=0}return this.refreshChildren(e)};exports.setvars=t})();&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        }
+    }
+}</pre>
+</div>
 <div created="20210112180013682" creator="e" modified="20210209160612867" modifier="e" tags="" title="$:/recipe plugin feedback">
 <pre>* Recipe vs recipe discrepancy in documentation caused confusion.
 * course/type field does not display the view mode anywhere. Or it tries but fails?
@@ -10529,12 +10549,12 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
 <div created="20210112172828844" modified="20210112172828844" title="$:/status/UserName">
 <pre>e</pre>
 </div>
-<div created="20210209160608131" creator="e" list="random Crito" modified="20210209160803580" modifier="e" title="$:/StoryList">
+<div created="20210209160608131" creator="e" list="$:/Import [[Draft of 'random' by e]] Crito" modified="20210209160803580" modifier="e" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10860,6 +10880,17 @@ Crito, my dear friend, be assured that these are the words I seem to hear, as th
 CRITO: I have nothing to say, Socrates.
 
 SOCRATES: Let it be then, Crito, and let us act in this way, since [e]this is the way the god is leading us</pre>
+</div>
+<div created="20210209161403155" creator="e" draft.of="random" draft.title="random" list="one two three" modified="20210209162316331" modifier="e" tags="" title="Draft of 'random' by e">
+<pre>&lt;$setvars _r=&quot;[prefix[C]random[3]]&quot; random=&quot;\{{{\ [r] \}}}\&quot;&gt;
+
+&lt;&lt;random&gt;&gt;
+&lt;/$setvars&gt;
+
+
+{{{ [&quot;1 2 3 4 5&quot; random[2]] }}}
+
+</pre>
 </div>
 <div created="20210209161403155" creator="e" list="one two three" modified="20210209162314734" modifier="e" tags="" title="random">
 <pre>&lt;$setvars _r=&quot;[prefix[C]random[3]]&quot; random=&quot;\{{{\ [r] \}}}\&quot;&gt;
