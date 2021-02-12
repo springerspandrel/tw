@@ -185,6 +185,8 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/freelinks</li>
 
+<li>$:/plugins/tiddlywiki/freelinks/macros/view</li>
+
 <li>$:/plugins/tobibeer/random</li>
 
 <li>$:/plugins/tobibeer/setvars</li>
@@ -10550,6 +10552,13 @@ $value={{$:/temp/newfieldvalue}}/&gt;
     }
 }</pre>
 </div>
+<div created="20210212220828073" creator="e" modified="20210212220837361" modifier="e" tags="$:/tags/Macro/View" title="$:/plugins/tiddlywiki/freelinks/macros/view">
+<pre>&lt;$set name=&quot;tv-freelinks&quot; value={{{ [&lt;currentTiddler&gt;match[random]then[yes]else[no]] }}}/&gt;
+
+&lt;$set name=&quot;tv-freelinks-ignore-case&quot; value={{$:/config/Freelinks/IgnoreCase}}/&gt;
+
+&lt;/$set&gt;</pre>
+</div>
 <div author="Tobias Beer" bag="default" core-version="&gt;=5.1.9" dependents="" description="A filter to return one or more random titles" documentation="https://tobibeer.github.io/tw5-random" list="readme" plugin-type="plugin" requires="" revision="0" source="https://github.com/tobibeer/tw5-random" title="$:/plugins/tobibeer/random" type="application/json" version="0.1.0">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -10641,7 +10650,7 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div created="20210112172828844" modified="20210112172828844" title="$:/status/UserName">
 <pre>e</pre>
 </div>
-<div created="20210212220147532" creator="e" list="[[limited freelinks]] experiment random" modified="20210212220336028" modifier="e" title="$:/StoryList">
+<div created="20210212220147532" creator="e" list="[[limited freelinks]] $:/plugins/tiddlywiki/freelinks/macros/view experiment random" modified="20210212220816841" modifier="e" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
