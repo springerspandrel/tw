@@ -10975,10 +10975,31 @@ CRITO: I have nothing to say, Socrates.
 
 SOCRATES: Let it be then, Crito, and let us act in this way, since [e]this is the way the god is leading us</pre>
 </div>
-<div created="20210212220203371" creator="e" modified="20210212220331820" modifier="e" tags="" title="experiment">
+<div created="20210212220203371" creator="e" modified="20210212225547058" modifier="e" tags="" title="experiment">
 <pre>We'd like to have freelinks enabled, but not just to any random tiddler whose title happens to appear in the text field.
 
-We want limited freelinks so that performance doesn't slow down too much.</pre>
+We want limited freelinks so that performance doesn't slow down too much.
+
+Resurrecting &quot;selective freelinking&quot; issue, after a whole year! 
+
+I have a new project with freelinks, but want to minimize the risk of slowing the wiki way down. Jeremy had explained, in this thread, how to limit freelinks:
+
+On Saturday, January 4, 2020 at 12:02:44 PM UTC-5 jeremy... @gmail.com wrote:
+Hi Springer
+I think it's a marvelous working proof-of-concept, ... it sure would be ideal to [limit freelinks] to a tag-specific sandbox of tiddlers...
+...It’s possible to change which tiddlers are freelinked by customising the shadow tiddler $:/plugins/tiddlywiki/freelinks/macros/view. ... we can use a filter expression to, say, ... only freelink tiddlers with the tag “MyTag”:
+
+&lt;$set name=&quot;tv-freelinks&quot; value={{{ [&lt;currentTiddler&gt;tag[MyTags]then[yes]else[no]] }}}/&gt;
+
+When I tried this recently, I thought it wasn't working... until I realized we were talking past each other a bit. 
+ALICE: I do say what I mean; I always mean what I say. It's the same thing.
+MAD HATTER: Not in the slightest. Is it the same thing to say you see what you eat and you eat what you see?
+I envisioned EVERY tiddler being poised to display with outbound freelinks, but pointing ONLY to the tiddlers with MyTag (wherever those titles are mentioned in a text field).
+Instead, the recipe above limits freelinks the other way: we don't see them EXCEPT when MyTag tiddlers are being viewed (but then we see outbound links to EVERY tiddler whose title is mentioned).
+
+So..., is it possible to develop a filter that constrains which &quot;targets&quot; are eligible? (Use case: I've got defined technical terms; whenever pasted-in text happens to mention the term, the term &quot;lights up&quot;)
+
+-Springer</pre>
 </div>
 <div created="20210212215749802" creator="e" modified="20210212220805481" modifier="e" tags="" title="limited freelinks">
 <pre>jeremy...@gmail.com
