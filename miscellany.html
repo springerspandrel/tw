@@ -183,6 +183,8 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/freelinks</li>
 
+<li>$:/plugins/tiddlywiki/freelinks/macros/view</li>
+
 <li>$:/plugins/tobibeer/random</li>
 
 <li>$:/plugins/tobibeer/setvars</li>
@@ -10541,6 +10543,9 @@ $value={{$:/temp/newfieldvalue}}/&gt;
     }
 }</pre>
 </div>
+<div created="20210212220605922" creator="e" modified="20210212220641058" modifier="e" tags="" title="$:/plugins/tiddlywiki/freelinks/macros/view">
+<pre>&lt;$set name=&quot;tv-freelinks&quot; value={{{ [&lt;currentTiddler&gt;match[HelloThere]then[yes]else[no]] }}}/&gt;</pre>
+</div>
 <div author="Tobias Beer" bag="default" core-version="&gt;=5.1.9" dependents="" description="A filter to return one or more random titles" documentation="https://tobibeer.github.io/tw5-random" list="readme" plugin-type="plugin" requires="" revision="0" source="https://github.com/tobibeer/tw5-random" title="$:/plugins/tobibeer/random" type="application/json" version="0.1.0">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -10620,8 +10625,8 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div created="20210112173053328" creator="e" modified="20210112173053328" modifier="e" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20210112173049500" creator="e" modified="20210112212132561" modifier="e" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20210112173049500" creator="e" modified="20210212220634637" modifier="e" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>yes</pre>
@@ -10629,7 +10634,7 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div created="20210112172828844" modified="20210112172828844" title="$:/status/UserName">
 <pre>e</pre>
 </div>
-<div created="20210212215806437" creator="e" list="[[limited freelinks]] random" modified="20210212215812336" modifier="e" title="$:/StoryList">
+<div created="20210212215806437" creator="e" list="$:/plugins/tiddlywiki/freelinks/macros/view [[limited freelinks]] random" modified="20210212215812336" modifier="e" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
