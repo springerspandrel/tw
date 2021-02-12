@@ -143,8 +143,6 @@ Error message and password prompt
 
 <li>$:/beet salad</li>
 
-<li>$:/config/Freelinks/IgnoreCase</li>
-
 <li>$:/config/MissingLinks</li>
 
 <li>$:/config/Plugins/Disabled/$:/plugins/Odin/Recipe</li>
@@ -197,8 +195,6 @@ Error message and password prompt
 
 <li>$:/state/advancedsearch/currentTab</li>
 
-<li>$:/state/plugin-info--1282796834-$:/plugins/tiddlywiki/freelinks---567570423</li>
-
 <li>$:/state/plugin-info--896887961-$:/plugins/Odin/Recipe</li>
 
 <li>$:/state/plugin-info-1726136306-$:/plugins/Odin/Recipe--482556964</li>
@@ -232,8 +228,6 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>Crito</li>
-
-<li>experiment</li>
 
 <li>limited freelinks</li>
 
@@ -274,9 +268,6 @@ Add finely-grated beets, and carrots, plus orange juice and pomegranate arils.
 Add spices to taste, and mix thoroughly, stirring in parsley for the last round of mixing.
 " recipe-portions="2" recipe-quote="Tart colorful salad with zing! Ideal for holiday brunches." tags="Recipe" title="$:/beet salad">
 <pre></pre>
-</div>
-<div created="20210212220155204" creator="e" modified="20210212220155204" modifier="e" title="$:/config/Freelinks/IgnoreCase">
-<pre>yes</pre>
 </div>
 <div created="20210212215835116" creator="e" modified="20210212215835116" modifier="e" title="$:/config/MissingLinks">
 <pre>no</pre>
@@ -10599,17 +10590,14 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div created="20210114180047933" creator="e" modified="20210212215815077" modifier="e" title="$:/state/advancedsearch/currentTab">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
-<div created="20210212220151015" creator="e" modified="20210212220151015" modifier="e" title="$:/state/plugin-info--1282796834-$:/plugins/tiddlywiki/freelinks---567570423">
-<pre>settings</pre>
-</div>
 <div created="20210112173432486" creator="e" modified="20210112173433580" modifier="e" title="$:/state/plugin-info--896887961-$:/plugins/Odin/Recipe">
 <pre>no</pre>
 </div>
 <div created="20210112173106933" creator="e" modified="20210112173106933" modifier="e" title="$:/state/plugin-info-1726136306-$:/plugins/Odin/Recipe--482556964">
 <pre>contents</pre>
 </div>
-<div created="20210209163128815" creator="e" modified="20210212215802104" modifier="e" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20210209163128815" creator="e" modified="20210212220422472" modifier="e" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20210112212117796" creator="e" modified="20210112212117796" modifier="e" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
@@ -10636,12 +10624,12 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
 <div created="20210112172828844" modified="20210112172828844" title="$:/status/UserName">
 <pre>e</pre>
 </div>
-<div created="20210212220147532" creator="e" list="experiment random" modified="20210212220147532" modifier="e" title="$:/StoryList">
+<div created="20210212215806437" creator="e" list="[[limited freelinks]] random" modified="20210212215812336" modifier="e" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10968,13 +10956,9 @@ CRITO: I have nothing to say, Socrates.
 
 SOCRATES: Let it be then, Crito, and let us act in this way, since [e]this is the way the god is leading us</pre>
 </div>
-<div created="20210212220203371" creator="e" modified="20210212220331820" modifier="e" tags="" title="experiment">
-<pre>We'd like to have freelinks enabled, but not just to any random tiddler whose title happens to appear in the text field.
-
-We want limited freelinks so that performance doesn't slow down too much.</pre>
-</div>
-<div created="20210212215749802" creator="e" modified="20210212215841692" modifier="e" tags="" title="limited freelinks">
-<pre>jeremy...@gmail.com
+<div created="20210212215749802" creator="e" modified="20210212220547527" modifier="e" tags="" title="limited freelinks">
+<pre>
+jeremy...@gmail.com
 Jan 4, 2020, 12:02:44 PM
 to TiddlyWiki
 Hi Springer
@@ -10989,23 +10973,32 @@ That’s definitely one of the options to explore for improving performance.
 
 I think it's a marvelous working proof-of-concept, and since the plugin can be disabled (restoring nimble speed to the whole engine), I suspect many people might be intrigued by the chance to show off a tightly-woven version of their file. I could imagine disabling the plugin during long editing sessions, and turning it on for certain demonstrations. But it sure would be ideal to have a variation that keeps the potential quicksand element confined to a tag-specific sandbox of tiddlers...
 
-It’s possible to change which tiddlers are freelinked by customising the shadow tiddler $:/plugins/tiddlywiki/freelinks/macros/view. This tiddler is tagged $:/tags/Macro/View (a new system tag) which means that it will be included as a local macro in each view template. By default, it’s content is:
+It’s possible to change which tiddlers are freelinked by customising the shadow tiddler
+ [[$:/plugins/tiddlywiki/freelinks/macros/view]] . This tiddler is tagged $:/tags/Macro/View (a new system tag) which means that it will be included as a local macro in each view template. By default, it’s content is:
 
+```
 &lt;$set name=&quot;tv-freelinks&quot; value={{$:/config/Freelinks/Enable}}/&gt;
+```
 
 That means that for each tiddler the variable tv-freelinks will be set to the tiddler $:/config/Freelinks/Enable, which is set to “yes” or “no” by the settings in control panel.
 
 Instead, we can use a filter expression to, say, only freelink the tiddler with the title “HelloThere”:
 
+```
 &lt;$set name=&quot;tv-freelinks&quot; value={{{ [&lt;currentTiddler&gt;match[HelloThere]then[yes]else[no]] }}}/&gt;
+```
 
 Or, we can make a filter that will only freelink tiddlers with the tag “MyTag”:
 
+```
 &lt;$set name=&quot;tv-freelinks&quot; value={{{ [&lt;currentTiddler&gt;tag[MyTags]then[yes]else[no]] }}}/&gt;
+```
 
 Or we can combine both approaches:
 
+```
 &lt;$set name=&quot;tv-freelinks&quot; value={{{ [&lt;currentTiddler&gt;match[HelloThere]] ~[&lt;currentTiddler&gt;tag[MyTag]] +[then[yes]else[no]] }}}/&gt;
+```
 
 (I’ll add the above notes to the docs).
 
