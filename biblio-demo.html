@@ -308,6 +308,8 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/text-slicer</li>
 
+<li>$:/plugins/wikilabs/uni-link</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -10397,7 +10399,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[clear-both]]</pre>
+# [[$:/plugins/wikilabs/uni-link]]</pre>
 </div>
 <div created="20201209204657455" modified="20201209204701075" title="$:/Import!!popup-Untitled">
 <pre>no</pre>
@@ -14166,6 +14168,268 @@ $value={{$:/temp/newfieldvalue}}/&gt;
     }
 }</pre>
 </div>
+<div author="Mario Pietsch" core-version="&gt;=5.1.22" dependents="" description="Enhances the prettylink-parser" list="readme history license" name="Uni-Link" plugin-type="plugin" title="$:/plugins/wikilabs/uni-link" type="application/json" version="2.1.0">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/wikilabs/uni-link/aka-footer/template&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/aka-footer/template&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;''Note'': This tiddler has the following aliases || &lt;&lt;showAliases delim:\&quot; ||\&quot;&gt;&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/aka-footer&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/aka-footer&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ViewTemplate&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$list filter=\&quot;[all[current]has[aliases]]\&quot;&gt;\n&lt;br/&gt;\n&lt;hr&gt;\n\n{{||$:/plugins/wikilabs/uni-link/aka-footer/template}}\n&lt;/$list&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/aka-macros&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/aka-macros&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Macro&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define tooltip() Tiddler -&gt; &lt;&lt;currentTiddler&gt;&gt;\n\\define aka(target, field:X)\n\\whitespace trim\n&lt;$list filter=\&quot;[[$target$]is[alias]]\&quot; variable=ali emptyMessage=\&quot;\&quot;\&quot;&lt;$link tooltip=\&quot;Alias not defined!\&quot; to=\&quot;?\&quot;&gt;&lt;span class=\&quot;uni-alias-missing\&quot;&gt;$target$&lt;/span&gt;&lt;/$link&gt;\&quot;\&quot;\&quot;&gt;\n&lt;$list filter=\&quot;[has[aliases]!has[draft.of]]\&quot;&gt;\n  &lt;$list filter=\&quot;[enlist{!!aliases}regexp[^$target$$(?i)]]\&quot; variable=\&quot;dummy\&quot;&gt;\n    &lt;$link tooltip=&lt;&lt;tooltip&gt;&gt; &gt;\n      &lt;span class=\&quot;uni-alias\&quot;&gt;\n        &lt;$set name=\&quot;tv-wikilinks\&quot; value=\&quot;no\&quot;&gt;\n          &lt;$view field=$field$ mode=text&gt;$target$&lt;/$view&gt;\n        &lt;/$set&gt;\n      &lt;/span&gt;\n    &lt;/$link&gt;\n  &lt;/$list&gt;\n&lt;/$list&gt;\n&lt;/$list&gt;\n\\end\n\n\\define aka-no-links(target)\n\\whitespace trim\n&lt;$list filter=\&quot;[[$target$]is[alias]]\&quot; variable=ali emptyMessage=\&quot;\&quot;\&quot;&lt;$link tooltip=\&quot;Alias not defined!\&quot; to=\&quot;?\&quot;&gt;$target$&lt;/$link&gt;\&quot;\&quot;\&quot;&gt;\n&lt;$list filter=\&quot;[has[aliases]!has[draft.of]]\&quot;&gt;\n  &lt;$list filter=\&quot;[enlist{!!aliases}regexp[^$target$$(?i)]]\&quot; variable=\&quot;dummy\&quot;&gt;\n    &lt;span&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/span&gt;\n  &lt;/$list&gt;\n&lt;/$list&gt;\n&lt;/$list&gt;\n\\end\n\n\\define showAliases(delim:\&quot;,\&quot;)\n&lt;$list filter=\&quot;[list[!!aliases]butlast[]]\&quot;&gt;&lt;$view field=title/&gt;$delim$ &lt;/$list&gt;&lt;$list filter=\&quot;[list[!!aliases]last[]]\&quot;&gt;&lt;$view field=title/&gt;&lt;/$list&gt;\n\\end\n\n\\define listAliases()\n&lt;$list filter=\&quot;[has[aliases]]\&quot;&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; &gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$link&gt; - &lt;&lt;showAliases&gt;&gt;&lt;br/&gt;&lt;/$list&gt;\n\\end\n\n&lt;pre&gt;&lt;$view field=\&quot;text\&quot;/&gt;&lt;/pre&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/alias-list&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/alias-list&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;&lt;listAliases&gt;&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/backlinks-template&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/backlinks-template&quot;,
+            &quot;text&quot;: &quot;!!! Uni-links\n\nUse the following field as link text, if available. It defaults to tiddler ''title''!\n\n&lt;&lt;&lt;\n&lt;$tiddler tiddler=\&quot;$:/config/wikilabs/uni-link/field\&quot;&gt;\n&lt;$radio value=\&quot;caption\&quot;&gt; caption&lt;/$radio&gt;&lt;br&gt;\n&lt;$radio value=\&quot;subtitle\&quot;&gt; subtitle&lt;/$radio&gt;&lt;br&gt;\n&lt;$radio value=\&quot;title\&quot;&gt; title&lt;/$radio&gt;&lt;br&gt;\n&lt;/$tiddler&gt;\n&lt;&lt;&lt;\n\nThis setting can be found at the $:/ControPanel uni-links tab! The configuration tiddler is: [[$:/config/wikilabs/uni-link/field]]\n\n| Link | Result |h\n|`[[default prettylink|tiddler-with-caption]]` |[[default prettylink|tiddler-with-caption]] |\n|`[[tiddler-with-caption]]` |[[tiddler-with-caption]] |\n|`[[tiddler-with-subtitle]]` |[[tiddler-with-subtitle]] |\n|`[[tiddler-with-subtitle-and-caption]]` |[[tiddler-with-subtitle-and-caption]] |\n|`[[tiddler-with-subtitle-and-caption|]]` |[[tiddler-with-subtitle-and-caption|]] ... but don't use them!|\n|`[[tiddler doesn't exist]]` |[[tiddler doesn't exist]] |\n\n!!! Alias Links\n\n| Link | Result |h\n|`[[alias|?]]` |[[alias|?]] |\n|`[[AliaS|?]]` |[[AliaS|?]] |\n|`[[alias|?t]]` |[[alias|?t]] |\n|`[[alias|?c]]` |[[alias|?c]] |\n|`[[alias|?s]]` |[[alias|?s]] |\n|`[[alias|?my-field]]` |[[alias|?my-field]] |\n|`[[doesn't exist|?]]` |[[doesn't exist|?]] |\n&quot;
+        },
+        &quot;$:/config/ShortcutInfo/aliasify&quot;: {
+            &quot;title&quot;: &quot;$:/config/ShortcutInfo/aliasify&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;{{$:/language/Buttons/Aliasify/Hint}}&quot;
+        },
+        &quot;$:/config/ShortcutInfo/alias-link&quot;: {
+            &quot;title&quot;: &quot;$:/config/ShortcutInfo/alias-link&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;{{$:/language/Buttons/Make/Alias/Hint}}&quot;
+        },
+        &quot;$:/config/shortcuts/alias-link&quot;: {
+            &quot;title&quot;: &quot;$:/config/shortcuts/alias-link&quot;,
+            &quot;created&quot;: &quot;20190210193620358&quot;,
+            &quot;modified&quot;: &quot;20190210193621514&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;ctrl-? ctrl-Space&quot;
+        },
+        &quot;$:/config/shortcuts/aliasify&quot;: {
+            &quot;title&quot;: &quot;$:/config/shortcuts/aliasify&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;ctrl-K&quot;
+        },
+        &quot;$:/config/wikilabs/uni-link/field&quot;: {
+            &quot;title&quot;: &quot;$:/config/wikilabs/uni-link/field&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;title&quot;
+        },
+        &quot;$:/language/Buttons/Aliasify/Caption&quot;: {
+            &quot;title&quot;: &quot;$:/language/Buttons/Aliasify/Caption&quot;,
+            &quot;text&quot;: &quot;alias-link&quot;
+        },
+        &quot;$:/language/Buttons/Aliasify/Hint&quot;: {
+            &quot;title&quot;: &quot;$:/language/Buttons/Aliasify/Hint&quot;,
+            &quot;text&quot;: &quot;Wrap selection in square brackets and add alias postfix&quot;
+        },
+        &quot;$:/language/Buttons/Make/Alias/Caption&quot;: {
+            &quot;title&quot;: &quot;$:/language/Buttons/Make/Alias/Caption&quot;,
+            &quot;text&quot;: &quot;make alias&quot;
+        },
+        &quot;$:/language/Buttons/Make/Alias/Hint&quot;: {
+            &quot;title&quot;: &quot;$:/language/Buttons/Make/Alias/Hint&quot;,
+            &quot;text&quot;: &quot;Create a wikitext alias-link&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/history&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/history&quot;,
+            &quot;text&quot;: &quot;V 2.1.0 - 2021.03.16\n\n* add `[[tiddler title case insensitve|??]]` ... will show the text, but search for a case insensitve title.\n* fix uni-link-macro default title styling\n* renamed and moved some tiddlers\n\nV 2.0.1 - 2020.12.25\n\n* update license\n\nV 2.0.0 - 2020.06.11\n\n* Compatible with ~TiddlyWiki &gt;= V5.1.22\n* Fix a \&quot;backlinking\&quot; problem introduced with TW V5.1.22\n** Adjusted uni-link \&quot;backlinker\&quot; to use new indexer `.extractLinks()` function\n* More info can be found in the [[readme|$:/plugins/wikilabs/uni-link/readme]]\n\n--------------\n\nCompatible with ~TiddlyWiki &lt;= V5.1.21\n\nV 1.2.1 - 2020.05.22\n\n* Fix a compatibility problem with relink plugin, reported by flibbles.\n\nV 1.2.0 - 2020.03.26\n\n* Make uni-link plugin compatible with relink-plugin from flibbles\n** see: https://github.com/flibbles/tw5-relink\n\nV 1.1.2 - 2020.03.16\n\n* Fix issue #44 problem with backlink cases sensitivity\n\nV 1.1.1 - 2020.01.19\n\n* Update license link/text\n\nV 1.1.0 - 2019.08.13\n\n* Fixed problem introduced with TW V 5.1.20 link-widget core changes\n\nV 1.0.0 - 2019.02.09\n\n* Add `[[alias|?t]]`, `[[alias|?c]]` and `[[alias|?s]]`, that show the tiddler ''title'', ''caption'' and ''subtitle'' field as the link text\n* Add `[[alias|?my-field]]` shows the content of the field named: `my-filed` as the link text\n* Add a new editor toolbar button, which opens an alias search menue. \n** Default keyboard shortcut is to Ctrl-Space\n\n``Incompatible changes``\n\n* There is a new $:/ControlPanel setting, that defines the default behaviour of the uni-link macro ''globally''. \n* uni-link now only shows the tiddler title, ''or'' the caption ''or'' the subtitle field. \n* If you need different behaviour, you'll need to use the alias mechanism!\n\nV 0.3.4 - 2018.09.09\n\n* Add \&quot;aliasify\&quot; button to tiddler editor toolbar\n* Add ctrl-k to activate \&quot;aliasify\&quot;\n\nV 0.3.3 - 2018.08.06\n\n* fix [[issue 19|https://github.com/wikilabs/plugins/issues/19]] Alias References behaviour\n\nV 0.3.2 - 2018.02.02\n\n* new Undefined Aliases Sidebar tab under More: Aliases\n* `[[?]aliasbacklinks[]sort[title]]` shows a list of tiddlers that contain undefined alias links\n\nV 0.3.1 - 2018.01.31\n\n* fixed: [[CamelCase]] or [[$:/system]] tiddler \&quot;double linking\&quot;\n* [[NaturaL sElEcTiOn|?]] .. is a valid alias now. Same problem as above!\n\nV 0.3.0 - 2018.01.27\n\n* add: styling possibility for missing aliases\n* improve: history and copyright\n\nV 0.2.1 - 2018.01.27\n\n* fix: uni-link creates an unused a-element\n\nV 0.2.0 - 2017.12.15\n\n* added: [[alias|?]] link syntax\n** using aka-makros for tiddler alias handling\n\n* added: Alias backlinks\n** open the tiddler (i)nfo area: References\n\n* added filter operators:\n** is[alias] ... extends the core is operator see: https://tiddlywiki.com/#is Operator\n** all[aliases] ... extends the core all operator see: https://tiddlywiki.com/#all Operator\n\n* added: Right-Sidebar: More tab: \&quot;Aliases\&quot;\n** Sorted by Alias\n** Sorted by Tiddler Title\n\n* added: uni-link $:/ControlPanel setting\n* added: different colors for title, caption, subtitle and alias links\n\nV0.1.0 - 2017.07.25\n\n* fix \&quot;backlink\&quot; and \&quot;missing\&quot; issue\n\nV0.0.1 - 2017.07.23\n\n* initial release\n\nalso see: https://wikilabs.github.io/editions/uni-link/#History\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/license&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/license&quot;,
+            &quot;text&quot;: &quot;[[Uni-Link Plugin|https://wikilabs.github.io/#uni-link]] (C) Mario Pietsch - 2017-2021\n\nhttps://opensource.org/licenses/BSD-3-Clause\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/readme&quot;,
+            &quot;subtitle&quot;: &quot;\&quot;uni-link\&quot; readme&quot;,
+            &quot;text&quot;: &quot;\\define createExampleTiddlers()\n&lt;$button&gt;\n&lt;$action-sendmessage $message=\&quot;tm-new-tiddler\&quot;  title=\&quot;tiddler-with-caption\&quot;  caption=\&quot;Short Caption\&quot;/&gt;\n&lt;$action-sendmessage $message=\&quot;tm-new-tiddler\&quot;  title=\&quot;tiddler-with-subtitle\&quot;  subtitle=\&quot;Tiddler With Subtitle Only Defined\&quot;/&gt;\n&lt;$action-sendmessage $message=\&quot;tm-new-tiddler\&quot;  title=\&quot;tiddler-with-subtitle-and-caption\&quot;  subtitle=\&quot;Tiddler With Subtitle And Caption - using subtitle\&quot; caption=\&quot;capt.ion\&quot;/&gt;\n&lt;$action-sendmessage $message=\&quot;tm-new-tiddler\&quot;  title=\&quot;tiddler-with-alias\&quot;  aliases=\&quot;alias\&quot; caption=\&quot;alias-caption\&quot; subtitle=\&quot;alias-subtitle\&quot; my-field=\&quot;alias my-field\&quot;/&gt;\n&lt;$action-sendmessage $message=\&quot;tm-new-tiddler\&quot;  title=\&quot;test-links\&quot; text={{$:/plugins/wikilabs/uni-link/backlinks-template!!text}}/&gt;\n&lt;$action-sendmessage $message=\&quot;tm-new-tiddler\&quot;  title=\&quot;This is a Test\&quot; text=\&quot;This tiddler is used as an example for [[uni-link-search]]\&quot;/&gt;\nCreate \&quot;uni-link\&quot; example tiddlers!\n&lt;/$button&gt;\n\\end\n\\define deleteExampleTiddlers()\n&lt;$button&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;tiddler-with-caption\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;tiddler-with-subtitle\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;tiddler-with-subtitle-and-caption\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;tiddler-with-alias\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;test-links\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;This is a Test\&quot;/&gt;\nDelete example tiddlers!\n&lt;/$button&gt;\n\\end\n\n! Important\n\nThis plugin overwrites the core tiddler: $:/core/ui/TiddlerInfo/References\n\n''This uni-link version is compatible with ~TiddlyWiki &gt;= V5.1.22''\n\nIf you need to use it with TW &lt;= V5.1.21 you'll need to use an older version, which is available at: https://wikilabs.github.io/#GettingStarted\n\n! Video\n\n* See: https://wikilabs.github.io/editions/uni-link/#GettingStarted\n\n! Uni-link\n&lt;&lt;&lt;\n* A new wikitext parsing rule, that calls the global [[\&quot;uni-link\&quot; macro|$:/plugins/wikilabs/uni-link/uni-link-macro]], instead of referencing the tiddler name. \n\n* It substitues the following tiddler fields: ''subtitle'', ''caption'' and ''title''. The $:/ControlPanel contains a new tab, that lets you define the behaviour of the uni-link macro. Default is ''title''. So there is no difference between the default setting of the plugin and the default behaviour in unmodified ~TiddlyWiki.\n&lt;&lt;&lt;\n\n! Uni-link Search\n&lt;&lt;&lt;\n`[[case insensitive title|??]]` will do a ''literal,  case-insensitive'' title search. It  will return ''the first'' tiddler it finds. \n\n''Examples'':\n\n|`[[This is a Test|??]]`|[[this is a test|??]]|\n|`[[doesn't exist|??]]`|[[doesn't exist|??]]|\n\n''Warning''\n\n* uni-link V2.1.0 does ''not'' contain a \&quot;relink plugin\&quot; addOn!\n* So if you change the tiddler name, those links won't be changed!\n&lt;&lt;&lt;\n\n! Alias\n&lt;&lt;&lt;\n* Alias Link Syntax\n** `[[anything|?]]` ... link to the tiddler that contains the alias: `anything`\n** `[[anything|?t]]` ... link to alias anything, but display the tiddler ''title''\n** `[[anything|?c]]` ... link to alias anything, but display the tiddler ''caption''\n** `[[anything|?s]]` ... link to alias anything, but display the tiddler ''subtitle''\n** `[[anything|?my-field]]` ... link to alias anything, but display the tiddler-field named ''my-field''\n** If a field doesn't exist, it shows the \&quot;alias-text\&quot; as used with `[[anything|?]]`\n** using [[aka-makros|$:/plugins/wikilabs/uni-link/aka-macros]] for tiddler alias handling\n\n* Alias Backlinks\n** open the tiddler (i)nfo area: References\n\n* Filter Operators:\n** `is[alias]` ... extends the core `is` operator see: [[https://tiddlywiki.com/#is Operator]]\n** `all[aliases]` ... extends the core `all` operator see: [ext[https://tiddlywiki.com/#all Operator]]\n** `[aliasbacklinks[]]` ... shows a list of all tiddlers that contain alias links\n** `[[?]aliasbacklinks[]sort[title]]` ... shows a list of tiddlers that contain undefined alias links\n\n* Right-Sidebar: More tab: [[Aliases|$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases]]\n** [[Sorted by Alias|$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/byAlias]]\n** [[Sorted by Tiddler Title|$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/byTitle]]\n** [[Undefined Aliases|$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/undefined]]\n\n* uni-link $:/ControlPanel setting\n\n* [[uni-fields|$:/plugins/wikilabs/uni-link/uni-fields.js]] widget, that allows us to assign CSS classes based on tiddler fields existence.\n&lt;&lt;&lt;\n\n! Installation\n&lt;&lt;&lt;\n* You can drag &amp; drop import this link: $:/plugins/wikilabs/uni-link&lt;br&gt;\n&lt;&lt;&lt;\n\n! Link Styling\n&lt;&lt;&lt;\n* Uni-links are styled like this: $:/plugins/wikilabs/uni-link/styles\n&lt;&lt;&lt;\n\n! Examples\n&lt;&lt;&lt;\nYou can use the following buttons to create example tiddlers!\n\n&lt;&lt;createExampleTiddlers&gt;&gt; -- &lt;&lt;deleteExampleTiddlers&gt;&gt;\n&lt;&lt;&lt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/filters/aliasbacklinks.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/filters/aliasbacklinks.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/filters/aliasbacklinks.js\ntype: application/javascript\nmodule-type: filteroperator\n\nFilter operator for returning all the backlinks from a tiddler\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\n/*\nExport our filter function\n*/\nexports.aliasbacklinks = function(source,operator,options) {\n\tvar results = [];\n\tsource(function(tiddler,title) {\n\t\t$tw.utils.pushTop(results,options.wiki.getTiddlerAliasBacklinks(title));\n\t});\n\treturn results;\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;filteroperator&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/filters/all/aliases.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/filters/all/aliases.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/filters/all/aliases.js\ntype: application/javascript\nmodule-type: allfilteroperator\n\nFilter function for [all[aliases]]\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\n/*\nExport our filter function\n*/\nexports.aliases = function(source,prefix,options) {\n\treturn options.wiki.getAllAliases();\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;allfilteroperator&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/filters/is/alias.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/filters/is/alias.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/filters/is/alias.js\ntype: application/javascript\nmodule-type: isfilteroperator\n\nFilter function for [is[alias]]\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\n/*\nExport our filter function\n*/\nexports.alias = function(source,prefix,options) {\n\tvar results = [],\n\t\taliases = options.wiki.getAllAliases();\n\n\tif(prefix === \&quot;!\&quot;) {\n\t\tsource(function(tiddler,title) {\n\t\t\ttitle = title.toLowerCase();\n\t\t\tif (aliases.indexOf(title) === -1) results.push(title);\n\t\t});\n\t} else {\n\t\tsource(function(tiddler,title) {\n\t\t\ttitle = title.toLowerCase();\n\t\t\tif (aliases.indexOf(title) !== -1) results.push(title);\n\t\t});\n\t}\n\treturn results;\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;isfilteroperator&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/make-alias-link.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/make-alias-link.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/make-alias-link.js\ntype: application/javascript\nmodule-type: texteditoroperation\n\nText editor operation to make an alias-link\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports[\&quot;make-alias-link\&quot;] = function(event,operation) {\n\tif(operation.selection) {\n\t\toperation.replacement = \&quot;[[\&quot; + operation.selection + \&quot;|?\&quot; + event.paramObject.text + \&quot;]] \&quot;;\n\t\toperation.cutStart = operation.selStart;\n\t\toperation.cutEnd = operation.selEnd;\n\t} else {\n\t\toperation.replacement = \&quot;[[\&quot; + event.paramObject.text + \&quot;|?]] \&quot;;\n\t\toperation.cutStart = operation.selStart;\n\t\toperation.cutEnd = operation.selEnd;\n\t}\n\toperation.newSelStart = operation.selStart + operation.replacement.length;\n\toperation.newSelEnd = operation.newSelStart;\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;texteditoroperation&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/relinkoperations/text/wikitext/unilink.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/relinkoperations/text/wikitext/unilink.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/relinkoperations/text/wikitext/unilink.js\ntype: application/javascript\nmodule-type: relinkwikitextrule\n\nHandles replacement in wiki text inline rules, like,\n\n[[Introduction]]\n\n[[link description|TiddlerTitle]]\n\n\\*/\n\n\&quot;use strict\&quot;;\n\nvar prettylink = require('$:/plugins/flibbles/relink/js/relinkoperations/text/wikitext/prettylink.js');\n\nfunction Unilink() {}\n\nUnilink.prototype = prettylink;\n\nmodule.exports = new Unilink();\nmodule.exports.name = \&quot;unilink\&quot;;\n\nmodule.exports.relink = function(text_or_tiddler) {\n    // Check that this version of Relink supports [object] return.\n    if (typeof text_or_tiddler === \&quot;string\&quot;) {\n        if (this.match[3] == \&quot;?\&quot;) {\n            this.parser.pos = this.matchRegExp.lastIndex;\n            // Ignore this unilink. The link portion has a \&quot;?\&quot;, so it's an alias.\n            return undefined;\n        }\n        if (this.match[2] == \&quot;|\&quot; &amp;&amp; !this.match[3] &amp;&amp; !this.match[4]) {\n            this.parser.pos = this.matchRegExp.lastIndex;\n            return { name: \&quot;unilink\&quot;, impossible: true};\n        }\n    }\n    // The underlying prettylink rule expects everything after the \&quot;|\&quot; to\n    // be the link. We'll just swap it in from the 4th position before we\n    // apply prettylink relinking.\n    this.match[2] = this.match[4];\n    return prettylink.relink.apply(this, arguments);\n};\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;relinkwikitextrule&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/uni-fields.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/uni-fields.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/uni-fields.js\ntype: application/javascript\nmodule-type: widget\n\nunifields widget, derived from Fields Widget\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false, require:false, exports:false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar FieldsWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nFieldsWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nFieldsWidget.prototype.render = function(parent,nextSibling) {\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n\tvar textNode = this.document.createTextNode(this.text);\n\tparent.insertBefore(textNode,nextSibling);\n\tthis.domNodes.push(textNode);\n};\n\n/*\nCompute the internal state of the widget\n*/\nFieldsWidget.prototype.execute = function() {\n\t// Get parameters from our attributes\n\tthis.tiddlerTitle = this.getAttribute(\&quot;tiddler\&quot;,this.getVariable(\&quot;currentTiddler\&quot;));\n\tthis.template = this.getAttribute(\&quot;template\&quot;);\n\tthis.sort = this.getAttribute(\&quot;sort\&quot;,\&quot;yes\&quot;) === \&quot;yes\&quot;;\n\tthis.exclude = this.getAttribute(\&quot;exclude\&quot;);\n\tthis.include = this.getAttribute(\&quot;include\&quot;,null);\n\tthis.stripTitlePrefix = this.getAttribute(\&quot;stripTitlePrefix\&quot;,\&quot;no\&quot;) === \&quot;yes\&quot;;\n\tthis.sortReverse = this.getAttribute(\&quot;sortReverse\&quot;,\&quot;no\&quot;) === \&quot;yes\&quot;;\n\t// Get the value to display\n\tvar tiddler = this.wiki.getTiddler(this.tiddlerTitle);\n\n\t// Get the inclusion and exclusion list\n\tvar exclude = (this.exclude) ? this.exclude.split(\&quot; \&quot;) : [\&quot;text\&quot;];\n\t// If inclusion is defined, everything else is auto excluded\n\tvar include = (this.include) ? this.include.split(\&quot; \&quot;) : null;\n\n\t// Compose the template\n\tvar text = [];\n\tif(this.template &amp;&amp; tiddler) {\n\t\tvar fields = [];\n\t\tif (include) {\n\t\t\tfor(var i=0; i&lt;include.length; i++) {\n\t\t\t\tif(tiddler.fields[include[i]]) {\n\t\t\t\t\tfields.push(include[i]);\n\t\t\t\t}\n\t\t\t}\n\t\t} else {\n\t\t\tfor(var fieldName in tiddler.fields) {\n\t\t\t\tif(exclude.indexOf(fieldName) === -1) {\n\t\t\t\t\tfields.push(fieldName);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif (this.sort) fields.sort();\n\t\tif (this.sortReverse) fields.reverse();\n\t\tfor(var f=0, fmax=fields.length; f&lt;fmax; f++) {\n\t\t\tfieldName = fields[f];\n//\t\t\tif(exclude.indexOf(fieldName) === -1) {\n\t\t\tvar row = this.template,\n\t\t\t\tvalue = tiddler.getFieldString(fieldName);\n\t\t\tif(this.stripTitlePrefix &amp;&amp; fieldName === \&quot;title\&quot;) {\n\t\t\t\tvar reStrip = /^\\{[^\\}]+\\}(.+)/mg,\n\t\t\t\t\treMatch = reStrip.exec(value);\n\t\t\t\tif(reMatch) {\n\t\t\t\t\tvalue = reMatch[1];\n\t\t\t\t}\n\t\t\t}\n\t\t\trow = $tw.utils.replaceString(row,\&quot;$name$\&quot;,fieldName);\n\t\t\trow = $tw.utils.replaceString(row,\&quot;$value$\&quot;,value);\n\t\t\trow = $tw.utils.replaceString(row,\&quot;$encoded_value$\&quot;,$tw.utils.htmlEncode(value));\n\t\t\ttext.push(row);\n//\t\t\t}\n\t\t}\n\t}\n\tthis.text = text.join(\&quot;\&quot;);\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nFieldsWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes.tiddler || changedAttributes.template || changedAttributes.exclude || changedAttributes.stripTitlePrefix || changedTiddlers[this.tiddlerTitle]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t} else {\n\t\treturn false;\n\t}\n};\n\nexports[\&quot;uni-fields\&quot;] = FieldsWidget;\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/uni-link.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/uni-link.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/uni-link.js\ntype: application/javascript\nmodule-type: wikirule\n\nWiki text inline rule for uni link macros. For example:\n\n```\n[[Introduction]] ... uni-link\n\n[[Link description|?]]  ... alias-link\n[[Link description|?t]] ... alias-link - show title\n[[Link description|?c]] ... alias-link - show caption\n[[Link description|?s]] ... alias-link - show subtitle\n[[Link description|?my-field]] ... alias-link - show any field-name as link text\n\n```\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nexports.name = \&quot;unilink\&quot;;\nexports.types = {inline: true};\n\nexports.init = function(parser) {\n\tthis.parser = parser;\n\t// Regexp to match\n//\tthis.matchRegExp = /\\[\\[(.*?)(?:\\|(.*?))?\\]\\]/mg;\n\tthis.matchRegExp = /\\[\\[(.*?)(?:(\\|)(\\?)?(.*?))?\\]\\]/mg;\n};\n\nexports.parse = function() {\n\t// Move past the match\n\tthis.parser.pos = this.matchRegExp.lastIndex;\n\t// Process the link\n\tvar text = this.match[1],\n\t\tlink = this.match[4] || text,\n\t\tcheckAlias = this.match[3] === \&quot;?\&quot;,\n\t\tuseUniLink = !(this.match[2] === \&quot;|\&quot;);\n\n\tif($tw.utils.isLinkExternal(link)) {\n\t\treturn [{\n\t\t\ttype: \&quot;element\&quot;,\n\t\t\ttag: \&quot;a\&quot;,\n\t\t\tattributes: {\n\t\t\t\thref: {type: \&quot;string\&quot;, value: link},\n\t\t\t\t\&quot;class\&quot;: {type: \&quot;string\&quot;, value: \&quot;tc-tiddlylink-external\&quot;},\n\t\t\t\ttarget: {type: \&quot;string\&quot;, value: \&quot;_blank\&quot;},\n\t\t\t\trel: {type: \&quot;string\&quot;, value: \&quot;noopener noreferrer\&quot;}\n\t\t\t},\n\t\t\tchildren: [{\n\t\t\t\ttype: \&quot;text\&quot;, text: text\n\t\t\t}]\n\t\t}];\n\t} else if (checkAlias &amp;&amp; link === \&quot;?\&quot;) {\n\t\tvar results = $tw.wiki.search(text,{caseSensitive:false, field: \&quot;title\&quot;, invert:false, literal:true});\n\t\treturn [{\n\t\t\ttype: \&quot;link\&quot;,\n\t\t\tattributes: {\n\t\t\t\tto: {type: \&quot;string\&quot;, value: (results[0]) ? results[0] : text}\n\t\t\t},\n\t\t\tchildren: [{\n\t\t\t\ttype: \&quot;text\&quot;, text: text\n\t\t\t}]\n\t\t}];\n\t} else if(checkAlias) {\n\t\tvar field = \&quot;X\&quot;; // field names are alwayse lowercase!\n\n\t\tif(link === \&quot;c\&quot;) {\n\t\t\tfield = \&quot;caption\&quot;\n\t\t} else if(link === \&quot;s\&quot;) {\n\t\t\tfield = \&quot;subtitle\&quot;\n\t\t} else if(link === \&quot;t\&quot;) {\n\t\t\tfield = \&quot;title\&quot;\n\t\t} else if (text != link) {\n\t\t\tfield = link;\n\t\t}\n\n\t\treturn [{\n\t\t\ttype: \&quot;macrocall\&quot;,\n\t\t\tname: \&quot;aka\&quot;,\n\t\t\tparams: [\n\t\t\t\t{name: \&quot;target\&quot;, value: text},\n\t\t\t\t{name: \&quot;field\&quot;, value: field},\n\t\t\t\t]\n\t\t\t}\n\t\t];\n\t} else if((text === link) &amp;&amp; useUniLink) {\n\t\t// Since V 1.1.0 new link-backlink detection implemented\n\t\t// Overwrites the core $tw.wiki.getTiddlerLinks() method with own version\n\t\treturn [{\n\t\t\ttype: \&quot;macrocall\&quot;,\n\t\t\tname: \&quot;uni-link\&quot;,\n\t\t\tparams: [\n\t\t\t\t{name: \&quot;tid\&quot;, value: text}\n\t\t\t\t]\n\t\t\t}\n\t\t];\n\t} else {\n\t\treturn [{\n\t\t\ttype: \&quot;link\&quot;,\n\t\t\tattributes: {\n\t\t\t\tto: {type: \&quot;string\&quot;, value: link}\n\t\t\t},\n\t\t\tchildren: [{\n\t\t\t\ttype: \&quot;text\&quot;, text: text\n\t\t\t}]\n\t\t}];\n\t}\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;wikirule&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/wiki-ext.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/wiki-ext.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/uni-link/wiki-ext.js\ntype: application/javascript\nmodule-type: wikimethod\n\nExtension methods for the $tw.Wiki object\n\nAdds the following properties to the wiki object:\n\nexports.getTiddlerAliasLinks = function(title) {\nexports.getTiddlerAliasBacklinks = function(targetTitle) {\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\n//var widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;);\n\n\n/*\nReturn an array of tiddler titles that are directly linked within the given parse tree\n */\nexports.extractLinks = function(parseTreeRoot) {\n\t// Count up the links\n\tvar links = [],\n\t\tcheckParseTree = function(parseTree) {\n\t\t\tfor(var t=0; t&lt;parseTree.length; t++) {\n\t\t\t\tvar parseTreeNode = parseTree[t];\n\t\t\t\tif(parseTreeNode.type === \&quot;link\&quot; &amp;&amp; parseTreeNode.attributes.to &amp;&amp; parseTreeNode.attributes.to.type === \&quot;string\&quot;) {\n\t\t\t\t\tvar value = parseTreeNode.attributes.to.value;\n\t\t\t\t\tif(links.indexOf(value) === -1) {\n\t\t\t\t\t\tlinks.push(value);\n\t\t\t\t\t}\n\t\t\t\t} else if (parseTreeNode.type === \&quot;macrocall\&quot; &amp;&amp; parseTreeNode.name === \&quot;uni-link\&quot; &amp;&amp; parseTreeNode.params &amp;&amp; parseTreeNode.params[0].value) {\n\t\t\t\t\tvar value = parseTreeNode.params[0].value;\n\t\t\t\t\tif(links.indexOf(value) === -1) {\n\t\t\t\t\t\tlinks.push(value);\n\t\t\t\t\t}\n\t\t\t\t} // else if type===\&quot;macrocall\&quot;\n\n\t\t\t\tif(parseTreeNode.children) {\n\t\t\t\t\tcheckParseTree(parseTreeNode.children);\n\t\t\t\t}\n\t\t\t}\n\t\t};\n\tcheckParseTree(parseTreeRoot);\n\treturn links;\n};\n\n/*\nReturn an array of tiddler titles that are directly linked from the specified tiddler\n*/\nexports.getTiddlerLinksXXX = function(title) {\n\tvar self = this;\n\t// We'll cache the links so they only get computed if the tiddler changes\n\treturn this.getCacheForTiddler(title,\&quot;links\&quot;,function() {\n\t\t// Parse the tiddler\n\t\tvar parser = self.parseTiddler(title);\n\t\t// Count up the links\n\t\tvar links = [],\n\t\t\tcheckParseTree = function(parseTree) {\n\t\t\t\tfor(var t=0; t&lt;parseTree.length; t++) {\n\t\t\t\t\tvar parseTreeNode = parseTree[t];\n\t\t\t\t\tif(parseTreeNode.type === \&quot;link\&quot; &amp;&amp; parseTreeNode.attributes.to &amp;&amp; parseTreeNode.attributes.to.type === \&quot;string\&quot;) {\n\t\t\t\t\t\tvar value = parseTreeNode.attributes.to.value;\n\t\t\t\t\t\tif(links.indexOf(value) === -1) {\n\t\t\t\t\t\t\tlinks.push(value);\n\t\t\t\t\t\t}\n\t\t\t\t\t} else if (parseTreeNode.type === \&quot;macrocall\&quot; &amp;&amp; parseTreeNode.name === \&quot;uni-link\&quot; &amp;&amp; parseTreeNode.params &amp;&amp; parseTreeNode.params[0].value) {\n\t\t\t\t\t\tvar value = parseTreeNode.params[0].value;\n\t\t\t\t\t\tif(links.indexOf(value) === -1) {\n\t\t\t\t\t\t\tlinks.push(value);\n\t\t\t\t\t\t}\n\t\t\t\t\t} // else if type===\&quot;macrocall\&quot;\n\n\t\t\t\t\tif(parseTreeNode.children) {\n\t\t\t\t\t\tcheckParseTree(parseTreeNode.children);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t};\n\t\tif(parser) {\n\t\t\tcheckParseTree(parser.tree);\n\t\t}\n\t\treturn links;\n\t});\n};\n\n/*\nAlias backlink handling\n*/\nfunction aliasInit(title) {\n\t// Parse the tiddler\n\tvar parser = this.parseTiddler(title);\n\t// Count up the links\n\tvar links = [],\n\t\tcheckParseTree = function(parseTree) {\n\t\t\tfor(var t=0; t&lt;parseTree.length; t++) {\n\t\t\t\tvar parseTreeNode = parseTree[t];\n\t\t\t\tif(parseTreeNode.type === \&quot;macrocall\&quot; &amp;&amp; parseTreeNode.name === \&quot;aka\&quot;) {\n\t\t\t\t\tvar value = parseTreeNode.params[0].value;\n\t\t\t\t\tif(links.indexOf(value) === -1) {\n\t\t\t\t\t\tlinks.push(value);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tif(parseTreeNode.children) {\n\t\t\t\t\tcheckParseTree(parseTreeNode.children);\n\t\t\t\t}\n\t\t\t}\n\t\t};\n\tif(parser) {\n\t\tcheckParseTree(parser.tree);\n\t}\n\t/*\n\tFor every tiddler invoke a callback(title,tiddler) with `this` set to the wiki object. Options include:\n\tsortField: field to sort by\n\texcludeTag: tag to exclude\n\tincludeSystem: whether to include system tiddlers (defaults to false)\n\t*/\n\tvar backlinks = []\n\tthis.forEachTiddler({includeSystem:true}, function(ttl,tiddler) {\n\t\tif (tiddler.fields[\&quot;aliases\&quot;]) {\n\t\t\t// var fields = tiddler.fields[\&quot;aliases\&quot;];\n\t\t\tvar fields = $tw.utils.parseStringArray(tiddler.fields[\&quot;aliases\&quot;]);\n\t\t\tfields = fields.map(function (el){\n\t\t\t\treturn el.toLowerCase();\n\t\t\t});\n\t\t\tlinks.map( function (el) {\n\t\t\t\tif (fields.indexOf(el.toLowerCase()) != -1) backlinks.push(ttl);\n\t\t\t})\n\t\t} // if tiddler aliases\n\t});\n\n\tif ((backlinks.length === 0) &amp;&amp; (links.length &gt; 0)) {\n\t\tbacklinks[0] = \&quot;?\&quot;;\n\t}\n\n\treturn backlinks;\n}\n\nexports.getAllAliases = function() {\n\tvar self = this,\n\t\taliases = \&quot;\&quot;;\n\t/*\n\tFor every tiddler invoke a callback(title,tiddler) with `this` set to the wiki object. Options include:\n\tsortField: field to sort by\n\texcludeTag: tag to exclude\n\tincludeSystem: whether to include system tiddlers (defaults to false)\n\t*/\n\tself.forEachTiddler({includeSystem:true}, function(title,tiddler) {\n\t\tif (tiddler.fields[\&quot;aliases\&quot;]) {\n//\t\t\t$tw.utils.pushTop(aliases, this.getCacheForTiddler(title,\&quot;alias\&quot;,aliasInit.bind(this, title)));\n\t\t\taliases = aliases + ` ${tiddler.fields.aliases}`;\n\t\t} // if tiddler aliases\n\t});\n\taliases = aliases.toLowerCase();\n\treturn $tw.utils.parseStringArray(aliases);\n};\n\n\n/*\nReturn an array of tiddler titles that are alias linked from the specified tiddler\n*/\nexports.getTiddlerAliasLinks = function(title) {\n\tvar self = this;\n\n\t// We'll cache the links so they only get computed if the tiddler changes\n\treturn this.getCacheForTiddler(title,\&quot;alias\&quot;,aliasInit.bind(this, title));\n};\n\n/*\nReturn an array of tiddler titles that link to the specified tiddler\n*/\nexports.getTiddlerAliasBacklinks = function(targetTitle) {\n\tvar self = this,\n\t\tbacklinks = [];\n\tthis.forEachTiddler(function(title,tiddler) {\n\t\tvar links = self.getTiddlerAliasLinks(title);\n\t\tif(links.indexOf(targetTitle) !== -1) {\n\t\t\tbacklinks.push(title);\n\t\t}\n\t});\n\treturn backlinks;\n};\n\n})();\n\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;wikimethod&quot;
+        },
+        &quot;$:/core/images/aliasify&quot;: {
+            &quot;title&quot;: &quot;$:/core/images/aliasify&quot;,
+            &quot;created&quot;: &quot;20180909082646243&quot;,
+            &quot;modified&quot;: &quot;20180909091537847&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Image&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;svg class=\&quot;tc-linkify-button tc-image-button\&quot; width=\&quot;22pt\&quot; height=\&quot;22pt\&quot; viewBox=\&quot;0 0 128 128\&quot;&gt;\n&lt;path d=\&quot;m17.031 31.919h-7.983v64.931h7.983v6.92h-17.031v-78.77h17.031zm24.66 0h-7.983v64.931h7.983v6.92h-17.031v-78.77h17.03v6.919zm44.619 64.931h7.982v-64.93h-7.982v-6.92h17.031v78.77h-17.031zm24.659 0h7.983v-64.93h-7.983v-6.92h17.031v78.77h-17.031z\&quot; fill-rule=\&quot;evenodd\&quot;/&gt;\n &lt;path d=\&quot;m45.188 34.74v62.668h7.3507c-0.02998-28.03 0.06401-32 0.04791-62.668zm28.464 2.6834c-2.6133 0-5.1484 0.36297-7.6094 1.0734-2.4357 0.7104-4.8412 1.7835-7.2261 3.2297v7.159c2.461-1.6999 4.8147-2.9934 7.0728-3.8814 2.2834-0.88801 4.4263-1.3321 6.4306-1.3321 2.7401 0 4.9348 0.69381 6.584 2.0892 1.6745 1.3954 2.5205 3.2238 2.5205 5.4819 0 1.2432-0.33704 2.4589-0.9967 3.6514-0.63429 1.1925-1.6685 2.46-3.1147 3.8047l-3.431 3.3926c-2.2834 2.182-3.7748 4.0915-4.4852 5.7406-0.71039 1.6491-1.0638 3.7627-1.0638 6.3252v5.8556h7.2644v-4.6768c0-1.3193 0.03891-2.3631 0.115-3.1243 0.07613-0.76115 0.19278-1.4031 0.34501-1.9359 0.20297-0.63429 0.5434-1.2858 1.0255-1.9455 0.50744-0.68504 1.3568-1.6251 2.5493-2.8176l3.3447-3.268c2.2834-2.182 3.888-4.1399 4.8014-5.8652 0.91338-1.7506 1.3705-3.592 1.3705-5.5202 0-4.0341-1.4231-7.276-4.2647-9.737-2.8162-2.461-6.5637-3.6993-11.232-3.6993zm-5.5489 48.187v9.6604h7.7244v-9.6604z\&quot; fill-rule=\&quot;evenodd\&quot; stroke-width=\&quot;1.1245\&quot;/&gt;\n&lt;/svg&gt;\n&quot;
+        },
+        &quot;$:/core/ui/EditorToolbar/aliasify&quot;: {
+            &quot;title&quot;: &quot;$:/core/ui/EditorToolbar/aliasify&quot;,
+            &quot;caption&quot;: &quot;{{$:/language/Buttons/Aliasify/Caption}}&quot;,
+            &quot;condition&quot;: &quot;[&lt;targetTiddler&gt;!has[type]] [&lt;targetTiddler&gt;type[text/vnd.tiddlywiki]]&quot;,
+            &quot;created&quot;: &quot;20180909082308073&quot;,
+            &quot;description&quot;: &quot;{{$:/language/Buttons/Aliasify/Hint}}&quot;,
+            &quot;icon&quot;: &quot;$:/core/images/aliasify&quot;,
+            &quot;list-before&quot;: &quot;$:/core/ui/EditorToolbar/mono-block&quot;,
+            &quot;modified&quot;: &quot;20180909091537847&quot;,
+            &quot;shortcuts&quot;: &quot;((aliasify))&quot;,
+            &quot;tags&quot;: &quot;$:/tags/EditorToolbar&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$action-sendmessage\n\t$message=\&quot;tm-edit-text-operation\&quot;\n\t$param=\&quot;wrap-selection\&quot;\n\tprefix=\&quot;[[\&quot;\n\tsuffix=\&quot;|?]]\&quot;\n/&gt;\n&quot;
+        },
+        &quot;$:/core/ui/TiddlerInfo/References&quot;: {
+            &quot;title&quot;: &quot;$:/core/ui/TiddlerInfo/References&quot;,
+            &quot;caption&quot;: &quot;{{$:/language/TiddlerInfo/References/Caption}}&quot;,
+            &quot;tags&quot;: &quot;$:/tags/TiddlerInfo&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define lingo-base() $:/language/TiddlerInfo/\n&lt;$list filter=\&quot;[all[current]backlinks[]sort[title]]\&quot; emptyMessage=&lt;&lt;lingo References/Empty&gt;&gt; template=\&quot;$:/core/ui/ListItemTemplate\&quot;&gt;&lt;/$list&gt;\n&lt;hr&gt;\n\n''Alias backlinks from tiddlers:''\n\n&lt;$list filter=\&quot;[all[current]aliasbacklinks[]sort[title]]\&quot; emptyMessage=\&quot;No alias links to this one\&quot; template=\&quot;$:/core/ui/ListItemTemplate\&quot;&gt;&lt;/$list&gt;\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/ControlPanel/settings&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/ControlPanel/settings&quot;,
+            &quot;caption&quot;: &quot;uni-link&quot;,
+            &quot;created&quot;: &quot;20171205224905238&quot;,
+            &quot;modified&quot;: &quot;20171205230149750&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ControlPanel&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;!! [[Enable Aliases Footer|$:/plugins/wikilabs/uni-link/aka-footer]]\n\n&lt;&lt;&lt;\n&lt;$checkbox tiddler=\&quot;$:/plugins/wikilabs/uni-link/aka-footer\&quot; tag=\&quot;$:/tags/ViewTemplate\&quot;&gt; Enable Aliases Footer&lt;/$checkbox&gt;\n&lt;&lt;&lt;\n\n!! [[Uni-link - Default field|$:/config/wikilabs/uni-link/field]]\n\nUse the following field as link text, if available: \n\n&lt;&lt;&lt;\n&lt;$tiddler tiddler=\&quot;$:/config/wikilabs/uni-link/field\&quot;&gt;\n&lt;$radio value=\&quot;caption\&quot;&gt; caption&lt;/$radio&gt;&lt;br&gt;\n&lt;$radio value=\&quot;subtitle\&quot;&gt; subtitle&lt;/$radio&gt;&lt;br&gt;\n&lt;$radio value=\&quot;\&quot;&gt; title&lt;/$radio&gt;&lt;br&gt;\n&lt;/$tiddler&gt;\n&lt;&lt;&lt;\n\n!! Additional Info\n\nSee: [[$:/plugins/wikilabs/uni-link/readme]]\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/alias-dropdown&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/alias-dropdown&quot;,
+            &quot;created&quot;: &quot;20190210145516221&quot;,
+            &quot;modified&quot;: &quot;20190210194738308&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define lingo-base() $:/language/Buttons/Link/\n\n\\define add-link-actions()\n&lt;$action-sendmessage $message=\&quot;tm-edit-text-operation\&quot; $param=\&quot;make-alias-link\&quot; text={{$(linkTiddler)$}} /&gt;\n&lt;$action-deletetiddler $tiddler=&lt;&lt;dropdown-state&gt;&gt; /&gt;\n&lt;$action-deletetiddler $tiddler=&lt;&lt;searchTiddler&gt;&gt; /&gt;\n&lt;$action-deletetiddler $tiddler=&lt;&lt;linkTiddler&gt;&gt; /&gt;\n\\end\n\n\\define external-link()\n&lt;$button class=\&quot;tc-btn-invisible\&quot; style=\&quot;width:auto; display:inline-block; background:none; padding:0;\&quot; actions=&lt;&lt;add-link-actions&gt;&gt;&gt;\n{{$:/core/images/chevron-right}}\n&lt;/$button&gt;\n\\end\n\n\\define body(config-title)\n''&lt;&lt;lingo Hint&gt;&gt;''\n\n&lt;$vars searchTiddler=\&quot;\&quot;\&quot;$config-title$/search\&quot;\&quot;\&quot; linkTiddler=\&quot;\&quot;\&quot;$config-title$/link\&quot;\&quot;\&quot; linktext=\&quot;\&quot; &gt;\n\n&lt;$vars linkTiddler=&lt;&lt;searchTiddler&gt;&gt;&gt;\n&lt;$keyboard key=\&quot;ENTER\&quot; actions=&lt;&lt;add-link-actions&gt;&gt;&gt;\n&lt;$edit-text tiddler=&lt;&lt;searchTiddler&gt;&gt; type=\&quot;search\&quot; tag=\&quot;input\&quot; focus=\&quot;true\&quot; placeholder={{$:/language/Search/Search}} default=\&quot;\&quot;/&gt;\n&lt;$reveal tag=\&quot;span\&quot; state=&lt;&lt;searchTiddler&gt;&gt; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;\n&lt;&lt;external-link&gt;&gt;\n&lt;$button class=\&quot;tc-btn-invisible\&quot; style=\&quot;width:auto; display:inline-block; background:none; padding:0;\&quot;&gt;\n&lt;$action-setfield $tiddler=&lt;&lt;searchTiddler&gt;&gt; text=\&quot;\&quot; /&gt;\n{{$:/core/images/close-button}}\n&lt;/$button&gt;\n&lt;/$reveal&gt;\n&lt;/$keyboard&gt;\n&lt;/$vars&gt;\n\n&lt;$reveal tag=\&quot;div\&quot; state=&lt;&lt;searchTiddler&gt;&gt; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;\n\n&lt;$linkcatcher actions=&lt;&lt;add-link-actions&gt;&gt; to=&lt;&lt;linkTiddler&gt;&gt;&gt;\n\n{{$:/plugins/wikilabs/uni-link/ui/EditorToolbar/SearchResults}}\n\n&lt;/$linkcatcher&gt;\n\n&lt;/$reveal&gt;\n\n&lt;/$vars&gt;\n\n\\end\n\n&lt;$macrocall $name=\&quot;body\&quot; config-title=&lt;&lt;qualify \&quot;$:/state/Link/\&quot;&gt;&gt;/&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/alias&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/alias&quot;,
+            &quot;button-classes&quot;: &quot;tc-text-editor-toolbar-item-start-group&quot;,
+            &quot;caption&quot;: &quot;{{$:/language/Buttons/Make/Alias/Caption}}&quot;,
+            &quot;condition&quot;: &quot;[&lt;targetTiddler&gt;!has[type]] [&lt;targetTiddler&gt;type[text/vnd.tiddlywiki]]&quot;,
+            &quot;created&quot;: &quot;20190210145538580&quot;,
+            &quot;description&quot;: &quot;{{$:/language/Buttons/Make/Alias/Hint}}&quot;,
+            &quot;dropdown&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/alias-dropdown&quot;,
+            &quot;icon&quot;: &quot;$:/core/images/link&quot;,
+            &quot;modified&quot;: &quot;20190210194833231&quot;,
+            &quot;shortcuts&quot;: &quot;((alias-link))&quot;,
+            &quot;tags&quot;: &quot;$:/tags/EditorToolbar&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/SearchResults&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/SearchResults&quot;,
+            &quot;created&quot;: &quot;20190210164849276&quot;,
+            &quot;modified&quot;: &quot;20190210194648558&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\whitespace trim\n&lt;div class=\&quot;tc-search-results\&quot;&gt;\n\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/AliasResults]!has[draft.of]butfirst[]limit[1]]\&quot; emptyMessage=\&quot;\&quot;\&quot;\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/AliasResults]!has[draft.of]]\&quot;&gt;\n&lt;$transclude mode=\&quot;block\&quot;/&gt;\n&lt;/$list&gt;\n\&quot;\&quot;\&quot;&gt;\n\n&lt;$macrocall $name=\&quot;tabs\&quot; tabsList=\&quot;[all[shadows+tiddlers]tag[$:/tags/AliasResults]!has[draft.of]]\&quot; default={{$:/config/SearchResults/Default}}/&gt;\n\n&lt;/$list&gt;\n&lt;/div&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/SearchTemplate&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/EditorToolbar/SearchTemplate&quot;,
+            &quot;caption&quot;: &quot;Aliases&quot;,
+            &quot;created&quot;: &quot;20190210153457679&quot;,
+            &quot;modified&quot;: &quot;20190210194716605&quot;,
+            &quot;tags&quot;: &quot;$:/tags/AliasResults&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define getRealName()\nTiddler -&gt; &lt;&lt;aka-no-links target:\&quot;\&quot;\&quot;$(alias)$\&quot;\&quot;\&quot;&gt;&gt;\n\\end\n\\define searchResultList()\n\\whitespace trim\n&lt;$list filter=\&quot;[all[aliases]search:{$(searchTiddler)$}sort[title]]\&quot; variable=alias&gt;\n  &lt;div class=\&quot;tc-menu-list-item\&quot;&gt;\n   &lt;$link to=&lt;&lt;alias&gt;&gt; tooltip=&lt;&lt;getRealName&gt;&gt; &gt;&lt;&lt;alias&gt;&gt;&lt;/$link&gt;\n  &lt;/div&gt;\n&lt;/$list&gt;\n\\end\n&lt;&lt;searchResultList&gt;&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases&quot;,
+            &quot;caption&quot;: &quot;Aliases&quot;,
+            &quot;created&quot;: &quot;20171214213808142&quot;,
+            &quot;list-before&quot;: &quot;$:/core/ui/MoreSideBar/Recent&quot;,
+            &quot;modified&quot;: &quot;20171214215245931&quot;,
+            &quot;tags&quot;: &quot;$:/tags/MoreSideBar&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;div class=\&quot;uni-link-sidebar tc-sidebar-lists\&quot;&gt;\n&lt;&lt;tabs \&quot;[all[shadows+tiddlers]tag[$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases]!has[draft.of]]\&quot; \&quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/byAlias\&quot; \&quot;$:/state/tab/Aliases\&quot; &gt;&gt;\n&lt;/div&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/byAlias&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/byAlias&quot;,
+            &quot;caption&quot;: &quot;Alias&quot;,
+            &quot;created&quot;: &quot;20171214203739053&quot;,
+            &quot;list-before&quot;: &quot;$:/core/ui/MoreSideBar/Recent&quot;,
+            &quot;modified&quot;: &quot;20171214213743140&quot;,
+            &quot;tags&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\whitespace trim\n&lt;$list filter=\&quot;[all[aliases]sort[title]]\&quot; variable=alias&gt;\n  &lt;div class=\&quot;tc-menu-list-item\&quot;&gt;\n   &lt;$macrocall $name=\&quot;aka\&quot; target=&lt;&lt;alias&gt;&gt; /&gt;\n     &lt;div class=\&quot;tc-menu-list-subitem\&quot;&gt;\n       &lt;$macrocall $name=\&quot;aka-no-links\&quot; target=&lt;&lt;alias&gt;&gt; /&gt;\n      &lt;/div&gt;\n   &lt;/div&gt;\n&lt;/$list&gt;\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/byTitle&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/byTitle&quot;,
+            &quot;caption&quot;: &quot;Title&quot;,
+            &quot;created&quot;: &quot;20171214201333460&quot;,
+            &quot;list-before&quot;: &quot;$:/core/ui/MoreSideBar/Recent&quot;,
+            &quot;modified&quot;: &quot;20171214213745643&quot;,
+            &quot;tags&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\whitespace trim\n&lt;$list filter=\&quot;[has[aliases]sort[title]]\&quot;&gt;\n  &lt;div class=\&quot;tc-menu-list-item\&quot;&gt;\n    &lt;$link to=&lt;&lt;currentTiddler&gt;&gt; &gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$link&gt;\n    &lt;$list filter=\&quot;[list[!!aliases]]\&quot;&gt;\n      &lt;div class=\&quot;tc-menu-list-subitem\&quot;&gt;\n        &lt;$view field=title/&gt;\n      &lt;/div&gt;\n    &lt;/$list&gt;\n  &lt;/div&gt;\n&lt;/$list&gt;\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/undefined&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases/undefined&quot;,
+            &quot;caption&quot;: &quot;Undefined&quot;,
+            &quot;created&quot;: &quot;20180202150804918&quot;,
+            &quot;list-before&quot;: &quot;$:/core/ui/MoreSideBar/Recent&quot;,
+            &quot;modified&quot;: &quot;20180202151517364&quot;,
+            &quot;tags&quot;: &quot;$:/plugins/wikilabs/uni-link/ui/MoreSideBar/Aliases&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$list filter=\&quot;[[?]aliasbacklinks[]sort[title]]\&quot; template=\&quot;$:/core/ui/ListItemTemplate\&quot; emptyMessage=\&quot;No undefined Aliases\&quot;/&gt;\n\n---\n\nYou'll need to reload the page, to update this list!\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/uni-link-macro&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/uni-link-macro&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Macro&quot;,
+            &quot;text&quot;: &quot;\\define getClass()\n&lt;$uni-fields template=\&quot;uni-$name$\&quot; include=$(field-name)$ sort=\&quot;no\&quot;/&gt; uni-link\n\\end\n\n\\define linkText()\n\\whitespace trim\n&lt;$set name=\&quot;tv-wikilinks\&quot; value=\&quot;no\&quot;&gt;\n&lt;span class=&lt;&lt;class&gt;&gt; &gt;\n  &lt;$transclude field=$(field-name)$ &gt;&lt;$transclude field=title/&gt;&lt;/$transclude&gt;\n&lt;/span&gt;\n&lt;/$set&gt;\n\\end\n\n\\define uni-link(tid)\n\\whitespace trim\n&lt;$tiddler tiddler=\&quot;\&quot;\&quot;$tid$\&quot;\&quot;\&quot;&gt;\n  &lt;$vars field-name={{{[[$:/config/wikilabs/uni-link/field]get[text]]~[[title]]}}} &gt;\n    &lt;$wikify name=class text=&lt;&lt;getClass&gt;&gt; &gt;\n      &lt;$link to=\&quot;\&quot;\&quot;$tid$\&quot;\&quot;\&quot; tooltip=\&quot;\&quot;\&quot;uni-link -&gt; $tid$\&quot;\&quot;\&quot;&gt;&lt;&lt;linkText&gt;&gt;&lt;/$link&gt;\n    &lt;/$wikify&gt;\n  &lt;/$vars&gt;\n&lt;/$tiddler&gt;\n\\end\n\n&lt;pre&gt;&lt;$view field=\&quot;text\&quot;/&gt;&lt;/pre&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/uni-link/styles&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/uni-link/styles&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;text&quot;: &quot;.uni-link {\n  color: navy;\n}\n\n.uni-caption {\n  color: #2a699f;\n}\n\n.uni-subtitle {\n  color: #0e8446;\n}\n\n.uni-alias {\n  color: #7557d8;\n}\n\n.uni-alias-missing {\n  color: red;\n}\n\n.uni-link-sidebar .tc-tab-buttons {\n  padding-top: 0;\n}\n&quot;
+        }
+    }
+}</pre>
+</div>
 <div created="20201130195234345" modified="20201201070323727" title="$:/SiteSubtitle">
 <pre>one tiddler per quote, [[tutorial|tutorial for excerpts]]</pre>
 </div>
@@ -14343,9 +14607,9 @@ message-background
 <pre>$:/core/ui/ControlPanel/Toolbars/PageControls</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
-<div list="question@C3 [[tutorial for excerpts]]" title="$:/StoryList">
+<div list="$:/Import question@C3 [[tutorial for excerpts]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time" title="$:/tags/PageControls">
@@ -14373,7 +14637,7 @@ message-background
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://springerspandrel.github.io/tw/biblio-demo.html&quot;
+            &quot;text&quot;: &quot;https://springerspandrel.github.io/tw/biblio-demo&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -14393,7 +14657,7 @@ message-background
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/tw/biblio-demo.html&quot;
+            &quot;text&quot;: &quot;/tw/biblio-demo&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -14405,11 +14669,11 @@ message-background
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1680&quot;
+            &quot;text&quot;: &quot;1280&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;945&quot;
+            &quot;text&quot;: &quot;800&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -15694,7 +15958,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <pre>loaded</pre>
 </div>
 <div title="$:/temp/time">
-<pre>12:51:25 PM</pre>
+<pre>9:47:08 AM</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
