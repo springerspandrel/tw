@@ -308,6 +308,8 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/text-slicer</li>
 
+<li>$:/plugins/wikilabs/field-search</li>
+
 <li>$:/plugins/wikilabs/uni-link</li>
 
 <li>$:/SiteSubtitle</li>
@@ -10401,7 +10403,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/plugins/wikilabs/uni-link]]</pre>
+# [[$:/plugins/wikilabs/field-search]]</pre>
 </div>
 <div created="20201209204657455" modified="20201209204701075" title="$:/Import!!popup-Untitled">
 <pre>no</pre>
@@ -14170,6 +14172,128 @@ $value={{$:/temp/newfieldvalue}}/&gt;
     }
 }</pre>
 </div>
+<div author="Mario Pietsch" core-version="&gt;=5.1.18" dependents="" description="New tabs are added to search results" list="readme license history" name="Field Search" plugin-type="plugin" title="$:/plugins/wikilabs/field-search" type="application/json" version="0.4.1">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/config/field-search/data/Any Field&quot;: {
+            &quot;text&quot;: &quot;{\n    \&quot;*\&quot;: \&quot;any field\&quot;\n}&quot;,
+            &quot;type&quot;: &quot;application/json&quot;,
+            &quot;caption&quot;: &quot;Any Field&quot;,
+            &quot;tags&quot;: &quot;$:/tags/field-search/data&quot;,
+            &quot;title&quot;: &quot;$:/config/field-search/data/Any Field&quot;
+        },
+        &quot;$:/config/field-search/exclude&quot;: {
+            &quot;title&quot;: &quot;$:/config/field-search/exclude&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;bag revision exclude draft.of draft.title&quot;
+        },
+        &quot;$:/config/field-search/sortby&quot;: {
+            &quot;title&quot;: &quot;$:/config/field-search/sortby&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;title text tags caption subtitle creator modifier created modified type&quot;
+        },
+        &quot;$:/config/field-search/tab/Any Field&quot;: {
+            &quot;title&quot;: &quot;$:/config/field-search/tab/Any Field&quot;,
+            &quot;caption&quot;: &quot;Any Field&quot;,
+            &quot;opt-checked&quot;: &quot;[all[]]&quot;,
+            &quot;opt-unchecked&quot;: &quot;[!is[system]]&quot;,
+            &quot;search-set&quot;: &quot;[!is[system]]&quot;,
+            &quot;search-sort&quot;: &quot;[sort[title]limit[250]]&quot;,
+            &quot;tags&quot;: &quot;$:/tags/SearchResults&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define searchTerm() [search:$(field)$&lt;userInput&gt;]\n\n&lt;$list filter=\&quot;[[$:/config/field-search/data/Any Field]indexes[]sortby{$:/config/field-search/sortby}]\&quot; variable=field emptyMessage=\&quot;[[- configuration needed -|$:/plugins/wikilabs/field-search/readme]]\&quot;&gt;\n{{||$:/plugins/wikilabs/field-search/templates/Results}}\n&lt;/$list&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/css/column-styles&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/css/column-styles&quot;,
+            &quot;text&quot;: &quot;/* columns responsive*/\n.c2, .c3, .columns2, .columns3 {\n  column-rule: 1px solid #ccc;\n  column-gap: 2em;\n}\n\n.c2, .columns2 { column-count:2;}\n.c3, .columns3 { column-count:3;}\n\n.-gap { column-gap: initial;}\n.-cr { column-rule: initial;}\n\n.wltc-max-width {\n  width: 100%;\n}&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;type&quot;: &quot;text/css&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/styles&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/styles&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;text&quot;: &quot;.wltc-show-system {\n  float: right;\n  cursor: pointer;\n}\n\n.wltc-show-system input {\n  visibility: hidden;\n  margin-left: -1em;\n  width: initial;\n}\n\n.wltc-show-system  input[checked] + span{\n  color: blue;\n  font-weight: bold;\n}&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/history&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/history&quot;,
+            &quot;text&quot;: &quot;V 0.4.1 - 2021-03-28\n\n* add match counter into field-search dropdown\n\nV 0.3.0 - 2021-03-06\n\n* \&quot;+system\&quot; is more visible if selected\n** shows a \&quot;pointer cursor\&quot; now\n* show field-names in \&quot;all Fields\&quot; tab\n* complete redesign\n\nV 0.2.4 - 2020-12-25\n\n* update license\n\nV 0.2.3 - 2020.01.19\n\n* Update license link/text\n\nV 0.2.2 - 2019.02.27\n\n* add \&quot;include system tiddlers\&quot; option per tab\n* work with a single template instead of duplicated code\n* Adjust minimum TW version to V5.1.18 because of \&quot;subfilter\&quot; usage\n\nV 0.1.0 - 2019.02.19\n\n* Make it more \&quot;update-friendly\&quot;\n** wrappers are tagged instead of \&quot;search-list\&quot; tiddlers\n\nV 0.0.1 - 2019.02.19\n\n* Initial release\n* Add \&quot;Field Search\&quot; tab to search results\n* Basic configuration options\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/icon&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/icon&quot;,
+            &quot;text&quot;: &quot;&lt;svg width=\&quot;22pt\&quot; height=\&quot;22pt\&quot; version=\&quot;1.1\&quot; viewBox=\&quot;0 0 128 128\&quot;&gt;\n&lt;path transform=\&quot;scale(4.36)\&quot; d=\&quot;m18.6 0-14.5 7.33-3.93 14.7 10.5 7.33 14.5-7.33 3.93-14.7-10.5-7.33zm-5.84 4.81c2.22 0 4.16 1.21 5.2 3h0.34v0.00195c0.277-0.0114 0.548 0.0881 0.744 0.273l2.8 2.64c0.182 0.171 0.287 0.402 0.291 0.645h0.00391v10.5c0 0.516-0.443 0.936-0.99 0.936h-9.91c-0.547 0-0.99-0.419-0.99-0.936v-5.56c-0.285-0.132-0.561-0.282-0.82-0.455l-4.3 4.3c-0.462 0.462-1.21 0.462-1.67 0-0.462-0.462-0.462-1.21 0-1.67l4.3-4.3c-0.656-0.985-1.01-2.14-1-3.33 0-3.32 2.69-6.01 6.01-6.01zm0 1.6c-2.07 0.0138-4.32 1.67-4.32 4.41 0 1.57 0.662 2.9 1.81 3.67v-5.73c0-0.516 0.443-0.936 0.99-0.936h4.71c-0.873-0.893-2.07-1.41-3.19-1.41zm-1.14 2.82v5.83c0.358 0.0841 0.734 0.143 1.14 0.143 2.36 0 4.44-1.74 4.44-4.38 0-0.577-0.115-1.11-0.309-1.59h-5.27zm1.26 1.45h3.12c0.508 0 0.916 0.443 0.916 0.992v0.0273c0 0.549-0.408 0.99-0.916 0.99h-3.12c-0.508 0-0.918-0.441-0.918-0.99v-0.0273c0-0.549 0.41-0.992 0.918-0.992zm5.86 0.531c-0.2 3.14-2.8 5.62-5.99 5.62-0.391 0-0.77-0.0497-1.14-0.121v4.62h9.05v-9.94h-1.38c-0.204 0-0.382-0.0727-0.539-0.172z\&quot; style=\&quot;stroke-width:.229\&quot;/&gt;\n&lt;/svg&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/license&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/license&quot;,
+            &quot;text&quot;: &quot;[[Field Search-Plugin|https://wikilabs.github.io/#field-search]] (c) Mario Pietsch - 2019-2021\n\nhttps://opensource.org/licenses/BSD-3-Clause\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/readme&quot;,
+            &quot;text&quot;: &quot;This plugin adds a \&quot;Field Search\&quot; tab to the search results\n\n{{$:/plugins/wikilabs/field-search/CP/Settings/field-search}}\n\n!! This plugin replaces the following system modules\n\n&lt;$list filter=\&quot;[[$:/plugins/wikilabs/field-search]plugintiddlers[]prefix[$:/core/]]\&quot;&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$link&gt;&lt;/$list&gt;&quot;
+        },
+        &quot;$:/core/ui/DefaultSearchResultList&quot;: {
+            &quot;title&quot;: &quot;$:/core/ui/DefaultSearchResultList&quot;,
+            &quot;caption&quot;: &quot;{{$:/language/Search/DefaultResults/Caption}}&quot;,
+            &quot;first-search-filter&quot;: &quot;[!is[system]search:title&lt;userInput&gt;sort[title]limit[250]]&quot;,
+            &quot;second-search-filter&quot;: &quot;[!is[system]search&lt;userInput&gt;sort[title]limit[250]]&quot;,
+            &quot;tags&quot;: &quot;$:/tags/SearchResults&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;//&lt;small&gt;{{$:/language/Search/Matches/Title}}&lt;/small&gt;//\n&lt;$list filter=\&quot;[&lt;userInput&gt;minlength[1]]\&quot; variable=\&quot;ignore\&quot;&gt;\n&lt;$list filter={{{ [&lt;configTiddler&gt;get[first-search-filter]] ~[{$:/config/SearchResults/Default}get[first-search-filter]] }}}&gt;\n&lt;span class={{{[&lt;currentTiddler&gt;addsuffix[-primaryList]] -[&lt;searchListState&gt;get[text]] +[then[]else[tc-list-item-selected]] }}}&gt;\n&lt;$transclude tiddler=\&quot;$:/core/ui/ListItemTemplate\&quot;/&gt;\n&lt;/span&gt;&lt;/$list&gt;&lt;/$list&gt;\n\n//&lt;small&gt;{{$:/language/Search/Matches/All}}&lt;/small&gt;//\n&lt;$list filter=\&quot;[&lt;userInput&gt;minlength[1]]\&quot; variable=\&quot;ignore\&quot;&gt;\n&lt;$list filter={{{ [&lt;configTiddler&gt;get[second-search-filter]] ~[{$:/config/SearchResults/Default}get[second-search-filter]] }}}&gt;\n&lt;span class={{{[&lt;currentTiddler&gt;addsuffix[-secondaryList]] -[&lt;searchListState&gt;get[text]] +[then[]else[tc-list-item-selected]] }}}&gt;\n&lt;$transclude tiddler=\&quot;$:/core/ui/ListItemTemplate\&quot;/&gt;\n&lt;/span&gt;\n&lt;/$list&gt;\n&lt;/$list&gt;\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/templates/ItemTemplate&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/templates/ItemTemplate&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;span title=\&quot;Drag &amp; Drop sort\&quot;&gt;:::&lt;/span&gt; &lt;$link /&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/templates/ListItemTemplate&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/templates/ListItemTemplate&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;div class=\&quot;tc-menu-list-item tc-small-gap-left\&quot;&gt;\n&lt;$link /&gt;\n&lt;/div&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/templates/Results&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/templates/Results&quot;,
+            &quot;modified&quot;: &quot;20210328092315108&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define showAll()\n&lt;small&gt;&lt;$checkbox field=\&quot;search-set\&quot; checked={{!!opt-checked}} unchecked={{!!opt-unchecked}} class=\&quot;wltc-show-system\&quot;&gt;+ system&lt;/$checkbox&gt;&lt;/small&gt;\n\\end\n&lt;$tiddler tiddler=&lt;&lt;currentTab&gt;&gt;&gt;\n&lt;$set name=lst filter=\&quot;[subfilter{!!search-set}] +[subfilter&lt;searchTerm&gt;] +[subfilter{!!search-sort}]\&quot;&gt;\n//Field: ''&lt;&lt;field&gt;&gt;'' (&lt;$count filter=\&quot;\&quot;\&quot;[enlist&lt;lst&gt;]\&quot;\&quot;\&quot;/&gt;)   &lt;&lt;showAll&gt;&gt;//\n\n&lt;$list filter=\&quot;[enlist&lt;lst&gt;]\&quot; template=\&quot;$:/core/ui/ListItemTemplate\&quot; emptyMessage=\&quot;\&quot;\&quot;&lt;div class=\&quot;tc-menu-list-item tc-small-gap-left\&quot;&gt;n/a&lt;/div&gt;\&quot;\&quot;\&quot;/&gt;\n&lt;/$set&gt;\n&lt;/$tiddler&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/templates/WrapperTemplate&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/templates/WrapperTemplate&quot;,
+            &quot;caption&quot;: &quot;Fields&quot;,
+            &quot;opt-checked&quot;: &quot;[all[]]&quot;,
+            &quot;opt-unchecked&quot;: &quot;[!is[system]]&quot;,
+            &quot;search-set&quot;: &quot;[!is[system]]&quot;,
+            &quot;search-sort&quot;: &quot;[sort[title]limit[250]]&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;`\\define searchTerm() [search:$(field)$&lt;userInput&gt;]\n\\define openConfig() \n&lt;$button&gt;\n  &lt;$action-setfield $tiddler=\&quot;$:/state/tab-1749438307\&quot; text=\&quot;$:/plugins/wikilabs/field-search/CP/Settings/field-search\&quot;/&gt;\n  &lt;$action-navigate $to=\&quot;$:/ControlPanel\&quot;/&gt;\n- configuration needed -\n&lt;/$button&gt;\n\\end\n\n&lt;$list filter=\&quot;[[`&lt;&lt;newConfigName&gt;&gt;`]indexes[]sortby{$:/config/field-search/sortby}]\&quot; variable=field emptyMessage=\&quot;&lt;&lt;openConfig&gt;&gt;\&quot;&gt;\n{{||$:/plugins/wikilabs/field-search/templates/Results}}\n&lt;/$list&gt;`\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/CP/Settings/field-search&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/CP/Settings/field-search&quot;,
+            &quot;caption&quot;: &quot;Field-Search&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ControlPanel&quot;,
+            &quot;text&quot;: &quot;\\define setDefault()\n&lt;$action-deletetiddler $tiddler=\&quot;$:/plugins/wikilabs/field-search/ui/fieldWrapper\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;$:/plugins/wikilabs/field-search/ui/aliasWrapper\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;$:/plugins/wikilabs/field-search/ui/captionWrapper\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;$:/plugins/wikilabs/field-search/ui/textWrapper\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;$:/plugins/wikilabs/field-search/ui/titleWrapper\&quot;/&gt;\n&lt;$action-deletetiddler $tiddler=\&quot;$:/core/ui/DefaultSearchResultList\&quot;/&gt;\n\\end\n\n{{$:/plugins/wikilabs/field-search/ui/TabConfigurator}}\n\n!! Return to Default\n\nThe following shaddow tiddlers have been modified: \n\n&lt;&lt;list-links filter:\&quot;[tag[$:/tags/SearchResults]is[tiddler]is[shadow]sort[title]]\&quot;&gt;&gt;\n\n&lt;$button actions=&lt;&lt;setDefault&gt;&gt; &gt;\nReturn to: Default Settings!\n&lt;/$button&gt;\n\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/ui/edit/exclude&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/ui/edit/exclude&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;!! [[Exclude Fields|$:/plugins/wikilabs/field-search/ui/edit/exclude]]\n&lt;&lt;&lt;\nThe following fields are excluded: ''{{$:/config/field-search/exclude}}'' \n\nExclude from field list: \n&lt;$edit-text class=\&quot;wltc-max-width\&quot; tiddler=\&quot;$:/config/field-search/exclude\&quot; tag=\&quot;input\&quot;/&gt;\n&lt;&lt;&lt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/ui/edit/sortby&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/ui/edit/sortby&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;!! [[Field Sort order|$:/plugins/wikilabs/field-search/ui/edit/sortby]]\n&lt;&lt;&lt;\nSort order: [[$:/config/field-search/sortby]]\n\n&lt;$edit-text class=\&quot;wltc-max-width\&quot; tiddler=\&quot;$:/config/field-search/sortby\&quot; tag=\&quot;input\&quot;/&gt;\n&lt;&lt;&lt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/ui/ExistingTabs&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/ui/ExistingTabs&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define getTempName() $:/temp/field-search/tabName\n\\define getCurrentDataName() $:/config/field-search/data/$(currentCaption)$\n\\define getCurrentTabName() $:/config/field-search/tab/$(currentCaption)$\n\n\\define editConfig()\n&lt;$action-createtiddler $basetitle=&lt;&lt;getTempName&gt;&gt; $overwrite=yes $template=&lt;&lt;getCurrentDataName&gt;&gt; tags=\&quot;\&quot;/&gt;\n&lt;$action-setfield $tiddler=\&quot;$:/temp/field-search/select\&quot; text=&lt;&lt;getCurrentDataName&gt;&gt;/&gt;\n\\end\n\n\\define editConfigButton()\n&lt;$button tooltip=\&quot;Load Configuration\&quot; class=\&quot;tc-btn-invisible\&quot; actions=&lt;&lt;editConfig&gt;&gt;&gt;{{$:/core/images/copy-clipboard}} Edit&lt;/$button&gt;\n\\end\n\n\\define deleteConfig()\n&lt;$action-sendmessage $message=\&quot;tm-delete-tiddler\&quot; $param=&lt;&lt;getCurrentTabName&gt;&gt;/&gt;\n&lt;$action-sendmessage $message=\&quot;tm-delete-tiddler\&quot; $param=&lt;&lt;getCurrentDataName&gt;&gt;/&gt;\n\\end\n\n\\define deleteButton()\n&lt;$button tooltip=\&quot;Load Configuration\&quot; class=\&quot;tc-btn-invisible\&quot; actions=&lt;&lt;deleteConfig&gt;&gt;&gt;{{$:/core/images/delete-button}} Delete&lt;/$button&gt;\n\\end\n\n\\define checkbox()\n&lt;$checkbox tiddler=&lt;&lt;currentTiddler&gt;&gt; tag=\&quot;$:/tags/SearchResults\&quot; checked=\&quot;$:/tags/SearchResults\&quot; unchecked=\&quot;\&quot; default=\&quot;\&quot;/&gt;\n\\end\n\n!! [[Custom Search Configurations|$:/plugins/wikilabs/field-search/ui/ExistingTabs]]\n&lt;&lt;&lt;\nIf the element is checked, the configuration will be used:\n\n&lt;table&gt;&lt;tbody&gt;\n&lt;$list filter=\&quot;[prefix[$:/config/field-search/tab/]]\&quot; emptyMessage=\&quot;n/a\&quot;&gt;\n&lt;tr&gt;\n&lt;$vars currentCaption={{!!caption}}&gt;\n&lt;td&gt;&lt;&lt;checkbox&gt;&gt;&lt;/td&gt;&lt;td&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;&lt;currentCaption&gt;&gt;&lt;/$link&gt; - used &lt;$link to=&lt;&lt;getCurrentDataName&gt;&gt;&gt; fields&lt;/$link&gt;: ''&lt;$list filter=\&quot;[&lt;getCurrentDataName&gt;indexes[]sortby{$:/config/field-search/sortby}]\&quot; variable=field&gt;&lt;&lt;field&gt;&gt;, &lt;/$list&gt;'' &lt;/td&gt;&lt;td&gt;&lt;&lt;deleteButton&gt;&gt;&lt;/td&gt;&lt;td&gt;&lt;&lt;editConfigButton&gt;&gt;&lt;/td&gt;\n&lt;/$vars&gt;\n&lt;/tr&gt;\n&lt;/$list&gt;\n&lt;/tbody&gt;&lt;/table&gt;\n\n&lt;&lt;&lt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/field-search/ui/TabConfigurator&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/field-search/ui/TabConfigurator&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;\\define getTabName() $:/config/field-search/tab/$(tabName)$\n\\define getConfigName() $:/config/field-search/data/$(tabName)$\n\\define getTempName() $:/temp/field-search/tabName\n\\define getTempSelect() $:/temp/field-search/select\n\n\\define clearTemp()\n\\whitespace trim\n&lt;$button class=\&quot;tc-btn-invisible\&quot;&gt;\n  &lt;$action-deletetiddler $tiddler=&lt;&lt;getTempName&gt;&gt;/&gt;\n  &lt;$action-deletetiddler $tiddler=&lt;&lt;getTempSelect&gt;&gt;/&gt;\n  {{$:/core/images/close-button}}\n&lt;/$button&gt;\n\\end\n\n\\define createTab()\n&lt;$set name=newConfigName value=&lt;&lt;getConfigName&gt;&gt; &gt;\n  &lt;$wikify name=aa text={{$:/plugins/wikilabs/field-search/templates/WrapperTemplate}} output=text&gt;\n    &lt;$action-createtiddler $basetitle=&lt;&lt;getTabName&gt;&gt; $overwrite=yes $template=\&quot;$:/plugins/wikilabs/field-search/templates/WrapperTemplate\&quot; caption={{{ [&lt;getTempName&gt;get[caption]] }}} text=&lt;&lt;aa&gt;&gt; tags=\&quot;$:/tags/SearchResults\&quot;/&gt;\n    &lt;$action-createtiddler $basetitle=&lt;&lt;getConfigName&gt;&gt; $template=&lt;&lt;getTempName&gt;&gt; $overwrite=yes tags=\&quot;$:/tags/field-search/data\&quot;/&gt;\n  &lt;/$wikify&gt;\n&lt;/$set&gt;\n\\end\n\n\\define selectActions()\n&lt;$action-createtiddler $basetitle=&lt;&lt;getTempName&gt;&gt; $overwrite=yes $template={{{ [&lt;getTempSelect&gt;get[text]] }}} tags=\&quot;\&quot;/&gt;\n\\end\n\n\\define selectData()\n&lt;$select tiddler=&lt;&lt;getTempSelect&gt;&gt; default=\&quot;\&quot; actions=&lt;&lt;selectActions&gt;&gt; &gt;\n  &lt;option value=\&quot;\&quot;&gt;---&lt;/option&gt;\n  &lt;$list filter=\&quot;[tag[$:/tags/field-search/data]]\&quot; &gt;\n    &lt;option value=&lt;&lt;currentTiddler&gt;&gt; &gt;{{!!caption}}&lt;/option&gt;\n  &lt;/$list&gt;\n&lt;/$select&gt;\n\\end\n\n!! Default Setting\n&lt;&lt;&lt;\n* &lt;$checkbox tiddler=\&quot;$:/core/ui/DefaultSearchResultList\&quot; tag=\&quot;$:/tags/SearchResults\&quot; checked=\&quot;$:/tags/SearchResults\&quot; unchecked=\&quot;\&quot; default=\&quot;$:/tags/SearchResults\&quot;&gt; Add ''Default Search'' tab to the search dropdown!&lt;/$checkbox&gt;\n* &lt;$checkbox tiddler=\&quot;$:/config/field-search/tab/Any Field\&quot; tag=\&quot;$:/tags/SearchResults\&quot; checked=\&quot;$:/tags/SearchResults\&quot; unchecked=\&quot;\&quot; default=\&quot;$:/tags/SearchResults\&quot;&gt; Add ''Any Field'' tab to the search dropdown!&lt;/$checkbox&gt;\n&lt;&lt;&lt;\n\n{{$:/plugins/wikilabs/field-search/ui/ExistingTabs}}\n\n!! [[Create / Modify Configuration|$:/plugins/wikilabs/field-search/ui/TabConfigurator]]\n&lt;&lt;&lt;\nNew caption: &lt;$edit-text tiddler=&lt;&lt;getTempName&gt;&gt; field=\&quot;caption\&quot;/&gt; &lt;&lt;clearTemp&gt;&gt; &lt;!-- &amp;nbsp; Load config: &lt;&lt;selectData&gt;&gt; --&gt;\n\nUsed fields: ''&lt;$list filter=\&quot;[&lt;getTempName&gt;indexes[]sortby{$:/config/field-search/sortby}]\&quot; variable=field&gt;&lt;&lt;field&gt;&gt;, &lt;/$list&gt;''\n\n---\n\n&lt;$vars tabName={{{ [&lt;getTempName&gt;get[caption]] }}}&gt;\n\n@@.columns3.j\n&lt;$list filter=\&quot;[all[]!is[system]fields:exclude{$:/config/field-search/exclude}sort[]sortby{$:/config/field-search/sortby}]\&quot; variable=\&quot;field\&quot;&gt;\n&lt;$checkbox tiddler=&lt;&lt;getTempName&gt;&gt; index=&lt;&lt;field&gt;&gt; checked=\&quot;comment\&quot;  default=\&quot;closed\&quot; &gt;&amp;nbsp;&lt;&lt;field&gt;&gt;&lt;br&gt;&lt;/$checkbox&gt;\n&lt;/$list&gt;\n@@\n\n&lt;table class=\&quot;wltc-max-width\&quot;&gt;&lt;tbody&gt;\n&lt;$list filter=\&quot;[&lt;getTempName&gt;indexes[]sortby{$:/config/field-search/sortby}]\&quot; variable=field&gt;\n&lt;tr&gt;\n&lt;td&gt;&lt;&lt;field&gt;&gt;&lt;/td&gt;&lt;td&gt;&lt;$edit-text class=\&quot;wltc-max-width\&quot; tiddler=&lt;&lt;getTempName&gt;&gt; index=&lt;&lt;field&gt;&gt; tag=input/&gt; &lt;/td&gt;\n&lt;/tr&gt;\n&lt;/$list&gt;\n&lt;/tbody&gt;&lt;/table&gt;\n\n---\n\n&lt;$list filter=\&quot;[&lt;getTabName&gt;get[caption]match&lt;tabName&gt;addprefix[Update ]else[Create]]\&quot; variable=\&quot;buttonText\&quot; &gt;\n&lt;$button actions=&lt;&lt;createTab&gt;&gt; disabled={{{[&lt;getTempName&gt;get[caption]then[no]else[yes]]}}}&gt;\n&lt;&lt;buttonText&gt;&gt;\n&lt;/$button&gt;\n&lt;/$list&gt;\n&lt;/$vars&gt;\n&lt;&lt;&lt;\n\n!! Tab Order\n&lt;&lt;&lt;\nYou can use ''drag&amp;drop to sort'' the list:\n\n&lt;&lt;list-tagged-draggable tag:\&quot;$:/tags/SearchResults\&quot; itemTemplate:\&quot;$:/plugins/wikilabs/field-search/templates/ItemTemplate\&quot;&gt;&gt;\n&lt;&lt;&lt;\n\n{{$:/plugins/wikilabs/field-search/ui/edit/exclude}}\n\n{{$:/plugins/wikilabs/field-search/ui/edit/sortby}}\n&quot;
+        }
+    }
+}</pre>
+</div>
 <div author="Mario Pietsch" core-version="&gt;=5.1.22" dependents="" description="Enhances the prettylink-parser" list="readme history license" name="Uni-Link" plugin-type="plugin" title="$:/plugins/wikilabs/uni-link" type="application/json" version="2.1.0">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -14611,7 +14735,7 @@ message-background
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210701134911873" list="[[uni-link confusion]] $:/plugins/wikilabs/uni-link" modified="20210701134911873" title="$:/StoryList">
+<div list="[[uni-link confusion]] $:/plugins/wikilabs/uni-link" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time" title="$:/tags/PageControls">
@@ -15960,7 +16084,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <pre>loaded</pre>
 </div>
 <div title="$:/temp/time">
-<pre>2:54:37 PM</pre>
+<pre>5:45:17 PM</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
