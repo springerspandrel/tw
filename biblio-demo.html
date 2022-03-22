@@ -308,6 +308,8 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/text-slicer</li>
 
+<li>$:/plugins/wikilabs/edit-tabs</li>
+
 <li>$:/plugins/wikilabs/field-search</li>
 
 <li>$:/plugins/wikilabs/uni-link</li>
@@ -10409,7 +10411,7 @@ $:/config/ViewToolbarButtons/Visibility/$(listItem)$
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/plugins/wikilabs/field-search]]</pre>
+# [[$:/plugins/wikilabs/edit-tabs]]</pre>
 </div>
 <div created="20201209204657455" modified="20201209204701075" title="$:/Import!!popup-Untitled">
 <pre>no</pre>
@@ -14178,6 +14180,55 @@ $value={{$:/temp/newfieldvalue}}/&gt;
     }
 }</pre>
 </div>
+<div author="Mario Pietsch" core-version="&gt;=5.1.15" dependents="" description="Internal link- or edit-buttons are added to tabs if selected" list="readme history license" plugin-type="plugin" title="$:/plugins/wikilabs/edit-tabs" type="application/json" version="1.1.1">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/core/macros/tabs&quot;: {
+            &quot;title&quot;: &quot;$:/core/macros/tabs&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Macro&quot;,
+            &quot;text&quot;: &quot;\\define link-action()\n&lt;$action-sendmessage $message=\&quot;$(message)$\&quot; $param=&lt;&lt;currentTiddler&gt;&gt; navigateTo=&lt;&lt;currentTiddler&gt;&gt;/&gt;\n\\end\n\\define tabs(tabsList,default,state:\&quot;$:/state/tab\&quot;,class,template,buttonTemplate,retain)\n&lt;div class=\&quot;tc-tab-set $class$\&quot;&gt;\n&lt;div class=\&quot;tc-tab-buttons $class$\&quot;&gt;\n&lt;$list filter=\&quot;$tabsList$\&quot; variable=\&quot;currentTab\&quot;&gt;&lt;$set name=\&quot;save-currentTiddler\&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$tiddler tiddler=&lt;&lt;currentTab&gt;&gt;&gt;&lt;$button set=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; setTo=&lt;&lt;currentTab&gt;&gt; default=\&quot;$default$\&quot; selectedClass=\&quot;tc-tab-selected\&quot; tooltip={{!!tooltip}}&gt;\n&lt;$transclude tiddler={{!!icon}}/&gt;\n&lt;$tiddler tiddler=&lt;&lt;save-currentTiddler&gt;&gt;&gt;\n&lt;$set name=\&quot;tv-wikilinks\&quot; value=\&quot;no\&quot;&gt;\n&lt;$transclude tiddler=\&quot;\&quot;\&quot;$buttonTemplate$\&quot;\&quot;\&quot; mode=\&quot;inline\&quot;&gt;\n&lt;$transclude tiddler=&lt;&lt;currentTab&gt;&gt; field=\&quot;caption\&quot;&gt;\n&lt;$macrocall $name=\&quot;currentTab\&quot; $type=\&quot;text/plain\&quot; $output=\&quot;text/plain\&quot;/&gt;\n&lt;/$transclude&gt;\n&lt;/$transclude&gt;\n&lt;/$set&gt;&lt;/$tiddler&gt;&lt;/$button&gt;\n&lt;$set name=message value={{$:/plugins/wikilabs/edit-tabs/config!!link-action}}&gt;\n&lt;$list filter=\&quot;[&lt;currentTiddler&gt;]+[!is[shadow]]\&quot; emptyMessage=\&quot;\&quot;\&quot;&lt;$button tag=span class=\&quot;wltc-edit-tab\&quot; to=&lt;&lt;currentTiddler&gt;&gt; &gt;{{$:/core/images/link}}&lt;/$button&gt;\&quot;\&quot;\&quot; &gt;&lt;$button tag=span class=\&quot;wltc-edit-tab\&quot; actions=&lt;&lt;link-action&gt;&gt; &gt;&lt;$reveal type=match text=\&quot;tm-navigate\&quot; state=\&quot;$:/plugins/wikilabs/edit-tabs/config!!link-action\&quot;&gt;{{$:/core/images/link}}&lt;/$reveal&gt;&lt;$reveal type=match text=\&quot;tm-edit-tiddler\&quot; state=\&quot;$:/plugins/wikilabs/edit-tabs/config!!link-action\&quot;&gt;{{$:/core/images/edit-button}}&lt;/$reveal&gt;&lt;/$button&gt;&lt;/$list&gt;&lt;/$set&gt;&lt;/$tiddler&gt;&lt;/$set&gt;&lt;/$list&gt;&lt;/div&gt;\n&lt;div class=\&quot;tc-tab-divider $class$\&quot;/&gt;\n&lt;div class=\&quot;tc-tab-content $class$\&quot;&gt;\n&lt;$list filter=\&quot;$tabsList$\&quot; variable=\&quot;currentTab\&quot;&gt;\n\n&lt;$reveal type=\&quot;match\&quot; state=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; text=&lt;&lt;currentTab&gt;&gt; default=\&quot;$default$\&quot; retain=\&quot;\&quot;\&quot;$retain$\&quot;\&quot;\&quot;&gt;\n\n&lt;$transclude tiddler=\&quot;\&quot;\&quot;$template$\&quot;\&quot;\&quot; mode=\&quot;block\&quot;&gt;\n\n&lt;$transclude tiddler=&lt;&lt;currentTab&gt;&gt; mode=\&quot;block\&quot;/&gt;\n\n&lt;/$transclude&gt;\n\n&lt;/$reveal&gt;\n\n&lt;/$list&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n\\end&quot;
+        },
+        &quot;$:/core/ui/ControlPanel/Settings/edit-tabs&quot;: {
+            &quot;title&quot;: &quot;$:/core/ui/ControlPanel/Settings/edit-tabs&quot;,
+            &quot;caption&quot;: &quot;Edit-Tabs plugin&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ControlPanel/Settings&quot;,
+            &quot;text&quot;: &quot;&lt;$checkbox tiddler=\&quot;$:/plugins/wikilabs/edit-tabs/config\&quot; field=\&quot;show-all-links\&quot; checked=\&quot;inline\&quot; unchecked=\&quot;none\&quot; default=\&quot;none\&quot;&gt; Show internal tab link for ''all tabs''&lt;/$checkbox&gt;\n\n&lt;$checkbox tiddler=\&quot;$:/plugins/wikilabs/edit-tabs/config\&quot; field=\&quot;show-single-link\&quot; checked=\&quot;inline\&quot; unchecked=\&quot;none\&quot; default=\&quot;inline\&quot;&gt; Show internal tab link for ''selected tab''&lt;/$checkbox&gt;\n\n&lt;$checkbox tiddler=\&quot;$:/plugins/wikilabs/edit-tabs/config\&quot; field=\&quot;link-action\&quot; checked=\&quot;tm-edit-tiddler\&quot; unchecked=\&quot;tm-navigate\&quot; default=\&quot;tm-edit-tiddler\&quot;&gt; Clicking a tab-link opens non-system tiddlers in ''edit mode''&lt;/$checkbox&gt;\n\n&lt;$checkbox tiddler=\&quot;$:/plugins/wikilabs/edit-tabs/config\&quot; field=\&quot;initial-opacity\&quot; checked=\&quot;0\&quot; unchecked=\&quot;0.7\&quot; default=\&quot;0.7\&quot;&gt; Tab links are initially hidden and need mouse hover to become visible.&lt;/$checkbox&gt; The transition time in seconds is: &lt;$edit-text tiddler=\&quot;$:/plugins/wikilabs/edit-tabs/config\&quot; field=\&quot;transition\&quot; default=\&quot;0.3\&quot;/&gt;\n\n&lt;$button message=\&quot;tm-delete-tiddler\&quot; param=\&quot;$:/plugins/wikilabs/edit-tabs/config\&quot;&gt;\nReset to Default!&quot;
+        },
+        &quot;$:/plugins/wikilabs/edit-tabs/config&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/edit-tabs/config&quot;,
+            &quot;show-all-links&quot;: &quot;none&quot;,
+            &quot;show-single-link&quot;: &quot;inline&quot;,
+            &quot;link-action&quot;: &quot;tm-edit-tiddler&quot;,
+            &quot;initial-opacity&quot;: &quot;0.7&quot;,
+            &quot;transition&quot;: &quot;0.3&quot;,
+            &quot;text&quot;: &quot;This tiddler is used to configure the \&quot;Edit-tabs\&quot; plugin behaviour. \n\nThere are 4 fields, which are used by [[$:/plugins/wikilabs/edit-tabs/styles]] enable and disable the internal links. \n\n* show-all-links: {{!!show-all-links}}\n* show-single-link: {{!!show-single-link}}\n* initial-opacity: {{!!initial-opacity}}\n* transition time in seconds: {{!!transition}}\n\nThe next field is used to define the behaviour of the link, if it's clicked.\n\n* link-action: {{!!link-action}}\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/edit-tabs/styles&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/edit-tabs/styles&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;text&quot;: &quot;&lt;pre&gt;\n\n.wltc-edit-tab {\n  display: {{$:/plugins/wikilabs/edit-tabs/config!!show-all-links}};\n  position: relative;\n  top: -1em;\n  left: -1.3em;\n  font-size: 0.7em;\n  opacity: {{$:/plugins/wikilabs/edit-tabs/config!!initial-opacity}};\n  margin-right: -1em;\n}\n\n.wltc-edit-tab svg{\n  width: 1.4em;\n  height: 1.4em;\n}\n\n.wltc-edit-tab:hover {\n  opacity: 1;\n  transition:opacity {{$:/plugins/wikilabs/edit-tabs/config!!transition}}s;\n  transition-timing-function: cubic-bezier(1,-0.06,.39,.89);\n}\n\n.tc-tab-selected + .wltc-edit-tab {\n  display: {{$:/plugins/wikilabs/edit-tabs/config!!show-single-link}};\n}\n\n.tc-vertical &gt; .wltc-edit-tab {\n  top: -1.9em;\n  left: 0;\n  height: 0;\n  float: right;\n}\n\n.tc-search-results .wltc-edit-tab a {\n  display: contents;\n  padding: 0;\n}\n\n&lt;/pre&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/edit-tabs/fix-sendmessage.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/edit-tabs/fix-sendmessage.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/wikilabs/edit-tabs/fix-sendmessage.js\ntype: application/javascript\nmodule-type: startup\n\nA startup module to fix the &lt;$action-sendmessage widget parameter passing problem\n\neg:\n\nNavigatorWidget.prototype.handleNavigateEvent = function(event) {\n\tevent = $tw.hooks.invokeHook(\&quot;th-navigating\&quot;,event);\n\tif(event.navigateTo) {             &lt;--- expects event.navigateTo, but sendmessage widget gives event.params.navigateTo\n\t\tthis.addToStory(event.navigateTo,event.navigateFromTitle);\n\t\tif(!event.navigateSuppressNavigation) {\n\t\t\tthis.addToHistory(event.navigateTo,event.navigateFromClientRect);\n\t\t}\n\t}\n\treturn false;\n};\n\n\nThis hook temporarily fixes the problem.\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\n// Export name and synchronous status\nexports.name = \&quot;fixsendmessage\&quot;;\nexports.platforms = [\&quot;browser\&quot;];\nexports.after = [\&quot;startup\&quot;];\nexports.synchronous = true;\n\nexports.startup = function() {\n\t$tw.hooks.addHook(\&quot;th-navigating\&quot;,function(event) {\n\t\tvar suppressNavigation = (event.event) ? event.event.metaKey || event.event.ctrlKey || (event.event.button === 1) : false;\n\n\t\tif (!event.navigateTo &amp;&amp; event.paramObject &amp;&amp; event.paramObject.navigateTo) {\n\t\t\tevent.navigateTo = event.paramObject.navigateTo;\n\t\t\tevent.navigateSuppressNavigation = event.navigateSuppressNavigation || suppressNavigation;\n\t\t}\n\t\treturn event;\n\t});\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;startup&quot;
+        },
+        &quot;$:/plugins/wikilabs/edit-tabs/history&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/edit-tabs/history&quot;,
+            &quot;text&quot;: &quot;V 1.1.1 - 2020.01.19\n\n* Update license link/text\n\nV 1.1.0 - 2019-08\n\n* Change minimum core version to `&gt;=5.1.15`\n\nV1.0.0 - 2019-07-14\n\n* Add new option: Initially hide link\n** Transition time from hidden to visible is adjustable\n* Added: \&quot;Reset to Default\&quot; button\n* Show Edit Button if edit mode is active\n\nThis version has feature parity with link-to-tabs plugin from same date!\n\nV0.2.0 - 2019-01-17\n\n* remove the experimental flag\n\nV0.2.0-experimental - 2018-02-13\n\n* initial release\n* forked from link-to-tabs V0.1.1\n* add new \&quot;auto-edit\&quot; configuration for tab-links\n* auto-edit is only active for non-shadow tiddlers `[!is[shadow]]`\n* contains a temporary fix for a &lt;$action-sendmessage widget parameter passing problem\n** This fix should be deactivated in the future.\n\nalso see: https://wikilabs.github.io/editions/edit-tabs/#History\nalso see: https://wikilabs.github.io/editions/link-to-tabs/#History\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/edit-tabs/license&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/edit-tabs/license&quot;,
+            &quot;text&quot;: &quot;[[Edit-Tabs-Macro|https://wikilabs.github.io/#edit-tabs]] (c) Mario Pietsch - 2018-2020\n\nhttps://opensource.org/licenses/BSD-3-Clause\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/edit-tabs/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/edit-tabs/readme&quot;,
+            &quot;text&quot;: &quot;This plugin adds a little link icon to every tab.\n\n''Important:'' This plugin changes the core tabs macro.\n\n! Link-to-Tabs Settings\n\n{{$:/core/ui/ControlPanel/Settings/edit-tabs}}&quot;
+        }
+    }
+}</pre>
+</div>
 <div author="Mario Pietsch" core-version="&gt;=5.1.18" dependents="" description="New tabs are added to search results" list="readme license history" name="Field Search" plugin-type="plugin" title="$:/plugins/wikilabs/field-search" type="application/json" version="0.4.1">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -14735,16 +14786,16 @@ message-background
 <div created="20201213005321650" modified="20210108060902610" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20201130194124206" modified="20220314205321902" title="$:/state/tab/sidebar--595412856">
+<div created="20201130194124206" modified="20220322170402028" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20201203205656365" modified="20201205202154489" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/PageControls</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
-<div list="[[Epictetus, Enchiridion]]" title="$:/StoryList">
+<div list="$:/Import [[Epictetus, Enchiridion]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div list="$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time" title="$:/tags/PageControls">
@@ -14804,11 +14855,11 @@ message-background
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1680&quot;
+            &quot;text&quot;: &quot;1280&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;945&quot;
+            &quot;text&quot;: &quot;800&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -16093,7 +16144,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <pre>loaded</pre>
 </div>
 <div title="$:/temp/time">
-<pre>4:53:36 PM</pre>
+<pre>1:04:36 PM</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
