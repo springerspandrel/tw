@@ -414,11 +414,15 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab--1074890722</li>
+
 <li>$:/state/tab--2041098570</li>
 
 <li>$:/state/tab--960011926</li>
 
 <li>$:/state/tab-1464666200</li>
+
+<li>$:/state/tab-1528275152</li>
 
 <li>$:/state/tab-1610021602</li>
 
@@ -428,7 +432,11 @@ Error message and password prompt
 
 <li>$:/state/tab-207481766</li>
 
+<li>$:/state/tab-423577956</li>
+
 <li>$:/state/tab-668442618</li>
+
+<li>$:/state/tab-983460142</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
 
@@ -776,7 +784,7 @@ Error message and password prompt
 {"title":"$:/SiteTitle","text":"@@font-family:\"Xanh Mono\";font-weight:700; Biblio excerpts demo@@","created":"20201130195229935","modified":"20201130195232736"},
 {"title":"$:/snippets/currpalettepreview","text":"\\define swatchStyle()\nbackground-color: $(swatchColour)$;\n\\end\n\\define swatch()\n\u003C$set name=\"swatchColour\" value={{##$(colour)$}}\n>\u003Cdiv class=\"tc-swatch\" style=\u003C\u003CswatchStyle>> title=\u003C\u003Ccolour>>/>\u003C/$set>\n\\end\n\u003Cdiv class=\"tc-swatches-horiz\">\u003C$list filter=\"\nforeground\nbackground\nmuted-foreground\nprimary\npage-background\ntab-background\ntiddler-info-background\nmessage-foreground\nmessage-background\n\" variable=\"colour\">\u003C\u003Cswatch>>\u003C/$list>\u003C/div>","created":"20201203232735599","modified":"20201203232744647"},
 {"title":"$:/springer/add-abstract-above","text":"\u003C$list filter=\"[all[current]has[abstract]]\">\n\n\u003C$details open=\"yes\" summary=\"Abstract:\">\n\n@@float:right;\u003C$macrocall $name=\"makeimg\" isbn={{!!bibtex-isbn}} />@@ {{!!abstract}}{{clear-both}}\n\n\u003C/$details>\n\n\n\n\n\u003C/$list>","created":"20201201062012497","modified":"20210104225305751","tags":"$:/tags/ViewTemplate"},
-{"title":"$:/springer/add-notes-below","text":"\u003C$list filter=\"[all[current]has[notes]]\">\n\n\u003C\u003Calert primary src:\"{{!!notes}} \"leftbar border-warning\">>\n\n\u003C/$list>","created":"20201201052916117","linkstyle-before":"content:\"VIEW TEMPLATE: \"; position:relative; font-size:80%; color: \u003C\u003Ccolour primary>>; text-transform: uppercase; ","modified":"20201205210126810","tags":"$:/tags/ViewTemplate"},
+{"created":"20201201052916117","text":"\u003C$list filter=\"[all[current]has[notes]]\">\n\n\u003C\u003Calert primary src:\"{{!!notes}}\" \"leftbar border-warning\">>\n\n\u003C/$list>","title":"$:/springer/add-notes-below","linkstyle-before":"content:\"VIEW TEMPLATE: \"; position:relative; font-size:80%; color: \u003C\u003Ccolour primary>>; text-transform: uppercase; ","modified":"20230615173243896","tags":"$:/tags/ViewTemplate"},
 {"title":"$:/springer/book-icon","text":"■","color":"#f8f7f7","created":"20201203204114840","explanation":"Set the icon for all books at once. Set the color using a `\u003C\u003Ccolour>>` macro, or set it to  `{{!!color}}` to set manually.","modified":"20201208231502071","palette-value":"\u003C\u003Ccolour primary>>","tags":""},
 {"title":"$:/springer/quote-icon","text":"❝ ","color":"#ffffff","created":"20201203204114840","explanation":"Set the icon for all quotes at once. Set the color using a `\u003C\u003Ccolour>>` macro, or set it to  `{{!!color}}` to set manually.","modified":"20201208231509438","palette-value":"\u003C\u003Ccolour download-background>>","tags":""},
 {"title":"$:/springer/source-info","text":"\u003Cdiv class=\"tc-subtitle\">\n\u003C$list filter=\"[\u003CcurrentTiddler>has[author]]\"> {{!!author}}, \u003C/$list>\n\u003C$list filter=\"[\u003CcurrentTiddler>has[text-title]]\"> {{!!text-title}}\u003C/$list>\n\u003C$list filter=\"[\u003CcurrentTiddler>has[page]]\">, p. {{!!page}}\u003C/$list>\n{{!!year}}\n\u003C$list filter=\"[\u003CcurrentTiddler>has[publisher]]\">\u003C\u003Chspace .5em>> ({{!!publisher}})\u003C/$list>\n\u003C/div>","created":"20201201054324470","modified":"20201201061515944","tags":"$:/tags/ViewTemplate"},
@@ -786,19 +794,23 @@ Error message and password prompt
 {"created":"20221220214113008","text":"unchecked","title":"$:/state/import/select-all","modified":"20221220214113008"},
 {"created":"20221220215837922","title":"$:/state/showeditpreview","text":"no","modified":"20221220215841040"},
 {"created":"20221220215935372","title":"$:/state/sidebar","text":"yes","modified":"20221220220301855"},
-{"created":"20221220213417311","title":"$:/state/tab--2041098570","text":"$:/core/ui/ControlPanel/Saving","modified":"20221220213417312"},
+{"created":"20230615172948177","title":"$:/state/tab--1074890722","text":"$:/core/ui/ControlPanel/Stylesheets","modified":"20230615172948177"},
+{"created":"20221220213417311","title":"$:/state/tab--2041098570","text":"$:/core/ui/ControlPanel/Info","modified":"20230615172945712"},
 {"created":"20221221015751869","title":"$:/state/tab--960011926","text":"$:/core/ui/TiddlerInfo/Tagging","modified":"20221221015751869"},
 {"created":"20221220213419428","title":"$:/state/tab-1464666200","text":"$:/core/ui/ControlPanel/Saving/GitHub","modified":"20221220213419428"},
-{"created":"20221220214334591","title":"$:/state/tab-1610021602","text":"$:/core/ui/AdvancedSearch/Standard","modified":"20221220220115838"},
+{"created":"20230615172748894","title":"$:/state/tab-1528275152","text":"$:/config/field-search/tab/Any Field","modified":"20230615172748894"},
+{"created":"20221220214334591","title":"$:/state/tab-1610021602","text":"$:/core/ui/AdvancedSearch/System","modified":"20230615173043712"},
 {"created":"20221220220057854","title":"$:/state/tab-1740081092","text":"$:/config/field-search/tab/Any Field","modified":"20221220220057854"},
 {"created":"20221220220755140","title":"$:/state/tab-1892611635","text":"$:/plugins/kookma/commander/field/uicomp/rename-fields","modified":"20221220223548500"},
 {"created":"20221221015927582","title":"$:/state/tab-207481766","text":"$:/core/ui/TiddlerInfo/Tagging","modified":"20221221015927582"},
+{"created":"20230615172926896","title":"$:/state/tab-423577956","text":"$:/core/ui/ControlPanel/Advanced","modified":"20230615172926896"},
 {"created":"20221220220752474","title":"$:/state/tab-668442618","text":"$:/plugins/kookma/commander/field/ui","modified":"20221220220752474"},
-{"created":"20221220214725522","title":"$:/state/tab/sidebar--595412856","text":"$:/core/ui/SideBar/Recent","modified":"20221221015806699"},
+{"created":"20230615172923725","title":"$:/state/tab-983460142","text":"$:/core/ui/ControlPanel/Theme","modified":"20230615172942509"},
+{"created":"20221220214725522","title":"$:/state/tab/sidebar--595412856","text":"$:/core/ui/SideBar/Open","modified":"20230615173248546"},
 {"created":"20221220214125242","title":"$:/state/utility/view-fields","text":"hide","modified":"20221221015812314"},
 {"created":"20221221015604258","title":"$:/status/IsReaderMode","text":"","modified":"20221221015624725"},
 {"title":"$:/status/RequireReloadDueToPluginChange","text":"no"},
-{"title":"$:/StoryList","created":"20221220223104778","text":"","list":"[[BibTex sources]]","modified":"20221221020307595"},
+{"title":"$:/StoryList","created":"20230615172719228","text":"","list":"$:/AdvancedSearch $:/springer/add-notes-below $:/ControlPanel [[Beauvoir, Ethics of Ambiguity]] [[Aristotle, Nicomachean Ethics]] [[Aristotle considers three lives]] [[metaphor and science]] [[BibTex sources]] alaimo2010bodily","modified":"20230615173233929"},
 {"title":"$:/tags/PageControls","text":"","list":"$:/core/ui/Buttons/home $:/core/ui/Buttons/close-all $:/core/ui/Buttons/fold-all $:/core/ui/Buttons/unfold-all $:/core/ui/Buttons/permaview $:/core/ui/Buttons/new-tiddler $:/core/ui/Buttons/new-journal $:/core/ui/Buttons/new-image $:/core/ui/Buttons/import $:/core/ui/Buttons/export-page $:/core/ui/Buttons/control-panel $:/core/ui/Buttons/advanced-search $:/core/ui/Buttons/manager $:/core/ui/Buttons/tag-manager $:/core/ui/Buttons/language $:/core/ui/Buttons/palette $:/core/ui/Buttons/theme $:/core/ui/Buttons/storyview $:/core/ui/Buttons/encryption $:/core/ui/Buttons/timestamp $:/core/ui/Buttons/full-screen $:/core/ui/Buttons/print $:/core/ui/Buttons/save-wiki $:/core/ui/Buttons/refresh $:/core/ui/Buttons/more-page-actions $:/plugins/kookma/utility/pagecontrol/view-fields-button [[Day/night palette button]] $:/time"},
 {"created":"20221220215403094","title":"$:/tags/ViewTemplate","text":"","list":"$:/core/ui/ViewTemplate/title $:/springer/source-info $:/core/ui/ViewTemplate/unfold $:/core/ui/ViewTemplate/tags $:/core/ui/ViewTemplate/classic $:/core/ui/ViewTemplate/body viewtemplate/bibtex $:/springer/add-abstract-above $:/plugins/kookma/utility/viewtemplates/view-fields $:/springer/add-notes-below $:/plugins/tiddlywiki/text-slicer/ui/view-template-segment $:/plugins/kookma/commander/viewtemplate/import $:/plugins/wikilabs/uni-link/aka-footer $:/plugins/kookma/shiraz/viewtemplates/sticky-footer","modified":"20221220220556485"},
 {"created":"20221220215501410","title":"$:/tags/ViewTemplateBodyFilter","list":"$:/config/ViewTemplateBodyFilters/hide-body $:/config/ViewTemplateBodyFilters/book $:/config/ViewTemplateBodyFilters/nonbook $:/config/ViewTemplateBodyFilters/code-body $:/config/ViewTemplateBodyFilters/stylesheet $:/config/ViewTemplateBodyFilters/system $:/config/ViewTemplateBodyFilters/import $:/config/ViewTemplateBodyFilters/plugin $:/config/ViewTemplateBodyFilters/default $:/config/ViewTemplateBodyFilters/excerpt $:/config/ViewTemplateBodyFilters/hide-excerpt $:/plugins/kookma/section/config/ViewTemplateBodyFilters","text":"","modified":"20221220215517257"},
